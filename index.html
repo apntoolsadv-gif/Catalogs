@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Digital Catalogs</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    #catalogMenu {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 25px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    #catalogMenu h1 {
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+
+    .catalogButton {
+      width: min(360px, 90vw);
+      padding: 22px;
+      border: none;
+      border-radius: 12px;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .rockman {
+      background: #ffc400;
+      color: #111;
+    }
+
+    .apn {
+      background: #d71920;
+      color: white;
+    }
+
+    .catalogButton:hover {
+      transform: scale(1.03);
+    }
+
+    #reader {
+      display: none;
+      min-height: 100vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 10px;
+    }
+
+    #toolbar {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    #toolbar button {
+      background: #262626;
+      color: white;
+      border: 1px solid #444;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    #toolbar button:hover {
+      background: #353535;
+    }
+
+    #pageInfo {
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+    }
+
+    #bookContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 75vh;
+    }
+
+    #book {
+      margin: auto;
+    }
+
+    .loading {
+      font-size: 20px;
+      text-align: center;
+      padding: 50px;
+    }
+
+    @media (max-width: 700px) {
+      #catalogMenu h1 {
+        font-size: 25px;
+      }
+
+      .catalogButton {
+        font-size: 18px;
+      }
+
+      #reader {
+        padding: 10px 4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- انتخاب کاتالوگ -->
+  <div id="catalogMenu">
+    <h1>Digital Catalog</h1>
+
+    <button
+      class="catalogButton rockman"
+      onclick="openCatalog('Rockman.catalog.pdf')">
+      ROCKMAN CATALOG
+    </button>
+
+    <button
+      class="catalogButton apn"
+      onclick="openCatalog('Apn.catalog.pdf')">
+      APN CATALOG
+    </button>
+  </div>
+
+
+  <!-- نمایش کاتالوگ -->
+  <div id="reader">
+
+    <div id="toolbar">
+
+      <button onclick="goHome()">Catalogs</button>
+
+      <button onclick="prevPage()">◀ Previous</button>
+
+      <span id="pageInfo">Page 1</span>
+
+      <button onclick="nextPage()">Next ▶</button>
+
+      <button onclick="toggleFullscreen()">Fullscreen</button>
+
+    </div>
+
+    <div id="bookContainer">
+      <div id="loading" class="loading">
+        Loading catalog...
+      </div>
+
+      <div id="book"></div>
+    </div>
+
+  </div>
+
+
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <!-- Page Flip -->
+  <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+
+  <script>
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+    let pageFlip = null;
+    let currentPdf = null;
+
+
+    async function openCatalog(pdfFile) {
+
+      document.getElementById("catalogMenu").style.display = "none";
+      document.getElementById("reader").style.display = "flex";
+
+      document.getElementById("loading").style.display = "block";
+      document.getElementById("book").innerHTML = "";
+
+      try {
+
+        currentPdf = await pdfjsLib.getDocument(pdfFile).promise;
+
+        const imageUrls = [];
+
+        for (let pageNumber = 1;
+             pageNumber <= currentPdf.numPages;
+             pageNumber++) {
+
+          const page = await currentPdf.getPage(pageNumber);
+
+          const viewport = page.getViewport({
+            scale: 1.7
+          });
+
+          const canvas = document.createElement("canvas");
+
+          const context = canvas.getContext("2d");
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+
+          await page.render({
+            canvasContext: context,
+            viewport: viewport
+          }).promise;
+
+          imageUrls.push(
+            canvas.toDataURL("image/jpeg", 0.92)
+          );
+        }
+
+        document.getElementById("loading").style.display = "none";
+
+        const firstPage = await currentPdf.getPage(1);
+
+        const originalViewport =
+          firstPage.getViewport({ scale: 1 });
+
+        const ratio =
+          originalViewport.height /
+          originalViewport.width;
+
+        let pageWidth = 550;
+        let pageHeight = pageWidth * ratio;
+
+        pageFlip = new St.PageFlip(
+          document.getElementById("book"),
+          {
+            width: pageWidth,
+            height: pageHeight,
+
+            size: "stretch",
+
+            minWidth: 280,
+            maxWidth: 700,
+
+            minHeight: 400,
+            maxHeight: 1000,
+
+            maxShadowOpacity: 0.5,
+
+            showCover: true,
+
+            mobileScrollSupport: false,
+
+            usePortrait: true,
+
+            flippingTime: 800,
+
+            drawShadow: true,
+
+            autoSize: true
+          }
+        );
+
+        pageFlip.loadFromImages(imageUrls);
+
+        updatePageNumber();
+
+        pageFlip.on("flip", function () {
+          updatePageNumber();
+          playFlipSound();
+        });
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+        document.getElementById("loading").innerHTML =
+          "Error loading catalog.";
+
+      }
+
+    }
+
+
+    function updatePageNumber() {
+
+      if (!pageFlip) return;
+
+      const current =
+        pageFlip.getCurrentPageIndex() + 1;
+
+      const total =
+        pageFlip.getPageCount();
+
+      document.getElementById("pageInfo").innerText =
+        "Page " + current + " / " + total;
+
+    }
+
+
+    function nextPage() {
+
+      if (pageFlip) {
+        pageFlip.flipNext();
+      }
+
+    }
+
+
+    function prevPage() {
+
+      if (pageFlip) {
+        pageFlip.flipPrev();
+      }
+
+    }
+
+
+    function goHome() {
+
+      if (pageFlip) {
+        pageFlip.destroy();
+        pageFlip = null;
+      }
+
+      document.getElementById("reader").style.display = "none";
+
+      document.getElementById("catalogMenu").style.display = "flex";
+
+      document.getElementById("book").innerHTML = "";
+
+    }
+
+
+    function toggleFullscreen() {
+
+      if (!document.fullscreenElement) {
+
+        document.documentElement.requestFullscreen();
+
+      }
+
+      else {
+
+        document.exitFullscreen();
+
+      }
+
+    }
+
+
+    /* صدای ورق خوردن بدون فایل صوتی */
+
+    function playFlipSound() {
+
+      try {
+
+        const audioContext =
+          new (window.AudioContext ||
+               window.webkitAudioContext)();
+
+        const duration = 0.12;
+
+        const buffer =
+          audioContext.createBuffer(
+            1,
+            audioContext.sampleRate * duration,
+            audioContext.sampleRate
+          );
+
+        const data =
+          buffer.getChannelData(0);
+
+        for (let i = 0; i < data.length; i++) {
+
+          data[i] =
+            (Math.random() * 2 - 1) *
+            (1 - i / data.length) *
+            0.12;
+
+        }
+
+        const source =
+          audioContext.createBufferSource();
+
+        const gain =
+          audioContext.createGain();
+
+        source.buffer = buffer;
+
+        gain.gain.value = 0.4;
+
+        source.connect(gain);
+        gain.connect(audioContext.destination);
+
+        source.start();
+
+      }
+
+      catch (e) {}
+
+    }
+
+  </script>
+
+</body>
+</html>
