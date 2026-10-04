@@ -7,22 +7,25 @@
 <title>Digital Catalogs</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     width: 100%;
     min-height: 100%;
     background: #101010;
+    color: #fff;
     font-family: Arial, sans-serif;
-    color: white;
 }
 
 body {
     overflow-x: hidden;
 }
+
 
 /* =========================
    HOME
@@ -33,7 +36,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     padding: 30px 20px;
 }
 
@@ -43,8 +45,8 @@ body {
 }
 
 #catalogMenu h1 {
-    font-size: 30px;
     margin: 0 0 8px;
+    font-size: 30px;
 }
 
 #catalogMenu p {
@@ -54,16 +56,24 @@ body {
 }
 
 .catalogButton {
-    display: block;
     width: 100%;
     min-height: 82px;
+
+    display: block;
+
     border: 0;
     border-radius: 14px;
+
     margin-bottom: 18px;
+
     font-size: 21px;
-    font-weight: 700;
+    font-weight: bold;
+
     cursor: pointer;
-    transition: transform .2s, opacity .2s;
+
+    transition:
+        transform .2s,
+        opacity .2s;
 }
 
 .catalogButton:hover {
@@ -81,7 +91,7 @@ body {
 
 .apn {
     background: #c9141c;
-    color: white;
+    color: #fff;
 }
 
 
@@ -91,34 +101,50 @@ body {
 
 #reader {
     display: none;
+
     min-height: 100vh;
+
     flex-direction: column;
     align-items: center;
 }
 
 #toolbar {
-    position: relative;
-    z-index: 20;
     width: 100%;
     min-height: 64px;
+
+    position: relative;
+    z-index: 20;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
-    gap: 9px;
+
     flex-wrap: wrap;
+
+    gap: 9px;
+
     padding: 10px 12px;
-    background: rgba(15,15,15,.96);
+
+    background: rgba(15,15,15,.97);
+
     border-bottom: 1px solid #292929;
 }
 
 #toolbar button {
-    background: #262626;
-    color: white;
-    border: 1px solid #414141;
-    border-radius: 8px;
     padding: 9px 14px;
-    cursor: pointer;
+
+    border-radius: 8px;
+
+    border: 1px solid #414141;
+
+    background: #262626;
+
+    color: white;
+
     font-size: 14px;
+
+    cursor: pointer;
 }
 
 #toolbar button:hover {
@@ -127,20 +153,35 @@ body {
 
 #pageInfo {
     min-width: 95px;
+
     text-align: center;
-    font-size: 14px;
+
     color: #ddd;
+
+    font-size: 14px;
 }
+
+
+/* =========================
+   BOOK AREA
+========================= */
 
 #bookArea {
     width: 100%;
+
     flex: 1;
+
     min-height: calc(100vh - 64px);
+
+    position: relative;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     overflow: hidden;
-    position: relative;
+
     padding: 14px;
 }
 
@@ -154,56 +195,85 @@ body {
 }
 
 .page canvas {
-    display: block;
     width: 100%;
     height: 100%;
+
+    display: block;
 }
+
+
+/* =========================
+   PAGE LOADING
+========================= */
 
 .pageLoading {
     width: 100%;
     height: 100%;
+
     background:
         linear-gradient(
             110deg,
             #e7e7e7 8%,
-            #f4f4f4 18%,
+            #f5f5f5 18%,
             #e7e7e7 33%
         );
+
     background-size: 200% 100%;
+
     animation: shimmer 1.4s linear infinite;
 }
 
 @keyframes shimmer {
+
     to {
         background-position-x: -200%;
     }
+
 }
+
+
+/* =========================
+   INITIAL LOADER
+========================= */
 
 #initialLoader {
     position: absolute;
-    z-index: 50;
+
     inset: 0;
+
+    z-index: 50;
+
     background: #101010;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     flex-direction: column;
+
     gap: 15px;
 }
 
 .spinner {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
+
     border: 3px solid #444;
+
     border-top-color: white;
+
     border-radius: 50%;
+
     animation: rotate .8s linear infinite;
 }
 
 @keyframes rotate {
+
     to {
         transform: rotate(360deg);
     }
+
 }
 
 .loaderText {
@@ -224,39 +294,48 @@ body {
 
     .catalogButton {
         min-height: 70px;
+
         font-size: 18px;
     }
 
     #toolbar {
-        gap: 6px;
-        padding: 7px 5px;
         min-height: 56px;
+
+        gap: 6px;
+
+        padding: 7px 5px;
     }
 
     #toolbar button {
         padding: 8px 9px;
+
         font-size: 12px;
     }
 
     #pageInfo {
         min-width: 72px;
+
         font-size: 12px;
     }
 
     #bookArea {
         min-height: calc(100vh - 56px);
+
         padding: 4px;
     }
+
 }
+
 </style>
 </head>
+
 
 <body>
 
 
-<!-- ======================================
-     HOME PAGE
-====================================== -->
+<!-- =========================
+     HOME
+========================= -->
 
 <div id="catalogMenu">
 
@@ -266,16 +345,22 @@ body {
 
         <p>Select a catalog</p>
 
+
         <button
             class="catalogButton rockman"
             onclick="openCatalog('Rockman.catalog.pdf')">
+
             ROCKMAN CATALOG
+
         </button>
+
 
         <button
             class="catalogButton apn"
             onclick="openCatalog('Apn.catalog.pdf')">
+
             APN CATALOG
+
         </button>
 
     </div>
@@ -284,38 +369,46 @@ body {
 
 
 
-<!-- ======================================
-     CATALOG READER
-====================================== -->
+<!-- =========================
+     READER
+========================= -->
 
 <div id="reader">
 
     <div id="toolbar">
 
+
         <button onclick="goHome()">
             Catalogs
         </button>
+
 
         <button onclick="prevPage()">
             ◀
         </button>
 
+
         <span id="pageInfo">
-            Page 1
+            1 / 1
         </span>
+
 
         <button onclick="nextPage()">
             ▶
         </button>
 
+
         <button onclick="toggleFullscreen()">
             ⛶
         </button>
 
+
     </div>
 
 
+
     <div id="bookArea">
+
 
         <div id="initialLoader">
 
@@ -327,7 +420,9 @@ body {
 
         </div>
 
+
         <div id="book"></div>
+
 
     </div>
 
@@ -336,99 +431,147 @@ body {
 
 
 <!-- PDF.JS -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 
-<!-- ST PAGE FLIP -->
+<!-- PAGE FLIP -->
+
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
 
 
 
 <script>
 
+
+/* =========================
+   PDF.JS SETUP
+========================= */
+
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
 
+
 let pdfDocument = null;
+
 let pageFlip = null;
 
 let pageElements = [];
+
 let renderedPages = new Set();
+
 let renderingPages = new Set();
 
 let audioContext = null;
 
-let currentCatalog = null;
+let backgroundRenderStopped = false;
 
 
-/* ======================================
+
+/* =========================
    OPEN CATALOG
-====================================== */
+========================= */
 
 async function openCatalog(pdfFile) {
 
-    currentCatalog = pdfFile;
+
+    /*
+    Important:
+    this is triggered by the user's click,
+    so audio permission is unlocked here.
+    */
 
     unlockAudio();
 
-    document.getElementById("catalogMenu").style.display = "none";
-    document.getElementById("reader").style.display = "flex";
 
-    document.getElementById("initialLoader").style.display = "flex";
+    document.getElementById("catalogMenu")
+        .style.display = "none";
 
-    document.getElementById("book").innerHTML = "";
+
+    document.getElementById("reader")
+        .style.display = "flex";
+
+
+    document.getElementById("initialLoader")
+        .style.display = "flex";
+
+
+    document.getElementById("book")
+        .innerHTML = "";
+
 
     renderedPages.clear();
+
     renderingPages.clear();
+
     pageElements = [];
+
+    backgroundRenderStopped = false;
+
 
 
     try {
 
+
         const loadingTask =
             pdfjsLib.getDocument({
+
                 url: pdfFile,
 
-                /* Allows PDF.js to request pieces when possible */
                 disableRange: false,
+
                 disableStream: false,
+
                 disableAutoFetch: false
+
             });
 
-        pdfDocument = await loadingTask.promise;
 
+
+        pdfDocument =
+            await loadingTask.promise;
+
+
+
+        /* Get page proportions */
 
         const firstPage =
             await pdfDocument.getPage(1);
 
-        const firstViewport =
+
+        const originalViewport =
             firstPage.getViewport({
                 scale: 1
             });
 
 
-        const originalWidth =
-            firstViewport.width;
-
-        const originalHeight =
-            firstViewport.height;
-
         const ratio =
-            originalHeight / originalWidth;
+            originalViewport.height /
+            originalViewport.width;
 
 
-        /* Logical page dimensions */
 
-        let pageWidth = 550;
-        let pageHeight =
-            Math.round(pageWidth * ratio);
+        /* Book logical size */
+
+        const pageWidth = 550;
+
+        const pageHeight =
+            Math.round(
+                pageWidth * ratio
+            );
 
 
-        /* Create lightweight blank pages immediately */
 
         const book =
             document.getElementById("book");
+
+
+
+        /*
+        Create lightweight placeholders
+        instantly for every page.
+        */
 
         for (
             let i = 0;
@@ -436,141 +579,238 @@ async function openCatalog(pdfFile) {
             i++
         ) {
 
+
             const page =
                 document.createElement("div");
 
+
             page.className = "page";
+
 
             page.dataset.pageNumber =
                 i + 1;
 
+
+
             const skeleton =
                 document.createElement("div");
+
 
             skeleton.className =
                 "pageLoading";
 
+
             page.appendChild(skeleton);
 
+
             book.appendChild(page);
+
 
             pageElements.push(page);
 
         }
 
 
+
         /*
-        Render only first few pages before opening.
-        Much faster than rendering all 60 pages.
+        Only render the first pages
+        before showing the catalog.
         */
 
-        await Promise.all([
-            renderPage(1),
-            renderPage(2),
-            renderPage(3)
-        ]);
+        const initialPages = [];
+
+
+        if (pdfDocument.numPages >= 1)
+            initialPages.push(renderPage(1));
+
+
+        if (pdfDocument.numPages >= 2)
+            initialPages.push(renderPage(2));
+
+
+        if (pdfDocument.numPages >= 3)
+            initialPages.push(renderPage(3));
+
+
+
+        await Promise.all(initialPages);
+
+
+
+        /* =========================
+           PAGE FLIP
+        ========================= */
 
 
         pageFlip =
             new St.PageFlip(
+
                 book,
+
                 {
 
                     width: pageWidth,
+
                     height: pageHeight,
+
 
                     size: "stretch",
 
+
                     minWidth: 280,
+
                     maxWidth: 700,
 
+
                     minHeight:
-                        Math.round(280 * ratio),
+                        Math.round(
+                            280 * ratio
+                        ),
+
 
                     maxHeight:
-                        Math.round(700 * ratio),
+                        Math.round(
+                            700 * ratio
+                        ),
+
+
+                    /*
+                    IMPORTANT:
+                    cover is shown alone.
+                    Interior pages display
+                    as a normal two-page book.
+                    */
 
                     showCover: true,
 
+
                     /*
-                    Desktop = double pages.
-                    Small screens automatically
-                    use portrait/single page.
+                    Desktop:
+                    double pages.
+
+                    Mobile:
+                    automatically single page.
                     */
+
                     usePortrait: true,
+
+
+                    startPage: 0,
+
 
                     autoSize: true,
 
+
                     drawShadow: true,
 
-                    maxShadowOpacity: 0.35,
 
-                    flippingTime: 720,
+                    maxShadowOpacity: 0.42,
 
-                    mobileScrollSupport: false,
 
-                    startPage: 0
+                    flippingTime: 780,
+
+
+                    mobileScrollSupport: false
+
                 }
+
             );
 
 
+
         pageFlip.loadFromHTML(
-            document.querySelectorAll(".page")
+
+            document.querySelectorAll(
+                ".page"
+            )
+
         );
 
 
-        document.getElementById("initialLoader")
-            .style.display = "none";
+
+        document.getElementById(
+            "initialLoader"
+        ).style.display = "none";
+
 
 
         updatePageNumber();
 
 
+
         /*
-        Preload pages near current position.
+        Prepare pages around the cover.
         */
 
         preloadAround(1);
 
 
-        pageFlip.on("flip", function(event) {
 
-            const index =
-                event.data;
+        /*
+        Every completed page flip
+        */
 
-            updatePageNumber();
+        pageFlip.on(
+            "flip",
+            function(event) {
 
-            playPageSound();
 
-            /*
-            User is now around index + 1
-            */
+                const index =
+                    event.data;
 
-            preloadAround(index + 1);
 
-        });
+                updatePageNumber();
+
+
+                /*
+                Natural page-turn sound
+                */
+
+                playPageSound();
+
+
+                /*
+                Prepare nearby pages
+                */
+
+                preloadAround(
+                    index + 1
+                );
+
+            }
+        );
+
 
 
         /*
-        Slowly continue rendering remaining pages
-        in the background.
+        Render the remaining pages
+        gently in background.
         */
 
-        setTimeout(() => {
-            backgroundRender();
-        }, 700);
+        setTimeout(
+
+            backgroundRender,
+
+            900
+
+        );
 
 
     }
 
+
     catch(error) {
 
+
         console.error(error);
+
 
         document.getElementById(
             "initialLoader"
         ).innerHTML =
+
         "<div class='loaderText'>Error loading catalog.</div>";
+
 
     }
 
@@ -578,14 +818,16 @@ async function openCatalog(pdfFile) {
 
 
 
-/* ======================================
-   RENDER A SINGLE PDF PAGE
-====================================== */
+/* =========================
+   RENDER ONE PAGE
+========================= */
 
 async function renderPage(pageNumber) {
 
+
     if (!pdfDocument)
         return;
+
 
     if (
         pageNumber < 1 ||
@@ -594,18 +836,27 @@ async function renderPage(pageNumber) {
         return;
 
 
-    if (renderedPages.has(pageNumber))
+    if (
+        renderedPages.has(pageNumber)
+    )
         return;
 
 
-    if (renderingPages.has(pageNumber))
+    if (
+        renderingPages.has(pageNumber)
+    )
         return;
 
 
-    renderingPages.add(pageNumber);
+
+    renderingPages.add(
+        pageNumber
+    );
+
 
 
     try {
+
 
         const pdfPage =
             await pdfDocument.getPage(
@@ -613,55 +864,86 @@ async function renderPage(pageNumber) {
             );
 
 
+
         /*
-        Good quality without huge memory use.
-        High-DPI screens get a little extra detail.
+        Balanced quality / speed.
         */
 
-        const pixelRatio =
+        const deviceRatio =
             Math.min(
+
                 window.devicePixelRatio || 1,
-                1.5
+
+                1.4
+
             );
 
 
+
         const baseScale =
+
             window.innerWidth <= 700
-            ? 1.15
-            : 1.3;
+
+            ? 1.05
+
+            : 1.22;
+
 
 
         const viewport =
             pdfPage.getViewport({
+
                 scale:
+
                     baseScale *
-                    pixelRatio
+                    deviceRatio
+
             });
 
 
-        const canvas =
-            document.createElement("canvas");
 
-        const context =
-            canvas.getContext(
-                "2d",
-                {
-                    alpha: false
-                }
+        const canvas =
+            document.createElement(
+                "canvas"
             );
 
 
+        const context =
+            canvas.getContext(
+
+                "2d",
+
+                {
+                    alpha: false
+                }
+
+            );
+
+
+
         canvas.width =
-            Math.floor(viewport.width);
+            Math.floor(
+                viewport.width
+            );
+
 
         canvas.height =
-            Math.floor(viewport.height);
+            Math.floor(
+                viewport.height
+            );
+
 
 
         await pdfPage.render({
-            canvasContext: context,
-            viewport: viewport
+
+            canvasContext:
+                context,
+
+            viewport:
+                viewport
+
         }).promise;
+
 
 
         const target =
@@ -670,36 +952,53 @@ async function renderPage(pageNumber) {
             ];
 
 
+
         if (target) {
+
 
             target.innerHTML = "";
 
-            target.appendChild(canvas);
+
+            target.appendChild(
+                canvas
+            );
 
         }
+
 
 
         renderedPages.add(
             pageNumber
         );
 
+
     }
+
 
     catch(error) {
 
+
         console.error(
+
             "Page render error:",
+
             pageNumber,
+
             error
+
         );
+
 
     }
 
+
     finally {
+
 
         renderingPages.delete(
             pageNumber
         );
+
 
     }
 
@@ -707,37 +1006,56 @@ async function renderPage(pageNumber) {
 
 
 
-/* ======================================
-   PRELOAD NEAR CURRENT PAGE
-====================================== */
+/* =========================
+   PRELOAD NEAR USER
+========================= */
 
 function preloadAround(pageNumber) {
+
 
     if (!pdfDocument)
         return;
 
 
-    const pagesToLoad = [
+
+    const pages = [
+
         pageNumber - 2,
+
         pageNumber - 1,
+
         pageNumber,
+
         pageNumber + 1,
+
         pageNumber + 2,
+
         pageNumber + 3,
+
         pageNumber + 4
+
     ];
 
 
-    pagesToLoad.forEach(number => {
+
+    pages.forEach(number => {
+
 
         if (
+
             number >= 1 &&
-            number <= pdfDocument.numPages
+
+            number <=
+                pdfDocument.numPages
+
         ) {
+
 
             renderPage(number);
 
+
         }
+
 
     });
 
@@ -745,37 +1063,51 @@ function preloadAround(pageNumber) {
 
 
 
-/* ======================================
+/* =========================
    BACKGROUND RENDER
-====================================== */
+========================= */
 
 async function backgroundRender() {
+
 
     if (!pdfDocument)
         return;
 
 
+
     for (
+
         let i = 1;
+
         i <= pdfDocument.numPages;
+
         i++
+
     ) {
 
-        if (!pdfDocument)
+
+        if (
+            !pdfDocument ||
+            backgroundRenderStopped
+        )
             break;
 
 
-        if (!renderedPages.has(i)) {
+
+        if (
+            !renderedPages.has(i)
+        ) {
+
 
             await renderPage(i);
 
 
             /*
-            Tiny pause prevents browser freezing
-            while 60 pages are rendered.
+            Prevent browser freezing.
             */
 
-            await sleep(80);
+            await sleep(110);
+
 
         }
 
@@ -784,98 +1116,162 @@ async function backgroundRender() {
 }
 
 
+
 function sleep(ms) {
 
+
     return new Promise(
+
         resolve =>
-            setTimeout(resolve, ms)
+
+            setTimeout(
+                resolve,
+                ms
+            )
+
     );
 
 }
 
 
 
-/* ======================================
+/* =========================
    PAGE NUMBER
-====================================== */
+========================= */
 
 function updatePageNumber() {
+
 
     if (!pageFlip)
         return;
 
 
+
     const current =
-        pageFlip.getCurrentPageIndex()
+        pageFlip
+            .getCurrentPageIndex()
         + 1;
 
 
+
     const total =
-        pageFlip.getPageCount();
+        pageFlip
+            .getPageCount();
+
 
 
     document.getElementById(
         "pageInfo"
     ).innerText =
-        current + " / " + total;
+
+        current +
+        " / " +
+        total;
 
 }
 
 
 
-/* ======================================
-   NAVIGATION
-====================================== */
+/* =========================
+   NEXT
+========================= */
 
 function nextPage() {
 
+
     if (pageFlip) {
+
+
+        /*
+        Resume audio if browser
+        temporarily suspended it.
+        */
+
+        unlockAudio();
+
+
         pageFlip.flipNext();
+
+
     }
 
 }
 
+
+
+/* =========================
+   PREVIOUS
+========================= */
 
 function prevPage() {
 
+
     if (pageFlip) {
+
+
+        unlockAudio();
+
+
         pageFlip.flipPrev();
+
+
     }
 
 }
 
 
 
-/* ======================================
-   RETURN HOME
-====================================== */
+/* =========================
+   HOME
+========================= */
 
 function goHome() {
 
+
+    backgroundRenderStopped = true;
+
+
+
     if (pageFlip) {
 
+
         try {
+
             pageFlip.destroy();
+
         }
+
         catch(e) {}
+
 
     }
 
 
+
     pageFlip = null;
+
     pdfDocument = null;
 
+
+
     renderedPages.clear();
+
     renderingPages.clear();
+
+    pageElements = [];
+
+
 
     document.getElementById(
         "book"
     ).innerHTML = "";
 
 
+
     document.getElementById(
         "reader"
     ).style.display = "none";
+
 
 
     document.getElementById(
@@ -886,24 +1282,34 @@ function goHome() {
 
 
 
-/* ======================================
+/* =========================
    FULLSCREEN
-====================================== */
+========================= */
 
 function toggleFullscreen() {
 
-    if (!document.fullscreenElement) {
 
-        document.documentElement
+    if (
+        !document.fullscreenElement
+    ) {
+
+
+        document
+            .documentElement
             .requestFullscreen()
             .catch(() => {});
 
+
     }
+
 
     else {
 
-        document.exitFullscreen()
+
+        document
+            .exitFullscreen()
             .catch(() => {});
+
 
     }
 
@@ -911,29 +1317,55 @@ function toggleFullscreen() {
 
 
 
-/* ======================================
+/* ========================================
    AUDIO INITIALIZATION
-====================================== */
+======================================== */
 
 function unlockAudio() {
 
-    if (!audioContext) {
 
-        audioContext =
-            new (
-                window.AudioContext ||
-                window.webkitAudioContext
-            )();
+    try {
+
+
+        if (!audioContext) {
+
+
+            audioContext =
+                new (
+
+                    window.AudioContext ||
+
+                    window.webkitAudioContext
+
+                )();
+
+
+        }
+
+
+
+        if (
+            audioContext.state ===
+            "suspended"
+        ) {
+
+
+            audioContext.resume();
+
+
+        }
+
 
     }
 
 
-    if (
-        audioContext.state ===
-        "suspended"
-    ) {
+    catch(error) {
 
-        audioContext.resume();
+
+        console.log(
+            "Audio unavailable"
+        );
+
 
     }
 
@@ -941,199 +1373,343 @@ function unlockAudio() {
 
 
 
-/* ======================================
-   NATURAL PAGE FLIP SOUND
-====================================== */
+/* ========================================
+   NATURAL PAGE TURN SOUND
+======================================== */
 
 function playPageSound() {
+
+
+    unlockAudio();
+
+
 
     if (!audioContext)
         return;
 
 
+
     const ctx =
         audioContext;
+
 
     const now =
         ctx.currentTime;
 
 
-    /*
-    Layer 1:
-    soft paper movement
-    */
-
-    createPaperNoise(
-        now,
-        0.17,
-        1250,
-        0.055
-    );
-
 
     /*
-    Layer 2:
-    paper landing
+    FIRST LAYER
+    Fast movement of paper.
     */
 
-    createPaperNoise(
-        now + 0.10,
-        0.10,
-        720,
-        0.035
-    );
+    createPaperNoise({
+
+        start:
+            now,
+
+        duration:
+            0.20,
+
+        volume:
+            0.18,
+
+        frequency:
+            1600,
+
+        q:
+            0.65
+
+    });
+
+
+
+    /*
+    SECOND LAYER
+    Softer lower paper sweep.
+    */
+
+    createPaperNoise({
+
+        start:
+            now + 0.055,
+
+        duration:
+            0.23,
+
+        volume:
+            0.11,
+
+        frequency:
+            950,
+
+        q:
+            0.55
+
+    });
+
+
+
+    /*
+    THIRD LAYER
+    Gentle page landing.
+    */
+
+    createPaperNoise({
+
+        start:
+            now + 0.18,
+
+        duration:
+            0.095,
+
+        volume:
+            0.085,
+
+        frequency:
+            600,
+
+        q:
+            0.75
+
+    });
 
 }
 
 
 
-/* ======================================
-   CREATE PAPER SOUND
-====================================== */
+/* ========================================
+   PAPER SOUND GENERATOR
+======================================== */
 
-function createPaperNoise(
-    start,
-    duration,
-    frequency,
-    volume
-) {
+function createPaperNoise(settings) {
+
 
     const ctx =
         audioContext;
 
 
+
+    const duration =
+        settings.duration;
+
+
+
     const length =
         Math.floor(
+
             ctx.sampleRate *
             duration
+
         );
+
 
 
     const buffer =
         ctx.createBuffer(
+
             1,
+
             length,
+
             ctx.sampleRate
+
         );
+
 
 
     const data =
         buffer.getChannelData(0);
 
 
-    /*
-    Smoothed random noise:
-    less harsh than raw white noise.
-    */
 
-    let last = 0;
+    let smoothNoise = 0;
+
 
 
     for (
+
         let i = 0;
+
         i < length;
+
         i++
+
     ) {
+
 
         const white =
             Math.random() * 2 - 1;
 
 
-        last =
-            last * 0.72 +
+
+        /*
+        Smooth the random noise.
+        Makes it softer and more paper-like.
+        */
+
+        smoothNoise =
+
+            smoothNoise * 0.72 +
+
             white * 0.28;
+
 
 
         const progress =
             i / length;
 
 
-        const envelope =
+
+        /*
+        Soft natural envelope.
+        */
+
+        let envelope =
             Math.sin(
+
                 Math.PI *
                 progress
+
             );
 
 
+
+        envelope =
+            Math.pow(
+                envelope,
+                0.8
+            );
+
+
+
         data[i] =
-            last *
+
+            smoothNoise *
+
             envelope *
-            0.8;
+
+            0.9;
 
     }
+
 
 
     const source =
         ctx.createBufferSource();
 
 
+
     const filter =
         ctx.createBiquadFilter();
+
 
 
     const gain =
         ctx.createGain();
 
 
+
     filter.type =
         "bandpass";
 
 
+
     filter.frequency
         .setValueAtTime(
-            frequency,
-            start
+
+            settings.frequency,
+
+            settings.start
+
         );
+
 
 
     filter.Q
         .setValueAtTime(
-            0.65,
-            start
+
+            settings.q,
+
+            settings.start
+
         );
+
 
 
     gain.gain
         .setValueAtTime(
+
             0.001,
-            start
+
+            settings.start
+
         );
+
 
 
     gain.gain
         .linearRampToValueAtTime(
-            volume,
-            start + 0.025
+
+            settings.volume,
+
+            settings.start + 0.025
+
         );
+
 
 
     gain.gain
         .exponentialRampToValueAtTime(
+
             0.001,
-            start + duration
+
+            settings.start +
+            duration
+
         );
+
 
 
     source.buffer =
         buffer;
 
 
-    source.connect(filter);
 
-    filter.connect(gain);
+    source.connect(
+        filter
+    );
+
+
+
+    filter.connect(
+        gain
+    );
+
+
 
     gain.connect(
         ctx.destination
     );
 
 
-    source.start(start);
+
+    source.start(
+        settings.start
+    );
+
+
 
     source.stop(
-        start + duration
+
+        settings.start +
+        duration +
+        0.02
+
     );
 
 }
+
 
 </script>
 
