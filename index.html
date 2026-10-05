@@ -7,7 +7,6 @@
 <title>Digital Catalogs</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -26,9 +25,7 @@ body {
     overflow-x: hidden;
 }
 
-/* =========================
-   HOME
-========================= */
+/* HOME */
 
 #catalogMenu {
     min-height: 100vh;
@@ -64,7 +61,7 @@ body {
     font-size: 21px;
     font-weight: bold;
     cursor: pointer;
-    transition: transform .2s, opacity .2s;
+    transition: transform .2s;
 }
 
 .catalogButton:hover {
@@ -85,9 +82,7 @@ body {
     color: #fff;
 }
 
-/* =========================
-   READER
-========================= */
+/* READER */
 
 #reader {
     display: none;
@@ -99,7 +94,6 @@ body {
 #toolbar {
     width: 100%;
     min-height: 64px;
-    position: relative;
     z-index: 20;
     display: flex;
     justify-content: center;
@@ -132,9 +126,7 @@ body {
     font-size: 14px;
 }
 
-/* =========================
-   BOOK AREA
-========================= */
+/* BOOK */
 
 #bookArea {
     width: 100%;
@@ -163,14 +155,11 @@ body {
     display: block;
 }
 
-/* =========================
-   PAGE LOADING
-========================= */
+/* LOADING */
 
 .pageLoading {
     width: 100%;
     height: 100%;
-
     background:
         linear-gradient(
             110deg,
@@ -178,7 +167,6 @@ body {
             #f5f5f5 18%,
             #e7e7e7 33%
         );
-
     background-size: 200% 100%;
     animation: shimmer 1.4s linear infinite;
 }
@@ -188,10 +176,6 @@ body {
         background-position-x: -200%;
     }
 }
-
-/* =========================
-   INITIAL LOADER
-========================= */
 
 #initialLoader {
     position: absolute;
@@ -225,9 +209,7 @@ body {
     font-size: 14px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width: 700px) {
 
@@ -260,20 +242,16 @@ body {
         min-height: calc(100vh - 56px);
         padding: 2px;
     }
-
 }
-
 </style>
 </head>
 
 <body>
 
 <div id="catalogMenu">
-
     <div class="menuBox">
 
         <h1>Digital Catalog</h1>
-
         <p>Select a catalog</p>
 
         <button
@@ -289,7 +267,6 @@ body {
         </button>
 
     </div>
-
 </div>
 
 <div id="reader">
@@ -311,13 +288,8 @@ body {
     <div id="bookArea">
 
         <div id="initialLoader">
-
             <div class="spinner"></div>
-
-            <div class="loaderText">
-                Opening catalog...
-            </div>
-
+            <div class="loaderText">Opening catalog...</div>
         </div>
 
         <div id="book"></div>
@@ -326,8 +298,10 @@ body {
 
 </div>
 
-<audio id="pageFlipAudio" preload="auto">
-    <source src="page-flip.mp3" type="audio/mpeg">
+<audio
+    id="pageFlipAudio"
+    src="./pageflip.mp3?v=3"
+    preload="auto">
 </audio>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -339,7 +313,6 @@ body {
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
-
 let pdfDocument = null;
 let pageFlip = null;
 
@@ -350,6 +323,66 @@ let renderingPages = new Set();
 
 let backgroundRenderStopped = false;
 
+let soundUnlocked = false;
+
+
+/* =========================
+   SOUND
+========================= */
+
+async function unlockSound() {
+
+    if (soundUnlocked)
+        return;
+
+    const audio =
+        document.getElementById("pageFlipAudio");
+
+    if (!audio)
+        return;
+
+    try {
+
+        audio.muted = true;
+        audio.volume = 0.8;
+
+        await audio.play();
+
+        audio.pause();
+        audio.currentTime = 0;
+
+        audio.muted = false;
+
+        soundUnlocked = true;
+
+    }
+    catch(e) {
+
+        audio.muted = false;
+
+    }
+}
+
+
+function playFlipSound() {
+
+    const original =
+        document.getElementById("pageFlipAudio");
+
+    if (!original)
+        return;
+
+    const audio =
+        original.cloneNode(true);
+
+    audio.volume = 0.8;
+
+    audio.currentTime = 0;
+
+    audio.play().catch(() => {});
+
+}
+
 
 /* =========================
    OPEN CATALOG
@@ -357,14 +390,19 @@ let backgroundRenderStopped = false;
 
 async function openCatalog(pdfFile) {
 
-    unlockSound();
+    await unlockSound();
 
-    document.getElementById("catalogMenu").style.display = "none";
-    document.getElementById("reader").style.display = "flex";
+    document.getElementById("catalogMenu")
+        .style.display = "none";
 
-    document.getElementById("initialLoader").style.display = "flex";
+    document.getElementById("reader")
+        .style.display = "flex";
 
-    document.getElementById("book").innerHTML = "";
+    document.getElementById("initialLoader")
+        .style.display = "flex";
+
+    document.getElementById("book")
+        .innerHTML = "";
 
     renderedPages.clear();
     renderingPages.clear();
@@ -377,34 +415,26 @@ async function openCatalog(pdfFile) {
 
         const loadingTask =
             pdfjsLib.getDocument({
-
                 url: pdfFile,
-
                 disableRange: false,
                 disableStream: false,
                 disableAutoFetch: false
-
             });
-
 
         pdfDocument =
             await loadingTask.promise;
 
-
         const firstPage =
             await pdfDocument.getPage(1);
-
 
         const originalViewport =
             firstPage.getViewport({
                 scale: 1
             });
 
-
         const ratio =
             originalViewport.height /
             originalViewport.width;
-
 
         const pageWidth = 550;
 
@@ -413,10 +443,8 @@ async function openCatalog(pdfFile) {
                 pageWidth * ratio
             );
 
-
         const book =
             document.getElementById("book");
-
 
         for (
             let i = 0;
@@ -432,13 +460,11 @@ async function openCatalog(pdfFile) {
             page.dataset.pageNumber =
                 i + 1;
 
-
             const skeleton =
                 document.createElement("div");
 
             skeleton.className =
                 "pageLoading";
-
 
             page.appendChild(skeleton);
 
@@ -448,9 +474,7 @@ async function openCatalog(pdfFile) {
 
         }
 
-
         const initialPages = [];
-
 
         if (pdfDocument.numPages >= 1)
             initialPages.push(renderPage(1));
@@ -461,17 +485,12 @@ async function openCatalog(pdfFile) {
         if (pdfDocument.numPages >= 3)
             initialPages.push(renderPage(3));
 
-
         await Promise.all(initialPages);
-
 
         pageFlip =
             new St.PageFlip(
-
                 book,
-
                 {
-
                     width: pageWidth,
                     height: pageHeight,
 
@@ -490,18 +509,12 @@ async function openCatalog(pdfFile) {
                             700 * ratio
                         ),
 
-                    /*
-                    COVER ONLY = SINGLE PAGE
-                    INTERNAL PAGES = DOUBLE SPREAD
-                    */
-
                     showCover: true,
 
                     /*
-                    IMPORTANT:
-                    FALSE = even mobile stays double-page.
+                    Keep double-page mode
+                    on mobile too.
                     */
-
                     usePortrait: false,
 
                     startPage: 0,
@@ -510,31 +523,25 @@ async function openCatalog(pdfFile) {
 
                     drawShadow: true,
 
-                    maxShadowOpacity: 0.42,
+                    maxShadowOpacity: 0.45,
 
                     flippingTime: 850,
 
                     mobileScrollSupport: false
-
                 }
-
             );
-
 
         pageFlip.loadFromHTML(
             document.querySelectorAll(".page")
         );
 
-
-        document.getElementById("initialLoader")
-            .style.display = "none";
-
+        document.getElementById(
+            "initialLoader"
+        ).style.display = "none";
 
         updatePageNumber();
 
-
         preloadAround(1);
-
 
         pageFlip.on(
             "flip",
@@ -554,14 +561,12 @@ async function openCatalog(pdfFile) {
             }
         );
 
-
         setTimeout(
             backgroundRender,
             900
         );
 
     }
-
 
     catch(error) {
 
@@ -602,11 +607,9 @@ async function renderPage(pageNumber) {
     )
         return;
 
-
     renderingPages.add(
         pageNumber
     );
-
 
     try {
 
@@ -615,38 +618,28 @@ async function renderPage(pageNumber) {
                 pageNumber
             );
 
-
         const deviceRatio =
             Math.min(
-
                 window.devicePixelRatio || 1,
-
                 1.4
-
             );
-
 
         const baseScale =
             window.innerWidth <= 700
             ? 1.0
             : 1.22;
 
-
         const viewport =
             pdfPage.getViewport({
-
                 scale:
                     baseScale *
                     deviceRatio
-
             });
-
 
         const canvas =
             document.createElement(
                 "canvas"
             );
-
 
         const context =
             canvas.getContext(
@@ -655,7 +648,6 @@ async function renderPage(pageNumber) {
                     alpha: false
                 }
             );
-
 
         canvas.width =
             Math.floor(
@@ -667,23 +659,17 @@ async function renderPage(pageNumber) {
                 viewport.height
             );
 
-
         await pdfPage.render({
-
             canvasContext:
                 context,
-
             viewport:
                 viewport
-
         }).promise;
-
 
         const target =
             pageElements[
                 pageNumber - 1
             ];
-
 
         if (target) {
 
@@ -695,13 +681,11 @@ async function renderPage(pageNumber) {
 
         }
 
-
         renderedPages.add(
             pageNumber
         );
 
     }
-
 
     catch(error) {
 
@@ -712,7 +696,6 @@ async function renderPage(pageNumber) {
         );
 
     }
-
 
     finally {
 
@@ -734,9 +717,7 @@ function preloadAround(pageNumber) {
     if (!pdfDocument)
         return;
 
-
     const pages = [
-
         pageNumber - 2,
         pageNumber - 1,
         pageNumber,
@@ -744,19 +725,14 @@ function preloadAround(pageNumber) {
         pageNumber + 2,
         pageNumber + 3,
         pageNumber + 4
-
     ];
-
 
     pages.forEach(number => {
 
         if (
-
             number >= 1 &&
-
             number <=
             pdfDocument.numPages
-
         ) {
 
             renderPage(number);
@@ -777,15 +753,10 @@ async function backgroundRender() {
     if (!pdfDocument)
         return;
 
-
     for (
-
         let i = 1;
-
         i <= pdfDocument.numPages;
-
         i++
-
     ) {
 
         if (
@@ -793,7 +764,6 @@ async function backgroundRender() {
             backgroundRenderStopped
         )
             break;
-
 
         if (
             !renderedPages.has(i)
@@ -814,7 +784,10 @@ function sleep(ms) {
 
     return new Promise(
         resolve =>
-            setTimeout(resolve, ms)
+            setTimeout(
+                resolve,
+                ms
+            )
     );
 
 }
@@ -829,17 +802,14 @@ function updatePageNumber() {
     if (!pageFlip)
         return;
 
-
     const current =
         pageFlip
             .getCurrentPageIndex()
         + 1;
 
-
     const total =
         pageFlip
             .getPageCount();
-
 
     document.getElementById(
         "pageInfo"
@@ -855,16 +825,12 @@ function updatePageNumber() {
    NEXT
 ========================= */
 
-function nextPage() {
+async function nextPage() {
 
     if (!pageFlip)
         return;
 
-    unlockSound();
-
-    /*
-    Animated page flip forward.
-    */
+    await unlockSound();
 
     try {
 
@@ -884,18 +850,12 @@ function nextPage() {
    PREVIOUS
 ========================= */
 
-function prevPage() {
+async function prevPage() {
 
     if (!pageFlip)
         return;
 
-    unlockSound();
-
-    /*
-    Animated reverse page flip.
-    This makes Previous turn visually,
-    rather than simply jumping back.
-    */
+    await unlockSound();
 
     try {
 
@@ -919,7 +879,6 @@ function goHome() {
 
     backgroundRenderStopped = true;
 
-
     if (pageFlip) {
 
         try {
@@ -929,7 +888,6 @@ function goHome() {
 
     }
 
-
     pageFlip = null;
     pdfDocument = null;
 
@@ -938,16 +896,13 @@ function goHome() {
 
     pageElements = [];
 
-
     document.getElementById(
         "book"
     ).innerHTML = "";
 
-
     document.getElementById(
         "reader"
     ).style.display = "none";
-
 
     document.getElementById(
         "catalogMenu"
@@ -976,91 +931,6 @@ function toggleFullscreen() {
             .catch(() => {});
 
     }
-
-}
-
-
-/* =========================
-   REAL PAGE FLIP AUDIO
-========================= */
-
-function unlockSound() {
-
-    const audio =
-        document.getElementById(
-            "pageFlipAudio"
-        );
-
-    if (!audio)
-        return;
-
-
-    audio.volume = 0;
-
-
-    const promise =
-        audio.play();
-
-
-    if (
-        promise &&
-        typeof promise.then === "function"
-    ) {
-
-        promise
-            .then(() => {
-
-                audio.pause();
-
-                audio.currentTime = 0;
-
-                audio.volume = 0.75;
-
-            })
-            .catch(() => {
-
-                audio.volume = 0.75;
-
-            });
-
-    }
-
-}
-
-
-/* =========================
-   PLAY SOUND
-========================= */
-
-function playFlipSound() {
-
-    const original =
-        document.getElementById(
-            "pageFlipAudio"
-        );
-
-
-    if (!original)
-        return;
-
-
-    /*
-    Clone allows rapid page turns
-    without cutting off previous sound.
-    */
-
-    const audio =
-        original.cloneNode(true);
-
-
-    audio.volume = 0.75;
-
-
-    audio.currentTime = 0;
-
-
-    audio.play()
-        .catch(() => {});
 
 }
 
