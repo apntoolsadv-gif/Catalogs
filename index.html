@@ -7,7 +7,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 
-<title>Digital Catalogs</title>
+<title>Digital Catalog</title>
 
 <style>
 
@@ -21,20 +21,17 @@ body{
     width:100%;
     height:100%;
     background:#111;
-    color:#fff;
     font-family:Arial,sans-serif;
-}
-
-body{
     overflow:hidden;
 }
 
 
 /* =========================
-   HOME
+   SELECT CATALOG
 ========================= */
 
 #catalogMenu{
+
     width:100%;
     height:100vh;
 
@@ -45,52 +42,70 @@ body{
     padding:24px;
 }
 
+
 .menuBox{
+
     width:min(430px,92vw);
+
     text-align:center;
+
+    color:white;
 }
 
-#catalogMenu h1{
+
+.menuBox h1{
+
     margin:0 0 8px;
+
     font-size:30px;
 }
 
-#catalogMenu p{
+
+.menuBox p{
+
     margin:0 0 30px;
-    color:#999;
+
     font-size:14px;
+
+    color:#999;
 }
 
+
 .catalogButton{
+
     width:100%;
+
     min-height:78px;
 
     border:0;
+
     border-radius:14px;
 
     margin-bottom:16px;
 
     font-size:20px;
+
     font-weight:bold;
 
     cursor:pointer;
-
-    transition:.2s;
 }
 
-.catalogButton:active{
-    transform:scale(.98);
-}
 
 .rockman{
+
     background:#ffc400;
+
     color:#111;
 }
 
+
 .apn{
+
     background:#c9141c;
-    color:#fff;
+
+    color:white;
 }
+
 
 
 /* =========================
@@ -98,9 +113,11 @@ body{
 ========================= */
 
 #reader{
+
     display:none;
 
     width:100%;
+
     height:100vh;
 
     position:relative;
@@ -109,42 +126,51 @@ body{
 }
 
 
+
 /* =========================
    BOOK AREA
 ========================= */
 
 #bookArea{
+
     position:absolute;
+
     inset:0;
 
     display:flex;
 
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     overflow:auto;
 
     padding:
-        20px
-        55px
-        72px;
+        12px
+        50px
+        70px;
 }
 
+
 #bookStage{
-    display:flex;
-    justify-content:center;
-    align-items:center;
 
     margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
 
     transform-origin:center center;
 
     transition:transform .2s ease;
 }
 
+
 #book{
+
     margin:auto;
 }
+
 
 
 /* =========================
@@ -152,43 +178,58 @@ body{
 ========================= */
 
 .page{
-    background:#fff;
+
+    background:white;
+
     overflow:hidden;
 }
 
+
 .page canvas{
-    display:block;
+
     width:100%;
+
     height:100%;
+
+    display:block;
 }
 
 
+
 /* =========================
-   PLACEHOLDER
+   PAGE PLACEHOLDER
 ========================= */
 
 .pageLoading{
+
     width:100%;
+
     height:100%;
 
     background:
+
         linear-gradient(
             110deg,
-            #e4e4e4 8%,
+            #e5e5e5 8%,
             #f5f5f5 18%,
-            #e4e4e4 33%
+            #e5e5e5 33%
         );
 
     background-size:200% 100%;
 
-    animation:shimmer 1.3s linear infinite;
+    animation:
+        shimmer 1.3s linear infinite;
 }
 
+
 @keyframes shimmer{
+
     to{
+
         background-position-x:-200%;
     }
 }
+
 
 
 /* =========================
@@ -196,7 +237,9 @@ body{
 ========================= */
 
 #initialLoader{
+
     position:absolute;
+
     inset:0;
 
     z-index:100;
@@ -205,59 +248,76 @@ body{
 
     display:flex;
 
-    align-items:center;
-    justify-content:center;
-
     flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
 
     gap:14px;
 }
 
+
 .spinner{
+
     width:36px;
+
     height:36px;
 
-    border:3px solid #444;
+    border:
+        3px solid #444;
 
-    border-top-color:#fff;
+    border-top-color:white;
 
     border-radius:50%;
 
-    animation:rotate .75s linear infinite;
+    animation:
+        rotate .75s linear infinite;
 }
 
+
 @keyframes rotate{
+
     to{
+
         transform:rotate(360deg);
     }
 }
 
+
 .loaderText{
+
     color:#aaa;
+
     font-size:14px;
 }
 
 
+
 /* =========================
-   SIDE ARROWS
+   PAGE ARROWS
 ========================= */
 
 .sideArrow{
+
     position:fixed;
 
     top:50%;
 
-    transform:translateY(-50%);
+    transform:
+        translateY(-50%);
 
     z-index:50;
 
     width:46px;
+
     height:70px;
 
     border:0;
+
     border-radius:10px;
 
-    background:rgba(15,15,15,.55);
+    background:
+        rgba(15,15,15,.55);
 
     color:white;
 
@@ -266,32 +326,40 @@ body{
     cursor:pointer;
 }
 
+
 #prevSide{
-    left:9px;
+
+    left:8px;
 }
 
+
 #nextSide{
-    right:9px;
+
+    right:8px;
 }
+
 
 
 /* =========================
-   ZOOM BAR
+   ONLY ZOOM CONTROLS
 ========================= */
 
 #zoomBar{
+
     display:none;
 
     position:fixed;
 
     left:50%;
+
     bottom:12px;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
     z-index:120;
 
-    background:#f3f3f3;
+    background:#f4f4f4;
 
     border-radius:8px;
 
@@ -302,28 +370,37 @@ body{
         rgba(0,0,0,.35);
 }
 
+
 .zoomButton{
-    width:54px;
+
+    width:56px;
+
     height:48px;
 
     border:0;
 
-    background:#f3f3f3;
+    background:#f4f4f4;
 
     color:#444;
 
-    font-size:26px;
+    font-size:27px;
 
     cursor:pointer;
 }
 
-.zoomButton + .zoomButton{
-    border-left:1px solid #ddd;
+
+.zoomButton:first-child{
+
+    border-right:
+        1px solid #ddd;
 }
 
+
 .zoomButton:hover{
-    background:#e8e8e8;
+
+    background:#e7e7e7;
 }
+
 
 
 /* =========================
@@ -332,48 +409,68 @@ body{
 
 @media(max-width:700px){
 
-    #catalogMenu h1{
+
+    .menuBox h1{
+
         font-size:25px;
     }
 
+
     .catalogButton{
+
         min-height:68px;
+
         font-size:18px;
     }
 
+
     #bookArea{
+
         padding:
-            8px
-            4px
-            68px;
+            5px
+            2px
+            62px;
     }
 
+
     .sideArrow{
+
         width:34px;
+
         height:54px;
 
         font-size:27px;
 
-        background:rgba(15,15,15,.38);
+        background:
+            rgba(15,15,15,.38);
     }
+
 
     #prevSide{
-        left:1px;
+
+        left:0;
     }
+
 
     #nextSide{
-        right:1px;
+
+        right:0;
     }
 
+
     #zoomBar{
+
         bottom:7px;
     }
 
+
     .zoomButton{
+
         width:50px;
+
         height:44px;
 
-        font-size:24px;
+        font-size:25px;
     }
 
 }
@@ -382,141 +479,165 @@ body{
 
 </head>
 
+
 <body>
 
 
 <!-- =========================
-     HOME
+CATALOG SELECTION
 ========================= -->
 
 <div id="catalogMenu">
 
-    <div class="menuBox">
+<div class="menuBox">
 
-        <h1>Digital Catalog</h1>
+<h1>
+Digital Catalog
+</h1>
 
-        <p>Select a catalog</p>
+<p>
+Select a catalog
+</p>
 
-        <button
-        class="catalogButton rockman"
-        onclick="openCatalog('Rockman.catalog.pdf')">
 
-            ROCKMAN CATALOG
+<button
+class="catalogButton rockman"
+onclick="openCatalog('Rockman.catalog.pdf')">
 
-        </button>
+ROCKMAN CATALOG
 
-        <button
-        class="catalogButton apn"
-        onclick="openCatalog('Apn.catalog.pdf')">
+</button>
 
-            APN CATALOG
 
-        </button>
+<button
+class="catalogButton apn"
+onclick="openCatalog('Apn.catalog.pdf')">
 
-    </div>
+APN CATALOG
+
+</button>
+
+</div>
 
 </div>
 
 
 
 <!-- =========================
-     READER
+READER
 ========================= -->
 
 <div id="reader">
 
-    <button
-    id="prevSide"
-    class="sideArrow"
-    onclick="prevPage()">
 
-        ‹
+<button
+id="prevSide"
+class="sideArrow"
+onclick="previousPage()">
 
-    </button>
+‹
 
-
-    <button
-    id="nextSide"
-    class="sideArrow"
-    onclick="nextPage()">
-
-        ›
-
-    </button>
+</button>
 
 
-    <div id="bookArea">
+<button
+id="nextSide"
+class="sideArrow"
+onclick="nextPage()">
+
+›
+
+</button>
 
 
-        <div id="initialLoader">
 
-            <div class="spinner"></div>
-
-            <div class="loaderText">
-                Opening catalog...
-            </div>
-
-        </div>
+<div id="bookArea">
 
 
-        <div id="bookStage">
-
-            <div id="book"></div>
-
-        </div>
+<div id="initialLoader">
 
 
-    </div>
+<div class="spinner">
+</div>
+
+
+<div class="loaderText">
+
+Opening catalog...
+
+</div>
+
+
+</div>
+
+
+
+<div id="bookStage">
+
+
+<div id="book">
+</div>
+
+
+</div>
+
+
+</div>
+
 
 </div>
 
 
 
 <!-- =========================
-     ZOOM ONLY
+ONLY TWO BOTTOM BUTTONS
 ========================= -->
 
 <div id="zoomBar">
 
-    <button
-    class="zoomButton"
-    onclick="zoomOut()">
 
-        −
+<button
+class="zoomButton"
+onclick="zoomOut()">
 
-    </button>
+−
+
+</button>
 
 
-    <button
-    class="zoomButton"
-    onclick="zoomIn()">
+<button
+class="zoomButton"
+onclick="zoomIn()">
 
-        +
++
 
-    </button>
+</button>
+
 
 </div>
 
 
 
-<!-- SOUND -->
+<!-- =========================
+PAGE SOUND
+========================= -->
 
 <audio
 id="pageFlipAudio"
-src="./pageflip.mp3?v=20"
+src="./pageflip.mp3?v=30"
 preload="auto">
 </audio>
 
 
 
-<!-- PDF JS -->
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js">
+</script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
-
-<!-- PAGE FLIP -->
-
-<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+<script
+src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js">
+</script>
 
 
 
@@ -524,138 +645,188 @@ preload="auto">
 
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
+
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
 
 
 let pdfDocument = null;
 
 let pageFlip = null;
 
+
 let pageElements = [];
 
-let renderedPages = new Set();
 
-let renderingPages = new Set();
+let renderedPages =
+    new Set();
 
-let backgroundStopped = false;
 
-let soundUnlocked = false;
+let renderingPages =
+    new Set();
 
-let zoomValue = 1;
-
-let currentPageIndex = 0;
-
-let pageRatio = 1.414;
 
 let storedCanvases = {};
 
 
+let zoomValue = 1;
+
+
+let lastPageIndex = 0;
+
+
+let soundUnlocked = false;
+
+
+let stopBackgroundLoad = false;
+
+
+let pageRatio = 1.414;
+
+
 
 /* =========================
-   AUDIO
+AUDIO
 ========================= */
 
 async function unlockSound(){
 
+
     if(soundUnlocked)
         return;
 
+
     const audio =
+
         document.getElementById(
             "pageFlipAudio"
         );
 
+
     try{
+
 
         audio.muted = true;
 
+
         await audio.play();
+
 
         audio.pause();
 
+
         audio.currentTime = 0;
 
+
         audio.muted = false;
+
 
         soundUnlocked = true;
 
+
     }
+
 
     catch(e){
 
+
         audio.muted = false;
 
+
     }
+
 }
+
 
 
 function playFlipSound(){
 
-    const base =
+
+    const original =
+
         document.getElementById(
             "pageFlipAudio"
         );
 
-    if(!base)
+
+    if(!original)
         return;
 
-    const sound =
-        base.cloneNode(true);
 
-    sound.volume = .8;
+    const audio =
 
-    sound.currentTime = 0;
+        original.cloneNode(true);
 
-    sound.play()
+
+    audio.currentTime = 0;
+
+
+    audio.volume = .8;
+
+
+    audio.play()
         .catch(()=>{});
+
 }
 
 
 
 /* =========================
-   OPEN
+OPEN CATALOG
 ========================= */
 
 async function openCatalog(pdfFile){
 
+
     await unlockSound();
 
-    backgroundStopped = false;
 
     zoomValue = 1;
 
-    currentPageIndex = 0;
+
+    stopBackgroundLoad =
+        false;
+
 
     storedCanvases = {};
 
+
     renderedPages.clear();
 
+
     renderingPages.clear();
+
 
     pageElements = [];
 
 
+    applyZoom();
+
+
+
     document.getElementById(
         "catalogMenu"
-    ).style.display = "none";
+    ).style.display =
+        "none";
 
 
     document.getElementById(
         "reader"
-    ).style.display = "block";
+    ).style.display =
+        "block";
 
 
     document.getElementById(
         "zoomBar"
-    ).style.display = "flex";
+    ).style.display =
+        "flex";
 
 
     document.getElementById(
         "initialLoader"
-    ).style.display = "flex";
+    ).style.display =
+        "flex";
 
-
-    applyZoom();
 
 
     try{
@@ -665,13 +836,17 @@ async function openCatalog(pdfFile){
 
             await pdfjsLib.getDocument({
 
-                url:pdfFile,
+                url:
+                    pdfFile,
 
-                disableRange:false,
+                disableRange:
+                    false,
 
-                disableStream:false,
+                disableStream:
+                    false,
 
-                disableAutoFetch:true
+                disableAutoFetch:
+                    true
 
             }).promise;
 
@@ -679,14 +854,18 @@ async function openCatalog(pdfFile){
 
         const firstPage =
 
-            await pdfDocument.getPage(1);
+            await pdfDocument
+            .getPage(1);
 
 
 
         const firstViewport =
 
-            firstPage.getViewport({
+            firstPage
+            .getViewport({
+
                 scale:1
+
             });
 
 
@@ -699,13 +878,12 @@ async function openCatalog(pdfFile){
 
 
 
-        createPageDOM();
+        createPages();
 
 
 
         /*
-        فقط جلد رندر می‌شود.
-        بنابراین منتظر صفحه 2 و 3 نمی‌مانیم.
+        ONLY COVER BEFORE DISPLAY
         */
 
 
@@ -713,50 +891,53 @@ async function openCatalog(pdfFile){
 
 
 
-        createFlipbook(0);
+        createBook();
 
 
 
         document.getElementById(
             "initialLoader"
-        ).style.display = "none";
+        ).style.display =
+            "none";
 
 
 
         /*
-        بعد از اینکه جلد دیده شد،
-        صفحات بعدی شروع به آماده شدن می‌کنند.
+        Prepare next pages after cover
+        is already visible.
         */
 
 
         setTimeout(()=>{
 
-            preloadPages(2);
 
-        },50);
+            preloadAround(
+                2
+            );
+
+
+        },30);
 
 
 
         setTimeout(()=>{
 
-            backgroundRender();
+
+            backgroundLoad();
+
 
         },500);
 
 
     }
 
+
     catch(error){
 
 
-        console.error(error);
-
-
-        document.getElementById(
-            "initialLoader"
-        ).innerHTML =
-
-        "<div class='loaderText'>Error loading catalog.</div>";
+        console.error(
+            error
+        );
 
 
     }
@@ -766,10 +947,10 @@ async function openCatalog(pdfFile){
 
 
 /* =========================
-   CREATE PAGES
+CREATE PAGE ELEMENTS
 ========================= */
 
-function createPageDOM(){
+function createPages(){
 
 
     const book =
@@ -779,7 +960,8 @@ function createPageDOM(){
         );
 
 
-    book.innerHTML = "";
+    book.innerHTML =
+        "";
 
 
     pageElements = [];
@@ -812,19 +994,19 @@ function createPageDOM(){
 
 
 
-        const loading =
+        const placeholder =
 
             document.createElement(
                 "div"
             );
 
 
-        loading.className =
+        placeholder.className =
             "pageLoading";
 
 
         page.appendChild(
-            loading
+            placeholder
         );
 
 
@@ -845,85 +1027,41 @@ function createPageDOM(){
 
 
 /* =========================
-   CREATE FLIPBOOK
+CREATE BOOK
 ========================= */
 
-function createFlipbook(startPage){
+function createBook(){
 
 
-    if(pageFlip){
-
-
-        try{
-
-            pageFlip.destroy();
-
-        }
-
-        catch(e){}
-
-
-        pageFlip = null;
-
-
-    }
-
-
-
-    rebuildPages();
-
-
-
-    const isMobile =
+    const mobile =
 
         window.innerWidth <= 700;
 
 
 
     /*
-    Desktop page size is intentionally
-    larger than before.
+    DESKTOP:
+    larger normal readable size.
+
+    MOBILE:
+    single page occupying most
+    of screen.
     */
 
 
-    let logicalWidth;
+    const width =
 
-
-    if(isMobile){
-
-
-        /*
-        Mobile single page fills
-        most of screen width.
-        */
-
-        logicalWidth =
-            430;
-
-
-    }
-
-    else{
-
-
-        /*
-        Desktop page width.
-        Larger and easier to read.
-        */
-
-        logicalWidth =
-            620;
-
-
-    }
+        mobile
+        ? 440
+        : 610;
 
 
 
-    const logicalHeight =
+    const height =
 
         Math.round(
 
-            logicalWidth *
+            width *
 
             pageRatio
 
@@ -943,11 +1081,11 @@ function createFlipbook(startPage){
 
 
                 width:
-                    logicalWidth,
+                    width,
 
 
                 height:
-                    logicalHeight,
+                    height,
 
 
                 size:
@@ -955,24 +1093,18 @@ function createFlipbook(startPage){
 
 
 
-                /*
-                Keep book from shrinking
-                too aggressively.
-                */
-
-
                 minWidth:
 
-                    isMobile
+                    mobile
                     ? 300
-                    : 420,
+                    : 390,
 
 
                 maxWidth:
 
-                    isMobile
+                    mobile
                     ? 520
-                    : 760,
+                    : 720,
 
 
 
@@ -981,9 +1113,9 @@ function createFlipbook(startPage){
                     Math.round(
 
                         (
-                            isMobile
+                            mobile
                             ? 300
-                            : 420
+                            : 390
                         )
 
                         *
@@ -999,9 +1131,9 @@ function createFlipbook(startPage){
                     Math.round(
 
                         (
-                            isMobile
+                            mobile
                             ? 520
-                            : 760
+                            : 720
                         )
 
                         *
@@ -1013,8 +1145,8 @@ function createFlipbook(startPage){
 
 
                 /*
-                Cover and back cover
-                stay single.
+                FIRST + LAST COVER
+                = SINGLE
                 */
 
 
@@ -1024,23 +1156,21 @@ function createFlipbook(startPage){
 
 
                 /*
-                Mobile:
-                always single page.
+                MOBILE:
+                SINGLE PAGE
 
-                Desktop:
-                cover single,
-                inside double.
+                DESKTOP:
+                DOUBLE PAGE INSIDE
                 */
 
 
                 usePortrait:
-                    isMobile,
+                    mobile,
 
 
 
                 startPage:
-                    startPage,
-
+                    0,
 
 
                 autoSize:
@@ -1052,11 +1182,11 @@ function createFlipbook(startPage){
 
 
                 maxShadowOpacity:
-                    .42,
+                    .45,
 
 
                 flippingTime:
-                    850,
+                    900,
 
 
                 mobileScrollSupport:
@@ -1083,44 +1213,52 @@ function createFlipbook(startPage){
 
 
 
-    currentPageIndex =
+    lastPageIndex =
 
         pageFlip
         .getCurrentPageIndex();
 
 
 
+    /*
+    SOUND ONLY AFTER REAL PAGE CHANGE
+    */
+
+
     pageFlip.on(
+
         "flip",
+
         function(event){
 
 
-            const newIndex =
+            const index =
                 event.data;
 
 
             if(
-                newIndex !==
-                currentPageIndex
+                index !==
+                lastPageIndex
             ){
 
 
                 playFlipSound();
 
 
-                currentPageIndex =
-                    newIndex;
+                lastPageIndex =
+                    index;
 
 
             }
 
 
-            preloadPages(
-                newIndex + 1
+            preloadAround(
+                index + 1
             );
 
 
         }
+
     );
 
 }
@@ -1128,139 +1266,10 @@ function createFlipbook(startPage){
 
 
 /* =========================
-   REBUILD PAGES
+RENDER PDF PAGE
 ========================= */
 
-function rebuildPages(){
-
-
-    const book =
-
-        document.getElementById(
-            "book"
-        );
-
-
-    book.innerHTML = "";
-
-
-    const newElements = [];
-
-
-    for(
-
-        let i=1;
-
-        i<=pdfDocument.numPages;
-
-        i++
-
-    ){
-
-
-        const page =
-
-            document.createElement(
-                "div"
-            );
-
-
-        page.className =
-            "page";
-
-
-        page.dataset.pageNumber =
-            i;
-
-
-
-        if(
-            storedCanvases[i]
-        ){
-
-
-            const source =
-                storedCanvases[i];
-
-
-            const canvas =
-
-                document.createElement(
-                    "canvas"
-                );
-
-
-            canvas.width =
-                source.width;
-
-
-            canvas.height =
-                source.height;
-
-
-            canvas
-            .getContext("2d")
-            .drawImage(
-                source,
-                0,
-                0
-            );
-
-
-            page.appendChild(
-                canvas
-            );
-
-
-        }
-
-        else{
-
-
-            const loading =
-
-                document.createElement(
-                    "div"
-                );
-
-
-            loading.className =
-                "pageLoading";
-
-
-            page.appendChild(
-                loading
-            );
-
-
-        }
-
-
-        book.appendChild(
-            page
-        );
-
-
-        newElements.push(
-            page
-        );
-
-
-    }
-
-
-    pageElements =
-        newElements;
-
-}
-
-
-
-/* =========================
-   RENDER PAGE
-========================= */
-
-async function renderPage(pageNumber){
+async function renderPage(number){
 
 
     if(!pdfDocument)
@@ -1268,8 +1277,8 @@ async function renderPage(pageNumber){
 
 
     if(
-        pageNumber < 1 ||
-        pageNumber >
+        number < 1 ||
+        number >
         pdfDocument.numPages
     )
         return;
@@ -1277,7 +1286,7 @@ async function renderPage(pageNumber){
 
     if(
         renderedPages.has(
-            pageNumber
+            number
         )
     )
         return;
@@ -1285,7 +1294,7 @@ async function renderPage(pageNumber){
 
     if(
         renderingPages.has(
-            pageNumber
+            number
         )
     )
         return;
@@ -1293,7 +1302,7 @@ async function renderPage(pageNumber){
 
 
     renderingPages.add(
-        pageNumber
+        number
     );
 
 
@@ -1301,10 +1310,11 @@ async function renderPage(pageNumber){
     try{
 
 
-        const pdfPage =
+        const page =
 
-            await pdfDocument.getPage(
-                pageNumber
+            await pdfDocument
+            .getPage(
+                number
             );
 
 
@@ -1327,21 +1337,21 @@ async function renderPage(pageNumber){
 
 
 
-        const renderScale =
+        const scale =
 
             mobile
-            ? 1.15
-            : 1.25;
+            ? 1.12
+            : 1.23;
 
 
 
         const viewport =
 
-            pdfPage.getViewport({
+            page.getViewport({
 
                 scale:
 
-                    renderScale *
+                    scale *
 
                     pixelRatio
 
@@ -1357,7 +1367,7 @@ async function renderPage(pageNumber){
 
 
 
-        const ctx =
+        const context =
 
             canvas.getContext(
 
@@ -1386,10 +1396,10 @@ async function renderPage(pageNumber){
 
 
 
-        await pdfPage.render({
+        await page.render({
 
             canvasContext:
-                ctx,
+                context,
 
             viewport:
                 viewport
@@ -1398,16 +1408,15 @@ async function renderPage(pageNumber){
 
 
 
-        storedCanvases[
-            pageNumber
-        ] = canvas;
+        storedCanvases[number] =
+            canvas;
 
 
 
         const target =
 
             pageElements[
-                pageNumber - 1
+                number - 1
             ];
 
 
@@ -1453,7 +1462,7 @@ async function renderPage(pageNumber){
 
 
         renderedPages.add(
-            pageNumber
+            number
         );
 
 
@@ -1475,7 +1484,7 @@ async function renderPage(pageNumber){
 
 
         renderingPages.delete(
-            pageNumber
+            number
         );
 
 
@@ -1486,35 +1495,36 @@ async function renderPage(pageNumber){
 
 
 /* =========================
-   PRELOAD AROUND PAGE
+PRELOAD
 ========================= */
 
-function preloadPages(pageNumber){
-
-
-    if(!pdfDocument)
-        return;
+function preloadAround(page){
 
 
     [
 
-        pageNumber,
 
-        pageNumber + 1,
+        page,
 
-        pageNumber + 2,
+        page + 1,
 
-        pageNumber + 3
+        page + 2,
 
-    ]
+        page + 3
 
-    .forEach(number=>{
+
+    ].forEach(number=>{
 
 
         if(
+
+            pdfDocument &&
+
             number >= 1 &&
+
             number <=
             pdfDocument.numPages
+
         ){
 
 
@@ -1533,10 +1543,10 @@ function preloadPages(pageNumber){
 
 
 /* =========================
-   BACKGROUND LOAD
+BACKGROUND LOAD
 ========================= */
 
-async function backgroundRender(){
+async function backgroundLoad(){
 
 
     if(!pdfDocument)
@@ -1555,7 +1565,7 @@ async function backgroundRender(){
 
 
         if(
-            backgroundStopped
+            stopBackgroundLoad
         )
             break;
 
@@ -1568,7 +1578,9 @@ async function backgroundRender(){
             await renderPage(i);
 
 
-            await sleep(160);
+            await sleep(
+                160
+            );
 
 
         }
@@ -1599,7 +1611,7 @@ function sleep(ms){
 
 
 /* =========================
-   NEXT
+NEXT PAGE
 ========================= */
 
 async function nextPage(){
@@ -1612,6 +1624,11 @@ async function nextPage(){
     await unlockSound();
 
 
+    /*
+    FORWARD FLIP ANIMATION
+    */
+
+
     try{
 
 
@@ -1621,6 +1638,7 @@ async function nextPage(){
 
 
     }
+
 
     catch(e){
 
@@ -1635,10 +1653,10 @@ async function nextPage(){
 
 
 /* =========================
-   PREVIOUS
+PREVIOUS PAGE
 ========================= */
 
-async function prevPage(){
+async function previousPage(){
 
 
     if(!pageFlip)
@@ -1646,6 +1664,16 @@ async function prevPage(){
 
 
     await unlockSound();
+
+
+
+    /*
+    IMPORTANT:
+    THIS IS ANIMATED REVERSE FLIP.
+
+    It does NOT jump directly
+    to previous page.
+    */
 
 
     try{
@@ -1657,6 +1685,7 @@ async function prevPage(){
 
 
     }
+
 
     catch(e){
 
@@ -1671,7 +1700,7 @@ async function prevPage(){
 
 
 /* =========================
-   ZOOM
+ZOOM +
 ========================= */
 
 function zoomIn(){
@@ -1691,6 +1720,10 @@ function zoomIn(){
 }
 
 
+
+/* =========================
+ZOOM -
+========================= */
 
 function zoomOut(){
 
@@ -1726,55 +1759,8 @@ function applyZoom(){
 }
 
 
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-let resizeTimer;
-
-
-window.addEventListener(
-    "resize",
-    function(){
-
-
-        clearTimeout(
-            resizeTimer
-        );
-
-
-        resizeTimer =
-
-            setTimeout(()=>{
-
-
-                if(
-                    !pageFlip ||
-                    !pdfDocument
-                )
-                    return;
-
-
-                const current =
-
-                    pageFlip
-                    .getCurrentPageIndex();
-
-
-                createFlipbook(
-                    current
-                );
-
-
-            },250);
-
-
-    }
-);
-
-
 </script>
 
 </body>
+
 </html>
