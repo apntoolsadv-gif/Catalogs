@@ -26,9 +26,9 @@ body{
 }
 
 
-/* =========================
-   SELECT CATALOG
-========================= */
+/* =================================
+   CATALOG SELECT
+================================= */
 
 #catalogMenu{
 
@@ -36,12 +36,11 @@ body{
     height:100vh;
 
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
     padding:24px;
 }
-
 
 .menuBox{
 
@@ -52,7 +51,6 @@ body{
     color:white;
 }
 
-
 .menuBox h1{
 
     margin:0 0 8px;
@@ -60,16 +58,14 @@ body{
     font-size:30px;
 }
 
-
 .menuBox p{
 
     margin:0 0 30px;
 
-    font-size:14px;
-
     color:#999;
-}
 
+    font-size:14px;
+}
 
 .catalogButton{
 
@@ -77,11 +73,11 @@ body{
 
     min-height:78px;
 
+    margin-bottom:16px;
+
     border:0;
 
     border-radius:14px;
-
-    margin-bottom:16px;
 
     font-size:20px;
 
@@ -90,14 +86,12 @@ body{
     cursor:pointer;
 }
 
-
 .rockman{
 
     background:#ffc400;
 
     color:#111;
 }
-
 
 .apn{
 
@@ -107,17 +101,15 @@ body{
 }
 
 
-
-/* =========================
+/* =================================
    READER
-========================= */
+================================= */
 
 #reader{
 
     display:none;
 
     width:100%;
-
     height:100vh;
 
     position:relative;
@@ -126,10 +118,43 @@ body{
 }
 
 
+/* =================================
+   PAGE COUNTER
+================================= */
 
-/* =========================
+#pageCounter{
+
+    position:fixed;
+
+    top:12px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:200;
+
+    padding:8px 15px;
+
+    border-radius:8px;
+
+    background:rgba(20,20,20,.82);
+
+    color:white;
+
+    font-size:14px;
+
+    white-space:nowrap;
+
+    box-shadow:
+        0 3px 10px
+        rgba(0,0,0,.25);
+}
+
+
+/* =================================
    BOOK AREA
-========================= */
+================================= */
 
 #bookArea{
 
@@ -145,9 +170,11 @@ body{
     overflow:auto;
 
     padding:
-        12px
+        55px
         50px
-        70px;
+        72px;
+
+    overscroll-behavior:none;
 }
 
 
@@ -162,7 +189,7 @@ body{
 
     transform-origin:center center;
 
-    transition:transform .2s ease;
+    transition:transform .15s ease;
 }
 
 
@@ -172,10 +199,9 @@ body{
 }
 
 
-
-/* =========================
+/* =================================
    PAGE
-========================= */
+================================= */
 
 .page{
 
@@ -195,10 +221,9 @@ body{
 }
 
 
-
-/* =========================
-   PAGE PLACEHOLDER
-========================= */
+/* =================================
+   PLACEHOLDER
+================================= */
 
 .pageLoading{
 
@@ -231,10 +256,9 @@ body{
 }
 
 
-
-/* =========================
-   LOADER
-========================= */
+/* =================================
+   MAIN LOADER
+================================= */
 
 #initialLoader{
 
@@ -242,7 +266,7 @@ body{
 
     inset:0;
 
-    z-index:100;
+    z-index:300;
 
     background:#111;
 
@@ -250,8 +274,8 @@ body{
 
     flex-direction:column;
 
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     gap:14px;
 }
@@ -292,10 +316,9 @@ body{
 }
 
 
-
-/* =========================
-   PAGE ARROWS
-========================= */
+/* =================================
+   SIDE ARROWS
+================================= */
 
 .sideArrow{
 
@@ -303,12 +326,11 @@ body{
 
     top:50%;
 
-    transform:
-        translateY(-50%);
+    transform:translateY(-50%);
 
-    z-index:50;
+    z-index:170;
 
-    width:46px;
+    width:44px;
 
     height:70px;
 
@@ -339,12 +361,11 @@ body{
 }
 
 
+/* =================================
+   BOTTOM CONTROLS
+================================= */
 
-/* =========================
-   ONLY ZOOM CONTROLS
-========================= */
-
-#zoomBar{
+#bottomBar{
 
     display:none;
 
@@ -354,10 +375,9 @@ body{
 
     bottom:12px;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
-    z-index:120;
+    z-index:220;
 
     background:#f4f4f4;
 
@@ -371,7 +391,7 @@ body{
 }
 
 
-.zoomButton{
+.bottomButton{
 
     width:56px;
 
@@ -379,33 +399,146 @@ body{
 
     border:0;
 
+    border-right:1px solid #ddd;
+
     background:#f4f4f4;
 
     color:#444;
 
-    font-size:27px;
+    font-size:24px;
 
     cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 }
 
 
-.zoomButton:first-child{
+.bottomButton:last-child{
 
-    border-right:
-        1px solid #ddd;
+    border-right:0;
 }
 
 
-.zoomButton:hover{
+.bottomButton:hover{
 
     background:#e7e7e7;
 }
 
 
+/* =================================
+   PAGE PANEL
+================================= */
 
-/* =========================
+#pagePanel{
+
+    display:none;
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:72px;
+
+    transform:translateX(-50%);
+
+    width:min(900px,94vw);
+
+    max-height:65vh;
+
+    z-index:210;
+
+    background:#1b1b1b;
+
+    border:
+        1px solid #444;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    overflow-y:auto;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.5);
+}
+
+
+#pageGrid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(
+            auto-fill,
+            minmax(95px,1fr)
+        );
+
+    gap:12px;
+}
+
+
+.pageThumb{
+
+    padding:5px;
+
+    background:#292929;
+
+    border:
+        2px solid transparent;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    transition:.15s;
+}
+
+
+.pageThumb:hover{
+
+    background:#3a3a3a;
+
+    transform:scale(1.02);
+}
+
+
+.pageThumb.active{
+
+    border-color:white;
+}
+
+
+.pageThumb canvas{
+
+    width:100%;
+
+    display:block;
+
+    background:white;
+}
+
+
+.pageThumbLabel{
+
+    padding-top:5px;
+
+    text-align:center;
+
+    font-size:10px;
+
+    color:#ccc;
+}
+
+
+/* =================================
    MOBILE
-========================= */
+================================= */
 
 @media(max-width:700px){
 
@@ -424,22 +557,32 @@ body{
     }
 
 
+    #pageCounter{
+
+        top:7px;
+
+        padding:6px 11px;
+
+        font-size:12px;
+    }
+
+
     #bookArea{
 
         padding:
-            5px
+            42px
             2px
-            62px;
+            64px;
     }
 
 
     .sideArrow{
 
-        width:34px;
+        width:32px;
 
-        height:54px;
+        height:52px;
 
-        font-size:27px;
+        font-size:26px;
 
         background:
             rgba(15,15,15,.38);
@@ -458,19 +601,40 @@ body{
     }
 
 
-    #zoomBar{
+    #bottomBar{
 
         bottom:7px;
     }
 
 
-    .zoomButton{
+    .bottomButton{
 
         width:50px;
 
         height:44px;
 
-        font-size:25px;
+        font-size:22px;
+    }
+
+
+    #pagePanel{
+
+        bottom:60px;
+
+        width:96vw;
+
+        max-height:70vh;
+
+        padding:10px;
+    }
+
+
+    #pageGrid{
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+        gap:9px;
     }
 
 }
@@ -483,9 +647,9 @@ body{
 <body>
 
 
-<!-- =========================
-CATALOG SELECTION
-========================= -->
+<!-- =================================
+     SELECT
+================================= -->
 
 <div id="catalogMenu">
 
@@ -523,11 +687,19 @@ APN CATALOG
 
 
 
-<!-- =========================
-READER
-========================= -->
+<!-- =================================
+     READER
+================================= -->
 
 <div id="reader">
+
+
+<div id="pageCounter">
+
+صفحه 1 از 1
+
+</div>
+
 
 
 <button
@@ -557,8 +729,7 @@ onclick="nextPage()">
 <div id="initialLoader">
 
 
-<div class="spinner">
-</div>
+<div class="spinner"></div>
 
 
 <div class="loaderText">
@@ -575,8 +746,7 @@ Opening catalog...
 <div id="bookStage">
 
 
-<div id="book">
-</div>
+<div id="book"></div>
 
 
 </div>
@@ -589,15 +759,27 @@ Opening catalog...
 
 
 
-<!-- =========================
-ONLY TWO BOTTOM BUTTONS
-========================= -->
+<!-- =================================
+     PAGE THUMB PANEL
+================================= -->
 
-<div id="zoomBar">
+<div id="pagePanel">
+
+<div id="pageGrid"></div>
+
+</div>
+
+
+
+<!-- =================================
+     BOTTOM BAR
+================================= -->
+
+<div id="bottomBar">
 
 
 <button
-class="zoomButton"
+class="bottomButton"
 onclick="zoomOut()">
 
 −
@@ -606,7 +788,17 @@ onclick="zoomOut()">
 
 
 <button
-class="zoomButton"
+class="bottomButton"
+onclick="togglePagePanel()"
+title="Pages">
+
+▦
+
+</button>
+
+
+<button
+class="bottomButton"
 onclick="zoomIn()">
 
 +
@@ -618,13 +810,13 @@ onclick="zoomIn()">
 
 
 
-<!-- =========================
-PAGE SOUND
-========================= -->
+<!-- =================================
+     SOUND
+================================= -->
 
 <audio
 id="pageFlipAudio"
-src="./pageflip.mp3?v=30"
+src="./pageflip.mp3?v=50"
 preload="auto">
 </audio>
 
@@ -684,10 +876,25 @@ let stopBackgroundLoad = false;
 let pageRatio = 1.414;
 
 
+let thumbElements = [];
 
-/* =========================
-AUDIO
-========================= */
+
+let thumbnailsBuilt = false;
+
+
+/* PINCH */
+
+let pinchStartDistance = 0;
+
+let pinchStartZoom = 1;
+
+let isPinching = false;
+
+
+
+/* =================================
+   AUDIO
+================================= */
 
 async function unlockSound(){
 
@@ -771,9 +978,9 @@ function playFlipSound(){
 
 
 
-/* =========================
-OPEN CATALOG
-========================= */
+/* =================================
+   OPEN CATALOG
+================================= */
 
 async function openCatalog(pdfFile){
 
@@ -800,6 +1007,13 @@ async function openCatalog(pdfFile){
     pageElements = [];
 
 
+    thumbElements = [];
+
+
+    thumbnailsBuilt =
+        false;
+
+
     applyZoom();
 
 
@@ -817,7 +1031,7 @@ async function openCatalog(pdfFile){
 
 
     document.getElementById(
-        "zoomBar"
+        "bottomBar"
     ).style.display =
         "flex";
 
@@ -826,6 +1040,18 @@ async function openCatalog(pdfFile){
         "initialLoader"
     ).style.display =
         "flex";
+
+
+    document.getElementById(
+        "pagePanel"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "pageGrid"
+    ).innerHTML =
+        "";
 
 
 
@@ -883,7 +1109,7 @@ async function openCatalog(pdfFile){
 
 
         /*
-        ONLY COVER BEFORE DISPLAY
+        Cover first.
         */
 
 
@@ -895,17 +1121,15 @@ async function openCatalog(pdfFile){
 
 
 
+        updatePageCounter();
+
+
+
         document.getElementById(
             "initialLoader"
         ).style.display =
             "none";
 
-
-
-        /*
-        Prepare next pages after cover
-        is already visible.
-        */
 
 
         setTimeout(()=>{
@@ -916,7 +1140,7 @@ async function openCatalog(pdfFile){
             );
 
 
-        },30);
+        },50);
 
 
 
@@ -926,7 +1150,7 @@ async function openCatalog(pdfFile){
             backgroundLoad();
 
 
-        },500);
+        },600);
 
 
     }
@@ -946,9 +1170,9 @@ async function openCatalog(pdfFile){
 
 
 
-/* =========================
-CREATE PAGE ELEMENTS
-========================= */
+/* =================================
+   CREATE PAGES
+================================= */
 
 function createPages(){
 
@@ -1026,9 +1250,9 @@ function createPages(){
 
 
 
-/* =========================
-CREATE BOOK
-========================= */
+/* =================================
+   CREATE BOOK
+================================= */
 
 function createBook(){
 
@@ -1037,16 +1261,6 @@ function createBook(){
 
         window.innerWidth <= 700;
 
-
-
-    /*
-    DESKTOP:
-    larger normal readable size.
-
-    MOBILE:
-    single page occupying most
-    of screen.
-    */
 
 
     const width =
@@ -1144,24 +1358,9 @@ function createBook(){
 
 
 
-                /*
-                FIRST + LAST COVER
-                = SINGLE
-                */
-
-
                 showCover:
                     true,
 
-
-
-                /*
-                MOBILE:
-                SINGLE PAGE
-
-                DESKTOP:
-                DOUBLE PAGE INSIDE
-                */
 
 
                 usePortrait:
@@ -1220,11 +1419,6 @@ function createBook(){
 
 
 
-    /*
-    SOUND ONLY AFTER REAL PAGE CHANGE
-    */
-
-
     pageFlip.on(
 
         "flip",
@@ -1252,6 +1446,12 @@ function createBook(){
             }
 
 
+            updatePageCounter();
+
+
+            updateActiveThumbnail();
+
+
             preloadAround(
                 index + 1
             );
@@ -1265,9 +1465,443 @@ function createBook(){
 
 
 
-/* =========================
-RENDER PDF PAGE
-========================= */
+/* =================================
+   PAGE COUNTER
+================================= */
+
+function updatePageCounter(){
+
+
+    if(
+        !pageFlip ||
+        !pdfDocument
+    )
+        return;
+
+
+
+    const index =
+
+        pageFlip
+        .getCurrentPageIndex();
+
+
+
+    const total =
+
+        pdfDocument.numPages;
+
+
+
+    const mobile =
+
+        window.innerWidth <= 700;
+
+
+
+    if(
+        !mobile &&
+        index > 0 &&
+        index < total - 1
+    ){
+
+
+        const first =
+            index + 1;
+
+
+        const second =
+            Math.min(
+                first + 1,
+                total
+            );
+
+
+        document.getElementById(
+            "pageCounter"
+        ).innerText =
+
+            "صفحه " +
+
+            first +
+
+            "–" +
+
+            second +
+
+            " از " +
+
+            total;
+
+
+    }
+
+
+    else{
+
+
+        document.getElementById(
+            "pageCounter"
+        ).innerText =
+
+            "صفحه " +
+
+            (index + 1) +
+
+            " از " +
+
+            total;
+
+
+    }
+
+}
+
+
+
+/* =================================
+   PAGE PANEL
+================================= */
+
+async function togglePagePanel(){
+
+
+    const panel =
+
+        document.getElementById(
+            "pagePanel"
+        );
+
+
+    if(
+        panel.style.display ===
+        "block"
+    ){
+
+
+        panel.style.display =
+            "none";
+
+
+        return;
+
+
+    }
+
+
+    panel.style.display =
+        "block";
+
+
+    if(!thumbnailsBuilt){
+
+
+        thumbnailsBuilt =
+            true;
+
+
+        await buildThumbnails();
+
+
+    }
+
+
+    updateActiveThumbnail();
+
+}
+
+
+
+/* =================================
+   BUILD THUMBNAILS
+================================= */
+
+async function buildThumbnails(){
+
+
+    if(!pdfDocument)
+        return;
+
+
+
+    const grid =
+
+        document.getElementById(
+            "pageGrid"
+        );
+
+
+
+    for(
+
+        let i=1;
+
+        i<=pdfDocument.numPages;
+
+        i++
+
+    ){
+
+
+        const item =
+
+            document.createElement(
+                "div"
+            );
+
+
+        item.className =
+            "pageThumb";
+
+
+        item.dataset.page =
+            i;
+
+
+
+        const canvas =
+
+            document.createElement(
+                "canvas"
+            );
+
+
+
+        const label =
+
+            document.createElement(
+                "div"
+            );
+
+
+        label.className =
+            "pageThumbLabel";
+
+
+        label.innerText =
+            "صفحه " + i;
+
+
+
+        item.appendChild(
+            canvas
+        );
+
+
+        item.appendChild(
+            label
+        );
+
+
+        grid.appendChild(
+            item
+        );
+
+
+        thumbElements.push(
+            item
+        );
+
+
+
+        item.onclick =
+
+            function(){
+
+
+                goToPage(
+                    i - 1
+                );
+
+
+                document.getElementById(
+                    "pagePanel"
+                ).style.display =
+                    "none";
+
+
+            };
+
+
+
+        try{
+
+
+            const page =
+
+                await pdfDocument
+                .getPage(i);
+
+
+
+            const viewport =
+
+                page.getViewport({
+
+                    scale:.18
+
+                });
+
+
+
+            canvas.width =
+
+                Math.round(
+                    viewport.width
+                );
+
+
+            canvas.height =
+
+                Math.round(
+                    viewport.height
+                );
+
+
+
+            await page.render({
+
+                canvasContext:
+
+                    canvas.getContext(
+                        "2d"
+                    ),
+
+                viewport:
+                    viewport
+
+            }).promise;
+
+
+        }
+
+
+        catch(e){}
+
+
+
+        await sleep(15);
+
+
+    }
+
+}
+
+
+
+/* =================================
+   ACTIVE THUMB
+================================= */
+
+function updateActiveThumbnail(){
+
+
+    if(
+        !pageFlip ||
+        thumbElements.length === 0
+    )
+        return;
+
+
+
+    const index =
+
+        pageFlip
+        .getCurrentPageIndex();
+
+
+
+    thumbElements.forEach(
+
+        (
+            item,
+            i
+        )=>{
+
+
+            item.classList.toggle(
+
+                "active",
+
+                i === index
+
+            );
+
+
+        }
+
+    );
+
+
+
+    const active =
+
+        thumbElements[index];
+
+
+    if(active){
+
+
+        active.scrollIntoView({
+
+            block:"nearest",
+
+            behavior:"smooth"
+
+        });
+
+
+    }
+
+}
+
+
+
+/* =================================
+   GO TO PAGE
+================================= */
+
+function goToPage(index){
+
+
+    if(!pageFlip)
+        return;
+
+
+    preloadAround(
+        index + 1
+    );
+
+
+    try{
+
+
+        pageFlip.flip(
+            index,
+            "top"
+        );
+
+
+    }
+
+
+    catch(e){
+
+
+        pageFlip.turnToPage(
+            index
+        );
+
+
+    }
+
+}
+
+
+
+/* =================================
+   RENDER PAGE
+================================= */
 
 async function renderPage(number){
 
@@ -1408,8 +2042,9 @@ async function renderPage(number){
 
 
 
-        storedCanvases[number] =
-            canvas;
+        storedCanvases[
+            number
+        ] = canvas;
 
 
 
@@ -1494,15 +2129,14 @@ async function renderPage(number){
 
 
 
-/* =========================
-PRELOAD
-========================= */
+/* =================================
+   PRELOAD
+================================= */
 
 function preloadAround(page){
 
 
     [
-
 
         page,
 
@@ -1511,7 +2145,6 @@ function preloadAround(page){
         page + 2,
 
         page + 3
-
 
     ].forEach(number=>{
 
@@ -1542,9 +2175,9 @@ function preloadAround(page){
 
 
 
-/* =========================
-BACKGROUND LOAD
-========================= */
+/* =================================
+   BACKGROUND LOAD
+================================= */
 
 async function backgroundLoad(){
 
@@ -1579,7 +2212,7 @@ async function backgroundLoad(){
 
 
             await sleep(
-                160
+                170
             );
 
 
@@ -1610,9 +2243,9 @@ function sleep(ms){
 
 
 
-/* =========================
-NEXT PAGE
-========================= */
+/* =================================
+   NEXT
+================================= */
 
 async function nextPage(){
 
@@ -1622,11 +2255,6 @@ async function nextPage(){
 
 
     await unlockSound();
-
-
-    /*
-    FORWARD FLIP ANIMATION
-    */
 
 
     try{
@@ -1652,9 +2280,9 @@ async function nextPage(){
 
 
 
-/* =========================
-PREVIOUS PAGE
-========================= */
+/* =================================
+   PREVIOUS
+================================= */
 
 async function previousPage(){
 
@@ -1664,16 +2292,6 @@ async function previousPage(){
 
 
     await unlockSound();
-
-
-
-    /*
-    IMPORTANT:
-    THIS IS ANIMATED REVERSE FLIP.
-
-    It does NOT jump directly
-    to previous page.
-    */
 
 
     try{
@@ -1699,15 +2317,15 @@ async function previousPage(){
 
 
 
-/* =========================
-ZOOM +
-========================= */
+/* =================================
+   ZOOM
+================================= */
 
 function zoomIn(){
 
 
     if(
-        zoomValue >= 2.25
+        zoomValue >= 2.5
     )
         return;
 
@@ -1720,10 +2338,6 @@ function zoomIn(){
 }
 
 
-
-/* =========================
-ZOOM -
-========================= */
 
 function zoomOut(){
 
@@ -1746,6 +2360,20 @@ function zoomOut(){
 function applyZoom(){
 
 
+    zoomValue =
+
+        Math.max(
+
+            .75,
+
+            Math.min(
+                2.5,
+                zoomValue
+            )
+
+        );
+
+
     document.getElementById(
         "bookStage"
     ).style.transform =
@@ -1759,8 +2387,167 @@ function applyZoom(){
 }
 
 
+
+/* =================================
+   PINCH ZOOM
+================================= */
+
+const bookArea =
+
+    document.getElementById(
+        "bookArea"
+    );
+
+
+
+function touchDistance(touches){
+
+
+    const x =
+
+        touches[0].clientX -
+
+        touches[1].clientX;
+
+
+    const y =
+
+        touches[0].clientY -
+
+        touches[1].clientY;
+
+
+    return Math.sqrt(
+
+        x*x +
+
+        y*y
+
+    );
+
+}
+
+
+
+bookArea.addEventListener(
+
+    "touchstart",
+
+    function(event){
+
+
+        if(
+            event.touches.length === 2
+        ){
+
+
+            isPinching =
+                true;
+
+
+            pinchStartDistance =
+
+                touchDistance(
+                    event.touches
+                );
+
+
+            pinchStartZoom =
+                zoomValue;
+
+
+            event.preventDefault();
+
+
+        }
+
+
+    },
+
+    {
+        passive:false
+    }
+
+);
+
+
+
+bookArea.addEventListener(
+
+    "touchmove",
+
+    function(event){
+
+
+        if(
+            !isPinching ||
+            event.touches.length !== 2
+        )
+            return;
+
+
+        event.preventDefault();
+
+
+        const distance =
+
+            touchDistance(
+                event.touches
+            );
+
+
+        zoomValue =
+
+            pinchStartZoom *
+
+            (
+                distance /
+                pinchStartDistance
+            );
+
+
+        applyZoom();
+
+
+    },
+
+    {
+        passive:false
+    }
+
+);
+
+
+
+bookArea.addEventListener(
+
+    "touchend",
+
+    function(event){
+
+
+        if(
+            event.touches.length < 2
+        ){
+
+
+            isPinching =
+                false;
+
+
+        }
+
+
+    },
+
+    {
+        passive:false
+    }
+
+);
+
+
 </script>
 
 </body>
-
 </html>
