@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="fa">
+
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
+<meta
+name="viewport"
 content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=no">
 
 <title>Digital Catalog</title>
@@ -23,7 +25,6 @@ body{
     background:#111;
     font-family:Arial,sans-serif;
     overflow:hidden;
-    touch-action:none;
 }
 
 
@@ -56,6 +57,7 @@ body{
 
 .menuBox p{
     margin:0 0 30px;
+
     color:#999;
     font-size:14px;
 }
@@ -93,12 +95,13 @@ body{
 #reader{
     display:none;
 
+    position:relative;
+
     width:100%;
     height:100vh;
 
-    position:relative;
-
     background:#111;
+    overflow:hidden;
 }
 
 
@@ -114,7 +117,7 @@ body{
 
     transform:translateX(-50%);
 
-    z-index:400;
+    z-index:500;
 
     padding:8px 15px;
 
@@ -143,7 +146,7 @@ body{
 
     transform:translateY(-50%);
 
-    z-index:450;
+    z-index:550;
 
     width:46px;
     height:70px;
@@ -151,12 +154,11 @@ body{
     border:0;
     border-radius:10px;
 
-    background:rgba(15,15,15,.62);
+    background:rgba(15,15,15,.60);
 
     color:#fff;
 
     font-size:35px;
-    line-height:1;
 
     cursor:pointer;
 
@@ -168,20 +170,14 @@ body{
 
     user-select:none;
     -webkit-user-select:none;
-
-    box-shadow:
-        0 3px 12px
-        rgba(0,0,0,.25);
 }
 
 .sideArrow:hover{
-    background:rgba(40,40,40,.90);
+    background:rgba(40,40,40,.9);
 }
 
 .sideArrow:active{
-    transform:
-        translateY(-50%)
-        scale(.94);
+    transform:translateY(-50%) scale(.94);
 }
 
 #prevSide{
@@ -194,7 +190,7 @@ body{
 
 
 /* =========================
-   BOOK AREA
+   BOOK VIEWPORT
 ========================= */
 
 #bookArea{
@@ -203,34 +199,30 @@ body{
     inset:0;
 
     display:flex;
-
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     overflow:hidden;
 
     padding:
-        54px
         55px
+        56px
         70px;
 
     touch-action:none;
-
-    cursor:default;
 }
 
 
 /* =========================
-   PAN
+   PAN + ZOOM STAGE
 ========================= */
 
 #panStage{
     position:relative;
 
     display:flex;
-
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     transform-origin:center center;
 
@@ -241,7 +233,7 @@ body{
 
 
 /* =========================
-   BOOK
+   BOOK STAGE
 ========================= */
 
 #bookStage{
@@ -249,19 +241,24 @@ body{
 
     display:inline-flex;
 
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     width:max-content;
     height:max-content;
 }
 
+
+/* =========================
+   BOOK
+========================= */
+
 #book{
     margin:auto;
 
     /*
-    خود کتاب مستقیماً هیچ
-    gesture یا click نمی‌گیرد
+    کاربر مستقیماً با خود
+    StPageFlip تعامل نمی‌کند
     */
 
     pointer-events:none;
@@ -295,23 +292,13 @@ body{
     top:0;
     bottom:0;
 
-    /*
-    تقریباً یک سانتی متر
-    */
-
     width:1cm;
 
-    z-index:100;
-
-    touch-action:none;
+    z-index:150;
 
     background:transparent;
 
-    cursor:grab;
-}
-
-.edgeZone:active{
-    cursor:grabbing;
+    touch-action:none;
 }
 
 #leftEdge{
@@ -332,7 +319,6 @@ body{
     height:100%;
 
     background:
-
         linear-gradient(
             110deg,
             #e5e5e5 8%,
@@ -342,19 +328,20 @@ body{
 
     background-size:200% 100%;
 
-    animation:
-        shimmer 1.3s linear infinite;
+    animation:shimmer 1.3s linear infinite;
 }
 
 @keyframes shimmer{
+
     to{
         background-position-x:-200%;
     }
+
 }
 
 
 /* =========================
-   LOADER
+   INITIAL LOADER
 ========================= */
 
 #initialLoader{
@@ -362,16 +349,15 @@ body{
 
     inset:0;
 
-    z-index:500;
+    z-index:700;
 
     background:#111;
 
     display:flex;
-
     flex-direction:column;
 
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     gap:14px;
 }
@@ -381,19 +367,19 @@ body{
     height:36px;
 
     border:3px solid #444;
-
     border-top-color:#fff;
 
     border-radius:50%;
 
-    animation:
-        rotate .75s linear infinite;
+    animation:rotate .75s linear infinite;
 }
 
 @keyframes rotate{
+
     to{
         transform:rotate(360deg);
     }
+
 }
 
 .loaderText{
@@ -416,7 +402,7 @@ body{
 
     transform:translateX(-50%);
 
-    z-index:450;
+    z-index:600;
 
     background:#f4f4f4;
 
@@ -445,7 +431,6 @@ body{
     cursor:pointer;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
@@ -482,17 +467,17 @@ body{
 
     max-height:65vh;
 
-    z-index:440;
+    z-index:580;
 
     background:#1b1b1b;
 
     border:1px solid #444;
-
     border-radius:12px;
 
     padding:14px;
 
     overflow-y:auto;
+    overflow-x:hidden;
 
     touch-action:pan-y;
 
@@ -500,6 +485,7 @@ body{
         0 10px 35px
         rgba(0,0,0,.5);
 }
+
 
 #pageGrid{
     display:grid;
@@ -513,13 +499,13 @@ body{
     gap:12px;
 }
 
+
 .pageThumb{
     padding:5px;
 
     background:#292929;
 
-    border:
-        2px solid transparent;
+    border:2px solid transparent;
 
     border-radius:7px;
 
@@ -587,20 +573,15 @@ body{
             62px;
     }
 
-    .edgeZone{
-        width:1cm;
-    }
-
     .sideArrow{
         width:34px;
         height:56px;
 
-        font-size:28px;
-
         border-radius:8px;
 
-        background:
-            rgba(15,15,15,.55);
+        font-size:28px;
+
+        background:rgba(15,15,15,.52);
     }
 
     #prevSide{
@@ -638,17 +619,19 @@ body{
 
         gap:9px;
     }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
 
 <!-- =========================
-     SELECT
+     CATALOG MENU
 ========================= -->
 
 <div id="catalogMenu">
@@ -694,8 +677,6 @@ body{
 <div id="reader">
 
 
-    <!-- LEFT ARROW -->
-
     <button
     id="prevSide"
     class="sideArrow"
@@ -706,9 +687,6 @@ body{
 
     </button>
 
-
-
-    <!-- RIGHT ARROW -->
 
     <button
     id="nextSide"
@@ -721,9 +699,6 @@ body{
     </button>
 
 
-
-    <!-- PAGE NUMBER -->
-
     <div id="pageCounter">
 
         صفحه 1 از 1
@@ -731,13 +706,13 @@ body{
     </div>
 
 
-
     <div id="bookArea">
 
 
         <div id="initialLoader">
 
-            <div class="spinner"></div>
+            <div class="spinner">
+            </div>
 
             <div class="loaderText">
                 Opening catalog...
@@ -746,20 +721,14 @@ body{
         </div>
 
 
-
         <div id="panStage">
 
 
             <div id="bookStage">
 
 
-                <div id="book"></div>
-
-
-                <!--
-                فقط این نوارهای باریک
-                Swipe صفحه را کنترل می‌کنند
-                -->
+                <div id="book">
+                </div>
 
 
                 <div
@@ -793,7 +762,8 @@ body{
 
 <div id="pagePanel">
 
-    <div id="pageGrid"></div>
+    <div id="pageGrid">
+    </div>
 
 </div>
 
@@ -841,21 +811,25 @@ body{
 
 
 <!-- =========================
-     SOUND
+     PAGE FLIP SOUND
 ========================= -->
 
 <audio
 id="pageFlipAudio"
-src="./pageflip.mp3?v=80"
+src="./pageflip.mp3?v=100"
 preload="auto">
 </audio>
 
 
 
+<!-- PDF JS -->
+
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js">
 </script>
 
+
+<!-- PAGE FLIP -->
 
 <script
 src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js">
@@ -867,10 +841,13 @@ src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.
 
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
 
+
+/* =========================
+   GLOBAL VARIABLES
+========================= */
 
 let pdfDocument = null;
 
@@ -884,65 +861,74 @@ let renderedPages =
 let renderingPages =
     new Set();
 
-let storedCanvases = {};
-
 let thumbElements = [];
 
 let thumbnailsBuilt =
     false;
 
+let zoomValue =
+    1;
 
-let zoomValue = 1;
+let panX =
+    0;
 
-let panX = 0;
+let panY =
+    0;
 
-let panY = 0;
+let pageRatio =
+    1.414;
 
-
-let lastPageIndex = 0;
+let lastPageIndex =
+    0;
 
 let soundUnlocked =
     false;
 
-let stopBackgroundLoad =
-    false;
-
-let pageRatio = 1.414;
-
 
 /* =========================
-   PAN STATE
+   PAN VARIABLES
 ========================= */
 
 let dragging =
     false;
 
-let dragStartX = 0;
+let dragPointerId =
+    null;
 
-let dragStartY = 0;
+let dragStartX =
+    0;
 
-let dragStartPanX = 0;
+let dragStartY =
+    0;
 
-let dragStartPanY = 0;
+let dragStartPanX =
+    0;
+
+let dragStartPanY =
+    0;
 
 
 /* =========================
-   PINCH STATE
+   PINCH VARIABLES
 ========================= */
 
-let isPinching =
+let pinchActive =
     false;
 
-let pinchStartDistance = 0;
+let pinchStartDistance =
+    0;
 
-let pinchStartZoom = 1;
+let pinchStartZoom =
+    1;
 
 
 /* =========================
-   EDGE SWIPE STATE
+   EDGE VARIABLES
 ========================= */
 
-let edgeGesture = null;
+let edgeGesture =
+    null;
+
 
 
 /* =========================
@@ -951,55 +937,41 @@ let edgeGesture = null;
 
 async function unlockSound(){
 
-
-    if(soundUnlocked)
+    if(soundUnlocked){
         return;
+    }
 
 
     const audio =
-
         document.getElementById(
             "pageFlipAudio"
         );
 
 
-    if(!audio)
-        return;
-
-
     try{
-
 
         audio.muted =
             true;
 
-
         await audio.play();
 
-
         audio.pause();
-
 
         audio.currentTime =
             0;
 
-
         audio.muted =
             false;
-
 
         soundUnlocked =
             true;
 
-
     }
 
-    catch(e){
-
+    catch(error){
 
         audio.muted =
             false;
-
 
     }
 
@@ -1009,28 +981,25 @@ async function unlockSound(){
 
 function playFlipSound(){
 
-
-    const original =
-
+    const source =
         document.getElementById(
             "pageFlipAudio"
         );
 
 
-    if(!original)
+    if(!source){
         return;
+    }
 
 
     const audio =
-
-        original.cloneNode(
+        source.cloneNode(
             true
         );
 
 
     audio.currentTime =
         0;
-
 
     audio.volume =
         .8;
@@ -1047,10 +1016,7 @@ function playFlipSound(){
    OPEN CATALOG
 ========================= */
 
-async function openCatalog(
-    pdfFile
-){
-
+async function openCatalog(pdfFile){
 
     await unlockSound();
 
@@ -1058,25 +1024,14 @@ async function openCatalog(
     zoomValue =
         1;
 
-
     panX =
         0;
-
 
     panY =
         0;
 
 
-    stopBackgroundLoad =
-        false;
-
-
-    storedCanvases =
-        {};
-
-
     renderedPages.clear();
-
 
     renderingPages.clear();
 
@@ -1084,17 +1039,11 @@ async function openCatalog(
     pageElements =
         [];
 
-
     thumbElements =
         [];
 
-
     thumbnailsBuilt =
         false;
-
-
-    applyTransform();
-
 
 
     document.getElementById(
@@ -1116,12 +1065,6 @@ async function openCatalog(
 
 
     document.getElementById(
-        "initialLoader"
-    ).style.display =
-        "flex";
-
-
-    document.getElementById(
         "pagePanel"
     ).style.display =
         "none";
@@ -1133,13 +1076,21 @@ async function openCatalog(
         "";
 
 
+    document.getElementById(
+        "initialLoader"
+    ).style.display =
+        "flex";
+
+
+    applyTransform();
+
 
     try{
 
-
         pdfDocument =
 
-            await pdfjsLib.getDocument({
+            await pdfjsLib
+            .getDocument({
 
                 url:
                     pdfFile,
@@ -1151,9 +1102,10 @@ async function openCatalog(
                     false,
 
                 disableAutoFetch:
-                    true
+                    false
 
-            }).promise;
+            })
+            .promise;
 
 
 
@@ -1171,7 +1123,8 @@ async function openCatalog(
             firstPage
             .getViewport({
 
-                scale:1
+                scale:
+                    1
 
             });
 
@@ -1187,11 +1140,6 @@ async function openCatalog(
 
         createPages();
 
-
-
-        /*
-        فقط جلد اول را ابتدا رندر کن
-        */
 
 
         await renderPage(
@@ -1217,34 +1165,35 @@ async function openCatalog(
 
         setTimeout(()=>{
 
-
             preloadAround(
                 2
             );
 
-
-        },40);
+        },60);
 
 
 
         setTimeout(()=>{
 
-
             backgroundLoad();
 
-
-        },600);
+        },800);
 
 
     }
 
     catch(error){
 
-
         console.error(
             error
         );
 
+
+        document.getElementById(
+            "initialLoader"
+        ).innerHTML =
+
+            '<div style="color:white;text-align:center;padding:20px;">خطا در باز شدن کاتالوگ</div>';
 
     }
 
@@ -1253,14 +1202,12 @@ async function openCatalog(
 
 
 /* =========================
-   CREATE PAGES
+   CREATE PAGE DIVS
 ========================= */
 
 function createPages(){
 
-
     const book =
-
         document.getElementById(
             "book"
         );
@@ -1275,18 +1222,12 @@ function createPages(){
 
 
     for(
-
-        let i=1;
-
-        i<=pdfDocument.numPages;
-
+        let i = 1;
+        i <= pdfDocument.numPages;
         i++
-
     ){
 
-
         const page =
-
             document.createElement(
                 "div"
             );
@@ -1300,20 +1241,18 @@ function createPages(){
             i;
 
 
-
-        const placeholder =
-
+        const loading =
             document.createElement(
                 "div"
             );
 
 
-        placeholder.className =
+        loading.className =
             "pageLoading";
 
 
         page.appendChild(
-            placeholder
+            loading
         );
 
 
@@ -1326,7 +1265,6 @@ function createPages(){
             page
         );
 
-
     }
 
 }
@@ -1334,25 +1272,20 @@ function createPages(){
 
 
 /* =========================
-   CREATE BOOK
+   CREATE FLIP BOOK
 ========================= */
 
 function createBook(){
 
-
     const mobile =
-
         window.innerWidth <=
         700;
 
 
-
     const width =
-
         mobile
         ? 440
         : 610;
-
 
 
     const height =
@@ -1360,11 +1293,9 @@ function createBook(){
         Math.round(
 
             width *
-
             pageRatio
 
         );
-
 
 
     pageFlip =
@@ -1377,32 +1308,24 @@ function createBook(){
 
             {
 
-
                 width:
                     width,
-
 
                 height:
                     height,
 
-
                 size:
                     "stretch",
 
-
                 minWidth:
-
                     mobile
-                    ? 300
+                    ? 280
                     : 390,
 
-
                 maxWidth:
-
                     mobile
                     ? 520
                     : 720,
-
 
                 minHeight:
 
@@ -1410,16 +1333,14 @@ function createBook(){
 
                         (
                             mobile
-                            ? 300
+                            ? 280
                             : 390
                         )
 
                         *
-
                         pageRatio
 
                     ),
-
 
                 maxHeight:
 
@@ -1432,62 +1353,40 @@ function createBook(){
                         )
 
                         *
-
                         pageRatio
 
                     ),
 
-
                 showCover:
                     true,
-
-
-                /*
-                موبایل یک صفحه
-                دسکتاپ دو صفحه
-                */
 
                 usePortrait:
                     mobile,
 
-
                 startPage:
                     0,
-
 
                 autoSize:
                     true,
 
-
                 drawShadow:
                     true,
-
 
                 maxShadowOpacity:
                     .45,
 
-
                 flippingTime:
                     900,
-
 
                 mobileScrollSupport:
                     true,
 
-
-                /*
-                گوشه خود کتاب
-                ورق نزند
-                */
-
                 showPageCorners:
                     false
-
 
             }
 
         );
-
 
 
     pageFlip.loadFromHTML(
@@ -1499,17 +1398,15 @@ function createBook(){
     );
 
 
-
     /*
-    هیچ لمس و کلیکی مستقیم
-    وارد StPageFlip نشود
+    StPageFlip خودش
+    تاچ نگیرد
     */
 
     document.getElementById(
         "book"
     ).style.pointerEvents =
         "none";
-
 
 
     lastPageIndex =
@@ -1525,7 +1422,6 @@ function createBook(){
 
         function(event){
 
-
             const index =
                 event.data;
 
@@ -1535,26 +1431,21 @@ function createBook(){
                 lastPageIndex
             ){
 
-
                 playFlipSound();
-
 
                 lastPageIndex =
                     index;
-
 
             }
 
 
             /*
-            با تغییر صفحه،
-            موقعیت Pan به وسط برگردد.
-            خود Zoom حفظ می‌شود.
+            بعد از تغییر صفحه
+            pan برگردد وسط
             */
 
             panX =
                 0;
-
 
             panY =
                 0;
@@ -1573,7 +1464,6 @@ function createBook(){
                 index + 1
             );
 
-
         }
 
     );
@@ -1583,14 +1473,14 @@ function createBook(){
 
 
 /* =========================
-   ARROW NEXT
+   NEXT PAGE BUTTON
 ========================= */
 
 async function nextPage(){
 
-
-    if(!pageFlip)
+    if(!pageFlip){
         return;
+    }
 
 
     await unlockSound();
@@ -1598,16 +1488,13 @@ async function nextPage(){
 
     try{
 
-
         pageFlip.flipNext(
             "top"
         );
 
-
     }
 
-    catch(e){
-
+    catch(error){
 
         try{
 
@@ -1615,7 +1502,7 @@ async function nextPage(){
 
         }
 
-        catch(err){}
+        catch(e){}
 
     }
 
@@ -1624,14 +1511,14 @@ async function nextPage(){
 
 
 /* =========================
-   ARROW PREVIOUS
+   PREVIOUS PAGE BUTTON
 ========================= */
 
 async function previousPage(){
 
-
-    if(!pageFlip)
+    if(!pageFlip){
         return;
+    }
 
 
     await unlockSound();
@@ -1639,16 +1526,13 @@ async function previousPage(){
 
     try{
 
-
         pageFlip.flipPrev(
             "top"
         );
 
-
     }
 
-    catch(e){
-
+    catch(error){
 
         try{
 
@@ -1656,7 +1540,7 @@ async function previousPage(){
 
         }
 
-        catch(err){}
+        catch(e){}
 
     }
 
@@ -1665,72 +1549,193 @@ async function previousPage(){
 
 
 /* =========================
-   EDGE SWIPE ONLY
+   PAGE COUNTER
+========================= */
+
+function updatePageCounter(){
+
+    if(
+        !pageFlip ||
+        !pdfDocument
+    ){
+        return;
+    }
+
+
+    const index =
+
+        pageFlip
+        .getCurrentPageIndex();
+
+
+    const total =
+
+        pdfDocument.numPages;
+
+
+    const mobile =
+
+        window.innerWidth <=
+        700;
+
+
+    const counter =
+
+        document.getElementById(
+            "pageCounter"
+        );
+
+
+    /*
+    موبایل
+    */
+
+    if(mobile){
+
+        counter.innerText =
+
+            "صفحه " +
+
+            (index + 1) +
+
+            " از " +
+
+            total;
+
+
+        return;
+
+    }
+
+
+    /*
+    دسکتاپ - جلد اول
+    */
+
+    if(index === 0){
+
+        counter.innerText =
+
+            "صفحه 1 از " +
+            total;
+
+
+        return;
+
+    }
+
+
+    /*
+    دسکتاپ - جلد آخر
+    */
+
+    if(index >= total - 1){
+
+        counter.innerText =
+
+            "صفحه " +
+
+            total +
+
+            " از " +
+
+            total;
+
+
+        return;
+
+    }
+
+
+    /*
+    دسکتاپ - دو صفحه
+    */
+
+    const first =
+        index + 1;
+
+
+    const second =
+
+        Math.min(
+            first + 1,
+            total
+        );
+
+
+    counter.innerText =
+
+        "صفحه " +
+
+        first +
+
+        "–" +
+
+        second +
+
+        " از " +
+
+        total;
+
+}
+
+
+
+/* =========================
+   EDGE SWIPE START
 ========================= */
 
 const leftEdge =
-
     document.getElementById(
         "leftEdge"
     );
 
 
 const rightEdge =
-
     document.getElementById(
         "rightEdge"
     );
 
 
 
-function startEdgeGesture(
+function startEdgeSwipe(
     side,
     event
 ){
 
-
     if(
         event.pointerType ===
-        "touch" &&
+        "touch"
+        &&
         !event.isPrimary
-    )
+    ){
         return;
+    }
 
 
     edgeGesture = {
 
-
         side:
             side,
 
-
-        id:
+        pointerId:
             event.pointerId,
-
 
         startX:
             event.clientX,
 
-
         startY:
-            event.clientY,
-
-
-        moved:
-            false
-
+            event.clientY
 
     };
 
 
     try{
 
-
         event.currentTarget
         .setPointerCapture(
             event.pointerId
         );
-
 
     }
 
@@ -1744,85 +1749,35 @@ function startEdgeGesture(
 
 
 /* =========================
-   EDGE MOVE
+   EDGE SWIPE END
 ========================= */
 
-function moveEdgeGesture(
+async function endEdgeSwipe(
     event
 ){
 
-
-    if(
-        !edgeGesture ||
-        edgeGesture.id !==
-        event.pointerId
-    )
+    if(!edgeGesture){
         return;
-
-
-    const dx =
-
-        event.clientX -
-
-        edgeGesture.startX;
-
-
-    const dy =
-
-        event.clientY -
-
-        edgeGesture.startY;
-
-
-
-    if(
-        Math.abs(dx) > 5 ||
-        Math.abs(dy) > 5
-    ){
-
-
-        edgeGesture.moved =
-            true;
-
-
     }
 
 
-    event.preventDefault();
-
-}
-
-
-
-/* =========================
-   EDGE END
-========================= */
-
-async function endEdgeGesture(
-    event
-){
-
-
     if(
-        !edgeGesture ||
-        edgeGesture.id !==
-        event.pointerId
-    )
+        event.pointerId !==
+        edgeGesture.pointerId
+    ){
         return;
-
+    }
 
 
     const dx =
 
         event.clientX -
-
         edgeGesture.startX;
 
 
     const dy =
 
         event.clientY -
-
         edgeGesture.startY;
 
 
@@ -1831,91 +1786,60 @@ async function endEdgeGesture(
         edgeGesture.side;
 
 
-    const moved =
-
-        edgeGesture.moved;
-
-
-
     edgeGesture =
         null;
 
 
-
     /*
-    تاچ ساده = هیچ اتفاقی نیفتد
-    */
-
-    if(!moved)
-        return;
-
-
-
-    /*
-    حرکت باید بیشتر افقی باشد
-    تا عمودی
+    فقط Swipe افقی
     */
 
     if(
         Math.abs(dx) <
-        Math.abs(dy) * 1.15
-    )
+        30
+    ){
         return;
+    }
 
-
-
-    /*
-    Swipe خیلی کوتاه
-    صفحه را عوض نکند
-    */
 
     if(
         Math.abs(dx) <
-        28
-    )
+        Math.abs(dy) * 1.2
+    ){
         return;
-
-
-
-    await unlockSound();
-
+    }
 
 
     /*
     لبه راست
-    انگشت به چپ
-    صفحه بعد
+    Swipe به چپ
     */
 
     if(
-        side === "right" &&
-        dx < -28
+        side === "right"
+        &&
+        dx < -30
     ){
 
-
         await nextPage();
-
 
         return;
 
     }
 
 
-
     /*
     لبه چپ
-    انگشت به راست
-    صفحه قبل
+    Swipe به راست
     */
 
     if(
-        side === "left" &&
-        dx > 28
+        side === "left"
+        &&
+        dx > 30
     ){
 
-
         await previousPage();
-
 
     }
 
@@ -1929,7 +1853,7 @@ leftEdge.addEventListener(
 
     event =>
 
-        startEdgeGesture(
+        startEdgeSwipe(
             "left",
             event
         )
@@ -1943,7 +1867,7 @@ rightEdge.addEventListener(
 
     event =>
 
-        startEdgeGesture(
+        startEdgeSwipe(
             "right",
             event
         )
@@ -1953,27 +1877,9 @@ rightEdge.addEventListener(
 
 leftEdge.addEventListener(
 
-    "pointermove",
-
-    moveEdgeGesture
-
-);
-
-
-rightEdge.addEventListener(
-
-    "pointermove",
-
-    moveEdgeGesture
-
-);
-
-
-leftEdge.addEventListener(
-
     "pointerup",
 
-    endEdgeGesture
+    endEdgeSwipe
 
 );
 
@@ -1982,7 +1888,7 @@ rightEdge.addEventListener(
 
     "pointerup",
 
-    endEdgeGesture
+    endEdgeSwipe
 
 );
 
@@ -1991,7 +1897,7 @@ leftEdge.addEventListener(
 
     "pointercancel",
 
-    ()=>{
+    function(){
 
         edgeGesture =
             null;
@@ -2005,7 +1911,7 @@ rightEdge.addEventListener(
 
     "pointercancel",
 
-    ()=>{
+    function(){
 
         edgeGesture =
             null;
@@ -2013,105 +1919,6 @@ rightEdge.addEventListener(
     }
 
 );
-
-
-
-/* =========================
-   PAGE COUNTER
-========================= */
-
-function updatePageCounter(){
-
-
-    if(
-        !pageFlip ||
-        !pdfDocument
-    )
-        return;
-
-
-
-    const index =
-
-        pageFlip
-        .getCurrentPageIndex();
-
-
-
-    const total =
-
-        pdfDocument.numPages;
-
-
-
-    const mobile =
-
-        window.innerWidth <=
-        700;
-
-
-
-    if(
-        !mobile &&
-        index > 0 &&
-        index < total - 1
-    ){
-
-
-        const first =
-
-            index + 1;
-
-
-        const second =
-
-            Math.min(
-
-                first + 1,
-
-                total
-
-            );
-
-
-        document.getElementById(
-            "pageCounter"
-        ).innerText =
-
-            "صفحه " +
-
-            first +
-
-            "–" +
-
-            second +
-
-            " از " +
-
-            total;
-
-
-    }
-
-    else{
-
-
-        document.getElementById(
-            "pageCounter"
-        ).innerText =
-
-            "صفحه " +
-
-            (index + 1) +
-
-            " از " +
-
-            total;
-
-
-    }
-
-}
 
 
 
@@ -2120,7 +1927,6 @@ function updatePageCounter(){
 ========================= */
 
 async function togglePagePanel(){
-
 
     const panel =
 
@@ -2134,13 +1940,10 @@ async function togglePagePanel(){
         "block"
     ){
 
-
         panel.style.display =
             "none";
 
-
         return;
-
 
     }
 
@@ -2149,17 +1952,13 @@ async function togglePagePanel(){
         "block";
 
 
-    if(
-        !thumbnailsBuilt
-    ){
-
+    if(!thumbnailsBuilt){
 
         thumbnailsBuilt =
             true;
 
 
         await buildThumbnails();
-
 
     }
 
@@ -2176,9 +1975,9 @@ async function togglePagePanel(){
 
 async function buildThumbnails(){
 
-
-    if(!pdfDocument)
+    if(!pdfDocument){
         return;
+    }
 
 
     const grid =
@@ -2188,20 +1987,13 @@ async function buildThumbnails(){
         );
 
 
-
     for(
-
-        let i=1;
-
-        i<=pdfDocument.numPages;
-
+        let i = 1;
+        i <= pdfDocument.numPages;
         i++
-
     ){
 
-
         const item =
-
             document.createElement(
                 "div"
             );
@@ -2211,17 +2003,13 @@ async function buildThumbnails(){
             "pageThumb";
 
 
-
         const canvas =
-
             document.createElement(
                 "canvas"
             );
 
 
-
         const label =
-
             document.createElement(
                 "div"
             );
@@ -2234,7 +2022,6 @@ async function buildThumbnails(){
         label.innerText =
 
             "صفحه " + i;
-
 
 
         item.appendChild(
@@ -2257,11 +2044,9 @@ async function buildThumbnails(){
         );
 
 
-
         item.onclick =
 
             function(){
-
 
                 goToPage(
                     i - 1
@@ -2273,13 +2058,10 @@ async function buildThumbnails(){
                 ).style.display =
                     "none";
 
-
             };
 
 
-
         try{
-
 
             const page =
 
@@ -2293,7 +2075,8 @@ async function buildThumbnails(){
 
                 page.getViewport({
 
-                    scale:.18
+                    scale:
+                        .18
 
                 });
 
@@ -2325,14 +2108,13 @@ async function buildThumbnails(){
 
             }).promise;
 
-
         }
 
-        catch(e){}
+        catch(error){}
 
 
         await sleep(
-            15
+            12
         );
 
     }
@@ -2342,18 +2124,17 @@ async function buildThumbnails(){
 
 
 /* =========================
-   ACTIVE THUMB
+   ACTIVE THUMBNAIL
 ========================= */
 
 function updateActiveThumbnail(){
 
-
     if(
         !pageFlip ||
-        thumbElements.length ===
-        0
-    )
+        thumbElements.length === 0
+    ){
         return;
+    }
 
 
     const index =
@@ -2364,11 +2145,7 @@ function updateActiveThumbnail(){
 
     thumbElements.forEach(
 
-        (
-            item,
-            i
-        )=>{
-
+        function(item,i){
 
             item.classList.toggle(
 
@@ -2377,7 +2154,6 @@ function updateActiveThumbnail(){
                 i === index
 
             );
-
 
         }
 
@@ -2391,7 +2167,6 @@ function updateActiveThumbnail(){
 
     if(active){
 
-
         active.scrollIntoView({
 
             block:
@@ -2401,7 +2176,6 @@ function updateActiveThumbnail(){
                 "smooth"
 
         });
-
 
     }
 
@@ -2413,13 +2187,11 @@ function updateActiveThumbnail(){
    GO TO PAGE
 ========================= */
 
-function goToPage(
-    index
-){
+function goToPage(index){
 
-
-    if(!pageFlip)
+    if(!pageFlip){
         return;
+    }
 
 
     preloadAround(
@@ -2429,29 +2201,24 @@ function goToPage(
 
     try{
 
-
         pageFlip.flip(
             index,
             "top"
         );
 
-
     }
 
-    catch(e){
-
+    catch(error){
 
         try{
-
 
             pageFlip.turnToPage(
                 index
             );
 
-
         }
 
-        catch(err){}
+        catch(e){}
 
     }
 
@@ -2464,53 +2231,54 @@ function goToPage(
 ========================= */
 
 async function renderPage(
-    number
+    pageNumber
 ){
 
-
-    if(!pdfDocument)
+    if(!pdfDocument){
         return;
+    }
 
 
     if(
-        number < 1 ||
-        number >
+        pageNumber < 1
+        ||
+        pageNumber >
         pdfDocument.numPages
-    )
+    ){
         return;
+    }
 
 
     if(
         renderedPages.has(
-            number
+            pageNumber
         )
-    )
+    ){
         return;
+    }
 
 
     if(
         renderingPages.has(
-            number
+            pageNumber
         )
-    )
+    ){
         return;
-
+    }
 
 
     renderingPages.add(
-        number
+        pageNumber
     );
 
 
-
     try{
-
 
         const page =
 
             await pdfDocument
             .getPage(
-                number
+                pageNumber
             );
 
 
@@ -2527,7 +2295,7 @@ async function renderPage(
                 window.devicePixelRatio ||
                 1,
 
-                1.4
+                1.5
 
             );
 
@@ -2535,8 +2303,8 @@ async function renderPage(
         const scale =
 
             mobile
-            ? 1.12
-            : 1.23;
+            ? 1.15
+            : 1.25;
 
 
         const viewport =
@@ -2546,7 +2314,6 @@ async function renderPage(
                 scale:
 
                     scale *
-
                     pixelRatio
 
             });
@@ -2597,83 +2364,53 @@ async function renderPage(
         }).promise;
 
 
-        storedCanvases[
-            number
-        ] = canvas;
-
-
         const target =
 
             pageElements[
-                number - 1
+                pageNumber - 1
             ];
 
 
         if(target){
 
-
             target.innerHTML =
                 "";
 
 
-            const visible =
-
-                document.createElement(
-                    "canvas"
-                );
+            canvas.style.width =
+                "100%";
 
 
-            visible.width =
-                canvas.width;
-
-
-            visible.height =
-                canvas.height;
-
-
-            visible
-            .getContext(
-                "2d"
-            )
-            .drawImage(
-                canvas,
-                0,
-                0
-            );
+            canvas.style.height =
+                "100%";
 
 
             target.appendChild(
-                visible
+                canvas
             );
-
 
         }
 
 
         renderedPages.add(
-            number
+            pageNumber
         );
-
 
     }
 
     catch(error){
 
-
         console.error(
             error
         );
-
 
     }
 
     finally{
 
-
         renderingPages.delete(
-            number
+            pageNumber
         );
-
 
     }
 
@@ -2682,48 +2419,50 @@ async function renderPage(
 
 
 /* =========================
-   PRELOAD
+   PRELOAD NEARBY
 ========================= */
 
 function preloadAround(
-    page
+    pageNumber
 ){
 
+    const pages = [
 
-    [
+        pageNumber,
 
-        page,
+        pageNumber + 1,
 
-        page + 1,
+        pageNumber + 2,
 
-        page + 2,
+        pageNumber + 3
 
-        page + 3
-
-    ].forEach(number=>{
-
-
-        if(
-
-            pdfDocument &&
-
-            number >= 1 &&
-
-            number <=
-            pdfDocument.numPages
-
-        ){
+    ];
 
 
-            renderPage(
-                number
-            );
+    pages.forEach(
 
+        function(number){
+
+            if(
+
+                pdfDocument
+                &&
+                number >= 1
+                &&
+                number <=
+                pdfDocument.numPages
+
+            ){
+
+                renderPage(
+                    number
+                );
+
+            }
 
         }
 
-
-    });
+    );
 
 }
 
@@ -2735,27 +2474,16 @@ function preloadAround(
 
 async function backgroundLoad(){
 
-
-    if(!pdfDocument)
+    if(!pdfDocument){
         return;
+    }
 
 
     for(
-
-        let i=1;
-
-        i<=pdfDocument.numPages;
-
+        let i = 1;
+        i <= pdfDocument.numPages;
         i++
-
     ){
-
-
-        if(
-            stopBackgroundLoad
-        )
-            break;
-
 
         if(
             !renderedPages.has(
@@ -2763,19 +2491,16 @@ async function backgroundLoad(){
             )
         ){
 
-
             await renderPage(
                 i
             );
 
 
             await sleep(
-                170
+                140
             );
 
-
         }
-
 
     }
 
@@ -2783,10 +2508,7 @@ async function backgroundLoad(){
 
 
 
-function sleep(
-    ms
-){
-
+function sleep(ms){
 
     return new Promise(
 
@@ -2804,17 +2526,16 @@ function sleep(
 
 
 /* =========================
-   ZOOM
+   ZOOM BUTTON +
 ========================= */
 
 function zoomIn(){
-
 
     zoomValue =
 
         Math.min(
 
-            2.5,
+            2.75,
 
             zoomValue +
             .25
@@ -2828,8 +2549,11 @@ function zoomIn(){
 
 
 
-function zoomOut(){
+/* =========================
+   ZOOM BUTTON -
+========================= */
 
+function zoomOut(){
 
     zoomValue =
 
@@ -2844,18 +2568,14 @@ function zoomOut(){
 
 
     if(
-        zoomValue <=
-        1
+        zoomValue <= 1
     ){
-
 
         panX =
             0;
 
-
         panY =
             0;
-
 
     }
 
@@ -2867,25 +2587,20 @@ function zoomOut(){
 
 
 /* =========================
-   APPLY TRANSFORM
+   APPLY PAN + ZOOM
 ========================= */
 
 function applyTransform(){
 
-
     if(
-        zoomValue <=
-        1
+        zoomValue <= 1
     ){
-
 
         panX =
             0;
 
-
         panY =
             0;
-
 
     }
 
@@ -2913,7 +2628,7 @@ function applyTransform(){
 
 
 /* =========================
-   PAN WITH MOUSE / FINGER
+   PAN
 ========================= */
 
 const bookArea =
@@ -2930,45 +2645,51 @@ bookArea.addEventListener(
 
     function(event){
 
-
         /*
-        ناحیه لبه‌ها کنترل
-        جداگانه دارند
+        نوارهای لبه
+        کنترل جدا دارند
         */
 
         if(
             event.target.closest(
                 ".edgeZone"
             )
-        )
+        ){
             return;
+        }
 
 
         /*
-        در حالت عادی Pan لازم نیست
+        فقط وقتی زوم شده
         */
 
         if(
-            zoomValue <=
-            1
-        )
+            zoomValue <= 1
+        ){
             return;
+        }
 
 
         /*
-        Pointer دوم برای Pinch است
+        Pointer دوم برای Pinch
         */
 
         if(
             event.pointerType ===
-            "touch" &&
+            "touch"
+            &&
             !event.isPrimary
-        )
+        ){
             return;
+        }
 
 
         dragging =
             true;
+
+
+        dragPointerId =
+            event.pointerId;
 
 
         dragStartX =
@@ -2989,12 +2710,10 @@ bookArea.addEventListener(
 
         try{
 
-
             bookArea
             .setPointerCapture(
                 event.pointerId
             );
-
 
         }
 
@@ -3015,12 +2734,22 @@ bookArea.addEventListener(
 
     function(event){
 
+        if(!dragging){
+            return;
+        }
+
+
+        if(pinchActive){
+            return;
+        }
+
 
         if(
-            !dragging ||
-            isPinching
-        )
+            event.pointerId !==
+            dragPointerId
+        ){
             return;
+        }
 
 
         panX =
@@ -3058,12 +2787,20 @@ bookArea.addEventListener(
 
     "pointerup",
 
-    function(){
+    function(event){
 
+        if(
+            dragPointerId ===
+            event.pointerId
+        ){
 
-        dragging =
-            false;
+            dragging =
+                false;
 
+            dragPointerId =
+                null;
+
+        }
 
     }
 
@@ -3077,10 +2814,11 @@ bookArea.addEventListener(
 
     function(){
 
-
         dragging =
             false;
 
+        dragPointerId =
+            null;
 
     }
 
@@ -3092,29 +2830,25 @@ bookArea.addEventListener(
    PINCH ZOOM
 ========================= */
 
-function touchDistance(
+function getTouchDistance(
     touches
 ){
-
 
     const dx =
 
         touches[0].clientX -
-
         touches[1].clientX;
 
 
     const dy =
 
         touches[0].clientY -
-
         touches[1].clientY;
 
 
     return Math.sqrt(
 
         dx * dx +
-
         dy * dy
 
     );
@@ -3129,13 +2863,17 @@ bookArea.addEventListener(
 
     function(event){
 
+        /*
+        لبه‌ها برای ورق هستند
+        */
 
         if(
             event.target.closest(
                 ".edgeZone"
             )
-        )
+        ){
             return;
+        }
 
 
         if(
@@ -3143,18 +2881,21 @@ bookArea.addEventListener(
             2
         ){
 
-
             dragging =
                 false;
 
 
-            isPinching =
+            dragPointerId =
+                null;
+
+
+            pinchActive =
                 true;
 
 
             pinchStartDistance =
 
-                touchDistance(
+                getTouchDistance(
                     event.touches
                 );
 
@@ -3183,13 +2924,14 @@ bookArea.addEventListener(
 
     function(event){
 
-
         if(
-            !isPinching ||
+            !pinchActive
+            ||
             event.touches.length !==
             2
-        )
+        ){
             return;
+        }
 
 
         event.preventDefault();
@@ -3197,7 +2939,7 @@ bookArea.addEventListener(
 
         const distance =
 
-            touchDistance(
+            getTouchDistance(
                 event.touches
             );
 
@@ -3205,7 +2947,6 @@ bookArea.addEventListener(
         const ratio =
 
             distance /
-
             pinchStartDistance;
 
 
@@ -3217,10 +2958,9 @@ bookArea.addEventListener(
 
                 Math.min(
 
-                    2.5,
+                    2.75,
 
                     pinchStartZoom *
-
                     ratio
 
                 )
@@ -3246,19 +2986,15 @@ bookArea.addEventListener(
 
     function(event){
 
-
         if(
             event.touches.length <
             2
         ){
 
-
-            isPinching =
+            pinchActive =
                 false;
 
-
         }
-
 
     },
 
@@ -3276,10 +3012,8 @@ bookArea.addEventListener(
 
     function(){
 
-
-        isPinching =
+        pinchActive =
             false;
-
 
     }
 
@@ -3289,4 +3023,5 @@ bookArea.addEventListener(
 </script>
 
 </body>
+
 </html>
