@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=no">
 
 <title>Digital Catalog</title>
 
@@ -23,90 +23,73 @@ body{
     background:#111;
     font-family:Arial,sans-serif;
     overflow:hidden;
+    touch-action:none;
 }
 
 
-/* =================================
-   CATALOG SELECT
-================================= */
+/* =========================
+   HOME
+========================= */
 
 #catalogMenu{
-
     width:100%;
     height:100vh;
 
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     padding:24px;
 }
 
 .menuBox{
-
     width:min(430px,92vw);
-
     text-align:center;
-
-    color:white;
+    color:#fff;
 }
 
 .menuBox h1{
-
     margin:0 0 8px;
-
     font-size:30px;
 }
 
 .menuBox p{
-
     margin:0 0 30px;
-
     color:#999;
-
     font-size:14px;
 }
 
 .catalogButton{
-
     width:100%;
-
     min-height:78px;
 
     margin-bottom:16px;
 
     border:0;
-
     border-radius:14px;
 
     font-size:20px;
-
     font-weight:bold;
 
     cursor:pointer;
 }
 
 .rockman{
-
     background:#ffc400;
-
     color:#111;
 }
 
 .apn{
-
     background:#c9141c;
-
-    color:white;
+    color:#fff;
 }
 
 
-/* =================================
+/* =========================
    READER
-================================= */
+========================= */
 
 #reader{
-
     display:none;
 
     width:100%;
@@ -118,21 +101,19 @@ body{
 }
 
 
-/* =================================
+/* =========================
    PAGE COUNTER
-================================= */
+========================= */
 
 #pageCounter{
-
     position:fixed;
 
     top:12px;
-
     left:50%;
 
     transform:translateX(-50%);
 
-    z-index:200;
+    z-index:300;
 
     padding:8px 15px;
 
@@ -140,99 +121,147 @@ body{
 
     background:rgba(20,20,20,.82);
 
-    color:white;
+    color:#fff;
 
     font-size:14px;
 
     white-space:nowrap;
 
-    box-shadow:
-        0 3px 10px
-        rgba(0,0,0,.25);
+    pointer-events:none;
 }
 
 
-/* =================================
+/* =========================
    BOOK AREA
-================================= */
+========================= */
 
 #bookArea{
-
     position:absolute;
-
     inset:0;
 
     display:flex;
-
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
-    overflow:auto;
+    overflow:hidden;
 
     padding:
-        55px
-        50px
-        72px;
+        54px
+        15px
+        70px;
 
-    overscroll-behavior:none;
+    touch-action:none;
+
+    cursor:default;
 }
 
 
-#bookStage{
+/* =========================
+   PAN AREA
+========================= */
 
-    margin:auto;
+#panStage{
+    position:relative;
 
     display:flex;
-
     justify-content:center;
     align-items:center;
 
     transform-origin:center center;
 
-    transition:transform .15s ease;
+    will-change:transform;
+
+    touch-action:none;
+}
+
+
+/* =========================
+   BOOK STAGE
+========================= */
+
+#bookStage{
+    position:relative;
+
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+
+    width:max-content;
+    height:max-content;
 }
 
 
 #book{
-
     margin:auto;
+
+    /*
+    VERY IMPORTANT:
+    Disable native click/swipe
+    handling of StPageFlip.
+    */
+    pointer-events:none;
 }
 
 
-/* =================================
+/* =========================
    PAGE
-================================= */
+========================= */
 
 .page{
-
-    background:white;
-
+    background:#fff;
     overflow:hidden;
 }
 
-
 .page canvas{
-
-    width:100%;
-
-    height:100%;
-
     display:block;
+    width:100%;
+    height:100%;
 }
 
 
-/* =================================
-   PLACEHOLDER
-================================= */
+/* =========================
+   ONLY EDGE SWIPE ZONES
+========================= */
+
+.edgeZone{
+    position:absolute;
+
+    top:0;
+    bottom:0;
+
+    width:1cm;
+
+    z-index:100;
+
+    touch-action:none;
+
+    background:transparent;
+
+    cursor:grab;
+}
+
+.edgeZone:active{
+    cursor:grabbing;
+}
+
+#leftEdge{
+    left:0;
+}
+
+#rightEdge{
+    right:0;
+}
+
+
+/* =========================
+   PAGE PLACEHOLDER
+========================= */
 
 .pageLoading{
-
     width:100%;
-
     height:100%;
 
     background:
-
         linear-gradient(
             110deg,
             #e5e5e5 8%,
@@ -246,51 +275,40 @@ body{
         shimmer 1.3s linear infinite;
 }
 
-
 @keyframes shimmer{
-
     to{
-
         background-position-x:-200%;
     }
 }
 
 
-/* =================================
-   MAIN LOADER
-================================= */
+/* =========================
+   LOADER
+========================= */
 
 #initialLoader{
-
     position:absolute;
-
     inset:0;
 
-    z-index:300;
+    z-index:500;
 
     background:#111;
 
     display:flex;
-
     flex-direction:column;
 
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
     gap:14px;
 }
 
-
 .spinner{
-
     width:36px;
-
     height:36px;
 
-    border:
-        3px solid #444;
-
-    border-top-color:white;
+    border:3px solid #444;
+    border-top-color:#fff;
 
     border-radius:50%;
 
@@ -298,86 +316,33 @@ body{
         rotate .75s linear infinite;
 }
 
-
 @keyframes rotate{
-
     to{
-
         transform:rotate(360deg);
     }
 }
 
-
 .loaderText{
-
     color:#aaa;
-
     font-size:14px;
 }
 
 
-/* =================================
-   SIDE ARROWS
-================================= */
-
-.sideArrow{
-
-    position:fixed;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-    z-index:170;
-
-    width:44px;
-
-    height:70px;
-
-    border:0;
-
-    border-radius:10px;
-
-    background:
-        rgba(15,15,15,.55);
-
-    color:white;
-
-    font-size:34px;
-
-    cursor:pointer;
-}
-
-
-#prevSide{
-
-    left:8px;
-}
-
-
-#nextSide{
-
-    right:8px;
-}
-
-
-/* =================================
-   BOTTOM CONTROLS
-================================= */
+/* =========================
+   BOTTOM BAR
+========================= */
 
 #bottomBar{
-
     display:none;
 
     position:fixed;
 
     left:50%;
-
     bottom:12px;
 
     transform:translateX(-50%);
 
-    z-index:220;
+    z-index:350;
 
     background:#f4f4f4;
 
@@ -390,15 +355,11 @@ body{
         rgba(0,0,0,.35);
 }
 
-
 .bottomButton{
-
     width:56px;
-
     height:48px;
 
     border:0;
-
     border-right:1px solid #ddd;
 
     background:#f4f4f4;
@@ -410,37 +371,31 @@ body{
     cursor:pointer;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
+
+    touch-action:manipulation;
 }
 
-
 .bottomButton:last-child{
-
     border-right:0;
 }
 
-
 .bottomButton:hover{
-
     background:#e7e7e7;
 }
 
 
-/* =================================
+/* =========================
    PAGE PANEL
-================================= */
+========================= */
 
 #pagePanel{
-
     display:none;
 
     position:fixed;
 
     left:50%;
-
     bottom:72px;
 
     transform:translateX(-50%);
@@ -449,18 +404,18 @@ body{
 
     max-height:65vh;
 
-    z-index:210;
+    z-index:340;
 
     background:#1b1b1b;
 
-    border:
-        1px solid #444;
-
+    border:1px solid #444;
     border-radius:12px;
 
     padding:14px;
 
     overflow-y:auto;
+
+    touch-action:pan-y;
 
     box-shadow:
         0 10px 35px
@@ -469,11 +424,9 @@ body{
 
 
 #pageGrid{
-
     display:grid;
 
     grid-template-columns:
-
         repeat(
             auto-fill,
             minmax(95px,1fr)
@@ -484,48 +437,35 @@ body{
 
 
 .pageThumb{
-
     padding:5px;
 
     background:#292929;
 
-    border:
-        2px solid transparent;
-
+    border:2px solid transparent;
     border-radius:7px;
 
     cursor:pointer;
 
     transition:.15s;
-}
 
+    touch-action:manipulation;
+}
 
 .pageThumb:hover{
-
     background:#3a3a3a;
-
-    transform:scale(1.02);
 }
-
 
 .pageThumb.active{
-
-    border-color:white;
+    border-color:#fff;
 }
-
 
 .pageThumb canvas{
-
     width:100%;
-
     display:block;
-
-    background:white;
+    background:#fff;
 }
 
-
 .pageThumbLabel{
-
     padding-top:5px;
 
     text-align:center;
@@ -536,29 +476,22 @@ body{
 }
 
 
-/* =================================
+/* =========================
    MOBILE
-================================= */
+========================= */
 
 @media(max-width:700px){
 
-
     .menuBox h1{
-
         font-size:25px;
     }
 
-
     .catalogButton{
-
         min-height:68px;
-
         font-size:18px;
     }
 
-
     #pageCounter{
-
         top:7px;
 
         padding:6px 11px;
@@ -566,59 +499,32 @@ body{
         font-size:12px;
     }
 
-
     #bookArea{
-
         padding:
             42px
             2px
-            64px;
+            62px;
     }
 
-
-    .sideArrow{
-
-        width:32px;
-
-        height:52px;
-
-        font-size:26px;
-
-        background:
-            rgba(15,15,15,.38);
+    /*
+    Still approximately 1cm.
+    */
+    .edgeZone{
+        width:1cm;
     }
-
-
-    #prevSide{
-
-        left:0;
-    }
-
-
-    #nextSide{
-
-        right:0;
-    }
-
 
     #bottomBar{
-
         bottom:7px;
     }
 
-
     .bottomButton{
-
         width:50px;
-
         height:44px;
 
         font-size:22px;
     }
 
-
     #pagePanel{
-
         bottom:60px;
 
         width:96vw;
@@ -628,9 +534,7 @@ body{
         padding:10px;
     }
 
-
     #pageGrid{
-
         grid-template-columns:
             repeat(3,1fr);
 
@@ -643,180 +547,169 @@ body{
 
 </head>
 
-
 <body>
 
 
-<!-- =================================
-     SELECT
-================================= -->
+<!-- =========================
+     SELECT CATALOG
+========================= -->
 
 <div id="catalogMenu">
 
-<div class="menuBox">
+    <div class="menuBox">
 
-<h1>
-Digital Catalog
-</h1>
+        <h1>Digital Catalog</h1>
 
-<p>
-Select a catalog
-</p>
+        <p>Select a catalog</p>
 
 
-<button
-class="catalogButton rockman"
-onclick="openCatalog('Rockman.catalog.pdf')">
+        <button
+        class="catalogButton rockman"
+        onclick="openCatalog('Rockman.catalog.pdf')">
 
-ROCKMAN CATALOG
+            ROCKMAN CATALOG
 
-</button>
+        </button>
 
 
-<button
-class="catalogButton apn"
-onclick="openCatalog('Apn.catalog.pdf')">
+        <button
+        class="catalogButton apn"
+        onclick="openCatalog('Apn.catalog.pdf')">
 
-APN CATALOG
+            APN CATALOG
 
-</button>
+        </button>
 
-</div>
+    </div>
 
 </div>
 
 
 
-<!-- =================================
+<!-- =========================
      READER
-================================= -->
+========================= -->
 
 <div id="reader">
 
 
-<div id="pageCounter">
+    <div id="pageCounter">
 
-صفحه 1 از 1
+        صفحه 1 از 1
 
-</div>
-
-
-
-<button
-id="prevSide"
-class="sideArrow"
-onclick="previousPage()">
-
-‹
-
-</button>
+    </div>
 
 
-<button
-id="nextSide"
-class="sideArrow"
-onclick="nextPage()">
-
-›
-
-</button>
+    <div id="bookArea">
 
 
+        <div id="initialLoader">
 
-<div id="bookArea">
+            <div class="spinner"></div>
 
+            <div class="loaderText">
+                Opening catalog...
+            </div>
 
-<div id="initialLoader">
-
-
-<div class="spinner"></div>
-
-
-<div class="loaderText">
-
-Opening catalog...
-
-</div>
+        </div>
 
 
-</div>
+        <div id="panStage">
 
 
-
-<div id="bookStage">
-
-
-<div id="book"></div>
+            <div id="bookStage">
 
 
-</div>
+                <div id="book"></div>
+
+
+                <!--
+                ONLY THESE TWO AREAS
+                CAN TURN PAGES
+                -->
+
+                <div
+                id="leftEdge"
+                class="edgeZone">
+                </div>
+
+
+                <div
+                id="rightEdge"
+                class="edgeZone">
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
 
 
 </div>
 
 
-</div>
 
-
-
-<!-- =================================
-     PAGE THUMB PANEL
-================================= -->
+<!-- =========================
+     PAGE PANEL
+========================= -->
 
 <div id="pagePanel">
 
-<div id="pageGrid"></div>
+    <div id="pageGrid"></div>
 
 </div>
 
 
 
-<!-- =================================
+<!-- =========================
      BOTTOM BAR
-================================= -->
+========================= -->
 
 <div id="bottomBar">
 
 
-<button
-class="bottomButton"
-onclick="zoomOut()">
+    <button
+    class="bottomButton"
+    onclick="zoomOut()">
 
-−
+        −
 
-</button>
-
-
-<button
-class="bottomButton"
-onclick="togglePagePanel()"
-title="Pages">
-
-▦
-
-</button>
+    </button>
 
 
-<button
-class="bottomButton"
-onclick="zoomIn()">
+    <button
+    class="bottomButton"
+    onclick="togglePagePanel()">
 
-+
+        ▦
 
-</button>
+    </button>
+
+
+    <button
+    class="bottomButton"
+    onclick="zoomIn()">
+
+        +
+
+    </button>
 
 
 </div>
 
 
 
-<!-- =================================
+<!-- =========================
      SOUND
-================================= -->
+========================= -->
 
 <audio
 id="pageFlipAudio"
-src="./pageflip.mp3?v=50"
+src="./pageflip.mp3?v=70"
 preload="auto">
 </audio>
 
@@ -846,58 +739,75 @@ let pdfDocument = null;
 
 let pageFlip = null;
 
-
 let pageElements = [];
-
 
 let renderedPages =
     new Set();
 
-
 let renderingPages =
     new Set();
 
-
 let storedCanvases = {};
 
-
-let zoomValue = 1;
-
-
-let lastPageIndex = 0;
-
-
-let soundUnlocked = false;
-
-
-let stopBackgroundLoad = false;
-
-
-let pageRatio = 1.414;
-
-
 let thumbElements = [];
-
 
 let thumbnailsBuilt = false;
 
 
-/* PINCH */
+let zoomValue = 1;
+
+let panX = 0;
+
+let panY = 0;
+
+
+let lastPageIndex = 0;
+
+let soundUnlocked = false;
+
+let stopBackgroundLoad = false;
+
+let pageRatio = 1.414;
+
+
+/* =========================
+   PAN
+========================= */
+
+let dragging = false;
+
+let dragStartX = 0;
+
+let dragStartY = 0;
+
+let dragStartPanX = 0;
+
+let dragStartPanY = 0;
+
+
+/* =========================
+   PINCH
+========================= */
+
+let isPinching = false;
 
 let pinchStartDistance = 0;
 
 let pinchStartZoom = 1;
 
-let isPinching = false;
+
+/* =========================
+   EDGE SWIPE
+========================= */
+
+let edgeGesture = null;
 
 
-
-/* =================================
+/* =========================
    AUDIO
-================================= */
+========================= */
 
 async function unlockSound(){
-
 
     if(soundUnlocked)
         return;
@@ -908,6 +818,10 @@ async function unlockSound(){
         document.getElementById(
             "pageFlipAudio"
         );
+
+
+    if(!audio)
+        return;
 
 
     try{
@@ -932,7 +846,6 @@ async function unlockSound(){
 
 
     }
-
 
     catch(e){
 
@@ -978,9 +891,9 @@ function playFlipSound(){
 
 
 
-/* =================================
+/* =========================
    OPEN CATALOG
-================================= */
+========================= */
 
 async function openCatalog(pdfFile){
 
@@ -989,6 +902,10 @@ async function openCatalog(pdfFile){
 
 
     zoomValue = 1;
+
+    panX = 0;
+
+    panY = 0;
 
 
     stopBackgroundLoad =
@@ -1000,12 +917,10 @@ async function openCatalog(pdfFile){
 
     renderedPages.clear();
 
-
     renderingPages.clear();
 
 
     pageElements = [];
-
 
     thumbElements = [];
 
@@ -1014,7 +929,7 @@ async function openCatalog(pdfFile){
         false;
 
 
-    applyZoom();
+    applyTransform();
 
 
 
@@ -1109,7 +1024,7 @@ async function openCatalog(pdfFile){
 
 
         /*
-        Cover first.
+        ONLY COVER FIRST
         */
 
 
@@ -1140,7 +1055,7 @@ async function openCatalog(pdfFile){
             );
 
 
-        },50);
+        },40);
 
 
 
@@ -1154,7 +1069,6 @@ async function openCatalog(pdfFile){
 
 
     }
-
 
     catch(error){
 
@@ -1170,9 +1084,9 @@ async function openCatalog(pdfFile){
 
 
 
-/* =================================
+/* =========================
    CREATE PAGES
-================================= */
+========================= */
 
 function createPages(){
 
@@ -1250,9 +1164,9 @@ function createPages(){
 
 
 
-/* =================================
+/* =========================
    CREATE BOOK
-================================= */
+========================= */
 
 function createBook(){
 
@@ -1306,7 +1220,6 @@ function createBook(){
                     "stretch",
 
 
-
                 minWidth:
 
                     mobile
@@ -1319,7 +1232,6 @@ function createBook(){
                     mobile
                     ? 520
                     : 720,
-
 
 
                 minHeight:
@@ -1339,7 +1251,6 @@ function createBook(){
                     ),
 
 
-
                 maxHeight:
 
                     Math.round(
@@ -1357,15 +1268,12 @@ function createBook(){
                     ),
 
 
-
                 showCover:
                     true,
 
 
-
                 usePortrait:
                     mobile,
-
 
 
                 startPage:
@@ -1388,12 +1296,17 @@ function createBook(){
                     900,
 
 
+                /*
+                Disable native mobile
+                page gestures.
+                */
+
                 mobileScrollSupport:
-                    false,
+                    true,
 
 
                 showPageCorners:
-                    true
+                    false
 
 
             }
@@ -1409,6 +1322,19 @@ function createBook(){
         )
 
     );
+
+
+
+    /*
+    Extra protection:
+    user cannot interact directly
+    with generated flipbook DOM.
+    */
+
+    document.getElementById(
+        "book"
+    ).style.pointerEvents =
+        "none";
 
 
 
@@ -1446,6 +1372,20 @@ function createBook(){
             }
 
 
+            /*
+            Reset pan when page changes.
+            Keep zoom level.
+            */
+
+
+            panX = 0;
+
+            panY = 0;
+
+
+            applyTransform();
+
+
             updatePageCounter();
 
 
@@ -1465,9 +1405,371 @@ function createBook(){
 
 
 
-/* =================================
-   PAGE COUNTER
-================================= */
+/* =========================
+   EDGE SWIPE ONLY
+========================= */
+
+const leftEdge =
+
+    document.getElementById(
+        "leftEdge"
+    );
+
+
+const rightEdge =
+
+    document.getElementById(
+        "rightEdge"
+    );
+
+
+
+function startEdgeGesture(
+    side,
+    event
+){
+
+
+    /*
+    Single finger / mouse only.
+    */
+
+
+    if(
+        event.pointerType === "touch" &&
+        !event.isPrimary
+    )
+        return;
+
+
+    edgeGesture = {
+
+
+        side:
+            side,
+
+
+        id:
+            event.pointerId,
+
+
+        startX:
+            event.clientX,
+
+
+        startY:
+            event.clientY,
+
+
+        moved:
+            false
+
+
+    };
+
+
+    event.currentTarget
+        .setPointerCapture(
+            event.pointerId
+        );
+
+
+    event.preventDefault();
+
+}
+
+
+
+function moveEdgeGesture(event){
+
+
+    if(
+        !edgeGesture ||
+        edgeGesture.id !==
+        event.pointerId
+    )
+        return;
+
+
+    const dx =
+
+        event.clientX -
+
+        edgeGesture.startX;
+
+
+    const dy =
+
+        event.clientY -
+
+        edgeGesture.startY;
+
+
+
+    if(
+        Math.abs(dx) > 5 ||
+        Math.abs(dy) > 5
+    ){
+
+
+        edgeGesture.moved =
+            true;
+
+
+    }
+
+
+    event.preventDefault();
+
+}
+
+
+
+async function endEdgeGesture(event){
+
+
+    if(
+        !edgeGesture ||
+        edgeGesture.id !==
+        event.pointerId
+    )
+        return;
+
+
+
+    const dx =
+
+        event.clientX -
+
+        edgeGesture.startX;
+
+
+    const dy =
+
+        event.clientY -
+
+        edgeGesture.startY;
+
+
+    const side =
+
+        edgeGesture.side;
+
+
+    const moved =
+
+        edgeGesture.moved;
+
+
+
+    edgeGesture =
+        null;
+
+
+
+    /*
+    TAP = NOTHING.
+
+    Needs a deliberate horizontal drag.
+    */
+
+
+    if(!moved)
+        return;
+
+
+
+    /*
+    Ignore mostly vertical movement.
+    */
+
+
+    if(
+        Math.abs(dx) <
+        Math.abs(dy) * 1.15
+    )
+        return;
+
+
+
+    /*
+    Minimum swipe distance.
+    */
+
+
+    if(
+        Math.abs(dx) < 28
+    )
+        return;
+
+
+
+    await unlockSound();
+
+
+
+    /*
+    RIGHT EDGE:
+    drag LEFT -> NEXT
+    */
+
+
+    if(
+        side === "right" &&
+        dx < -28
+    ){
+
+
+        try{
+
+
+            pageFlip.flipNext(
+                "top"
+            );
+
+
+        }
+
+        catch(e){
+
+
+            pageFlip.flipNext();
+
+
+        }
+
+
+        return;
+
+    }
+
+
+
+    /*
+    LEFT EDGE:
+    drag RIGHT -> PREVIOUS
+    */
+
+
+    if(
+        side === "left" &&
+        dx > 28
+    ){
+
+
+        try{
+
+
+            pageFlip.flipPrev(
+                "top"
+            );
+
+
+        }
+
+        catch(e){
+
+
+            pageFlip.flipPrev();
+
+
+        }
+
+
+    }
+
+}
+
+
+
+leftEdge.addEventListener(
+
+    "pointerdown",
+
+    event =>
+        startEdgeGesture(
+            "left",
+            event
+        )
+
+);
+
+
+rightEdge.addEventListener(
+
+    "pointerdown",
+
+    event =>
+        startEdgeGesture(
+            "right",
+            event
+        )
+
+);
+
+
+leftEdge.addEventListener(
+
+    "pointermove",
+
+    moveEdgeGesture
+
+);
+
+
+rightEdge.addEventListener(
+
+    "pointermove",
+
+    moveEdgeGesture
+
+);
+
+
+leftEdge.addEventListener(
+
+    "pointerup",
+
+    endEdgeGesture
+
+);
+
+
+rightEdge.addEventListener(
+
+    "pointerup",
+
+    endEdgeGesture
+
+);
+
+
+leftEdge.addEventListener(
+
+    "pointercancel",
+
+    ()=>{
+        edgeGesture = null;
+    }
+
+);
+
+
+rightEdge.addEventListener(
+
+    "pointercancel",
+
+    ()=>{
+        edgeGesture = null;
+    }
+
+);
+
+
+
+/* =========================
+   COUNTER
+========================= */
 
 function updatePageCounter(){
 
@@ -1511,9 +1813,13 @@ function updatePageCounter(){
 
 
         const second =
+
             Math.min(
+
                 first + 1,
+
                 total
+
             );
 
 
@@ -1535,7 +1841,6 @@ function updatePageCounter(){
 
 
     }
-
 
     else{
 
@@ -1559,9 +1864,9 @@ function updatePageCounter(){
 
 
 
-/* =================================
+/* =========================
    PAGE PANEL
-================================= */
+========================= */
 
 async function togglePagePanel(){
 
@@ -1612,16 +1917,15 @@ async function togglePagePanel(){
 
 
 
-/* =================================
-   BUILD THUMBNAILS
-================================= */
+/* =========================
+   BUILD THUMBS
+========================= */
 
 async function buildThumbnails(){
 
 
     if(!pdfDocument)
         return;
-
 
 
     const grid =
@@ -1654,17 +1958,11 @@ async function buildThumbnails(){
             "pageThumb";
 
 
-        item.dataset.page =
-            i;
-
-
-
         const canvas =
 
             document.createElement(
                 "canvas"
             );
-
 
 
         const label =
@@ -1733,7 +2031,6 @@ async function buildThumbnails(){
                 .getPage(i);
 
 
-
             const viewport =
 
                 page.getViewport({
@@ -1741,7 +2038,6 @@ async function buildThumbnails(){
                     scale:.18
 
                 });
-
 
 
             canvas.width =
@@ -1756,7 +2052,6 @@ async function buildThumbnails(){
                 Math.round(
                     viewport.height
                 );
-
 
 
             await page.render({
@@ -1775,13 +2070,10 @@ async function buildThumbnails(){
 
         }
 
-
         catch(e){}
 
 
-
         await sleep(15);
-
 
     }
 
@@ -1789,9 +2081,9 @@ async function buildThumbnails(){
 
 
 
-/* =================================
+/* =========================
    ACTIVE THUMB
-================================= */
+========================= */
 
 function updateActiveThumbnail(){
 
@@ -1803,12 +2095,10 @@ function updateActiveThumbnail(){
         return;
 
 
-
     const index =
 
         pageFlip
         .getCurrentPageIndex();
-
 
 
     thumbElements.forEach(
@@ -1831,7 +2121,6 @@ function updateActiveThumbnail(){
         }
 
     );
-
 
 
     const active =
@@ -1857,9 +2146,9 @@ function updateActiveThumbnail(){
 
 
 
-/* =================================
+/* =========================
    GO TO PAGE
-================================= */
+========================= */
 
 function goToPage(index){
 
@@ -1884,7 +2173,6 @@ function goToPage(index){
 
     }
 
-
     catch(e){
 
 
@@ -1899,9 +2187,9 @@ function goToPage(index){
 
 
 
-/* =================================
+/* =========================
    RENDER PAGE
-================================= */
+========================= */
 
 async function renderPage(number){
 
@@ -1952,11 +2240,9 @@ async function renderPage(number){
             );
 
 
-
         const mobile =
 
             window.innerWidth <= 700;
-
 
 
         const pixelRatio =
@@ -1970,13 +2256,11 @@ async function renderPage(number){
             );
 
 
-
         const scale =
 
             mobile
             ? 1.12
             : 1.23;
-
 
 
         const viewport =
@@ -1992,13 +2276,11 @@ async function renderPage(number){
             });
 
 
-
         const canvas =
 
             document.createElement(
                 "canvas"
             );
-
 
 
         const context =
@@ -2012,7 +2294,6 @@ async function renderPage(number){
                 }
 
             );
-
 
 
         canvas.width =
@@ -2029,7 +2310,6 @@ async function renderPage(number){
             );
 
 
-
         await page.render({
 
             canvasContext:
@@ -2041,11 +2321,9 @@ async function renderPage(number){
         }).promise;
 
 
-
         storedCanvases[
             number
         ] = canvas;
-
 
 
         const target =
@@ -2053,7 +2331,6 @@ async function renderPage(number){
             pageElements[
                 number - 1
             ];
-
 
 
         if(target){
@@ -2095,14 +2372,12 @@ async function renderPage(number){
         }
 
 
-
         renderedPages.add(
             number
         );
 
 
     }
-
 
     catch(error){
 
@@ -2113,7 +2388,6 @@ async function renderPage(number){
 
 
     }
-
 
     finally{
 
@@ -2129,9 +2403,9 @@ async function renderPage(number){
 
 
 
-/* =================================
+/* =========================
    PRELOAD
-================================= */
+========================= */
 
 function preloadAround(page){
 
@@ -2175,9 +2449,9 @@ function preloadAround(page){
 
 
 
-/* =================================
-   BACKGROUND LOAD
-================================= */
+/* =========================
+   BACKGROUND
+========================= */
 
 async function backgroundLoad(){
 
@@ -2243,97 +2517,25 @@ function sleep(ms){
 
 
 
-/* =================================
-   NEXT
-================================= */
-
-async function nextPage(){
-
-
-    if(!pageFlip)
-        return;
-
-
-    await unlockSound();
-
-
-    try{
-
-
-        pageFlip.flipNext(
-            "top"
-        );
-
-
-    }
-
-
-    catch(e){
-
-
-        pageFlip.flipNext();
-
-
-    }
-
-}
-
-
-
-/* =================================
-   PREVIOUS
-================================= */
-
-async function previousPage(){
-
-
-    if(!pageFlip)
-        return;
-
-
-    await unlockSound();
-
-
-    try{
-
-
-        pageFlip.flipPrev(
-            "top"
-        );
-
-
-    }
-
-
-    catch(e){
-
-
-        pageFlip.flipPrev();
-
-
-    }
-
-}
-
-
-
-/* =================================
-   ZOOM
-================================= */
+/* =========================
+   ZOOM BUTTONS
+========================= */
 
 function zoomIn(){
 
 
-    if(
-        zoomValue >= 2.5
-    )
-        return;
+    zoomValue =
+
+        Math.min(
+
+            2.5,
+
+            zoomValue + .25
+
+        );
 
 
-    zoomValue += .25;
-
-
-    applyZoom();
+    applyTransform();
 
 }
 
@@ -2342,43 +2544,74 @@ function zoomIn(){
 function zoomOut(){
 
 
-    if(
-        zoomValue <= .75
-    )
-        return;
-
-
-    zoomValue -= .25;
-
-
-    applyZoom();
-
-}
-
-
-
-function applyZoom(){
-
-
     zoomValue =
 
         Math.max(
 
             .75,
 
-            Math.min(
-                2.5,
-                zoomValue
-            )
+            zoomValue - .25
 
         );
 
 
+    if(
+        zoomValue <= 1
+    ){
+
+
+        panX = 0;
+
+        panY = 0;
+
+
+    }
+
+
+    applyTransform();
+
+}
+
+
+
+/* =========================
+   TRANSFORM
+========================= */
+
+function applyTransform(){
+
+
+    /*
+    Stop pan when normal size.
+    */
+
+
+    if(
+        zoomValue <= 1
+    ){
+
+
+        panX = 0;
+
+        panY = 0;
+
+
+    }
+
+
     document.getElementById(
-        "bookStage"
+        "panStage"
     ).style.transform =
 
-        "scale(" +
+        "translate3d(" +
+
+        panX +
+
+        "px," +
+
+        panY +
+
+        "px,0) scale(" +
 
         zoomValue +
 
@@ -2388,9 +2621,9 @@ function applyZoom(){
 
 
 
-/* =================================
-   PINCH ZOOM
-================================= */
+/* =========================
+   MOUSE / ONE-FINGER PAN
+========================= */
 
 const bookArea =
 
@@ -2400,17 +2633,186 @@ const bookArea =
 
 
 
+bookArea.addEventListener(
+
+    "pointerdown",
+
+    function(event){
+
+
+        /*
+        Edge zones handle themselves.
+        */
+
+
+        if(
+            event.target.closest(
+                ".edgeZone"
+            )
+        )
+            return;
+
+
+        /*
+        No pan needed at normal size.
+        */
+
+
+        if(
+            zoomValue <= 1
+        )
+            return;
+
+
+        /*
+        Ignore extra touch pointers,
+        because they may become pinch.
+        */
+
+
+        if(
+            event.pointerType ===
+            "touch" &&
+            !event.isPrimary
+        )
+            return;
+
+
+        dragging = true;
+
+
+        dragStartX =
+            event.clientX;
+
+
+        dragStartY =
+            event.clientY;
+
+
+        dragStartPanX =
+            panX;
+
+
+        dragStartPanY =
+            panY;
+
+
+        try{
+
+
+            bookArea
+            .setPointerCapture(
+                event.pointerId
+            );
+
+
+        }
+
+        catch(e){}
+
+
+        event.preventDefault();
+
+    }
+
+);
+
+
+
+bookArea.addEventListener(
+
+    "pointermove",
+
+    function(event){
+
+
+        if(
+            !dragging ||
+            isPinching
+        )
+            return;
+
+
+        panX =
+
+            dragStartPanX +
+
+            (
+                event.clientX -
+                dragStartX
+            );
+
+
+        panY =
+
+            dragStartPanY +
+
+            (
+                event.clientY -
+                dragStartY
+            );
+
+
+        applyTransform();
+
+
+        event.preventDefault();
+
+    }
+
+);
+
+
+
+bookArea.addEventListener(
+
+    "pointerup",
+
+    function(){
+
+
+        dragging =
+            false;
+
+
+    }
+
+);
+
+
+
+bookArea.addEventListener(
+
+    "pointercancel",
+
+    function(){
+
+
+        dragging =
+            false;
+
+
+    }
+
+);
+
+
+
+/* =========================
+   PINCH ZOOM
+========================= */
+
 function touchDistance(touches){
 
 
-    const x =
+    const dx =
 
         touches[0].clientX -
 
         touches[1].clientX;
 
 
-    const y =
+    const dy =
 
         touches[0].clientY -
 
@@ -2419,9 +2821,9 @@ function touchDistance(touches){
 
     return Math.sqrt(
 
-        x*x +
+        dx*dx +
 
-        y*y
+        dy*dy
 
     );
 
@@ -2436,9 +2838,26 @@ bookArea.addEventListener(
     function(event){
 
 
+        /*
+        Don't pinch from edge zones.
+        */
+
+
+        if(
+            event.target.closest(
+                ".edgeZone"
+            )
+        )
+            return;
+
+
         if(
             event.touches.length === 2
         ){
+
+
+            dragging =
+                false;
 
 
             isPinching =
@@ -2458,9 +2877,7 @@ bookArea.addEventListener(
 
             event.preventDefault();
 
-
         }
-
 
     },
 
@@ -2496,18 +2913,33 @@ bookArea.addEventListener(
             );
 
 
+        const ratio =
+
+            distance /
+
+            pinchStartDistance;
+
+
         zoomValue =
 
-            pinchStartZoom *
+            Math.max(
 
-            (
-                distance /
-                pinchStartDistance
+                .75,
+
+                Math.min(
+
+                    2.5,
+
+                    pinchStartZoom *
+
+                    ratio
+
+                )
+
             );
 
 
-        applyZoom();
-
+        applyTransform();
 
     },
 
@@ -2542,6 +2974,23 @@ bookArea.addEventListener(
 
     {
         passive:false
+    }
+
+);
+
+
+
+bookArea.addEventListener(
+
+    "touchcancel",
+
+    function(){
+
+
+        isPinching =
+            false;
+
+
     }
 
 );
