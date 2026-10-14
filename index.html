@@ -22,8 +22,11 @@ body{
     margin:0;
     width:100%;
     height:100%;
+
     background:#111;
+
     font-family:Arial,sans-serif;
+
     overflow:hidden;
 }
 
@@ -47,6 +50,7 @@ body{
     width:min(430px,92vw);
 
     text-align:center;
+
     color:#fff;
 }
 
@@ -78,7 +82,7 @@ body{
     border:0;
     border-radius:14px;
 
-    font-size:21px;
+    font-size:22px;
     font-weight:bold;
 
     cursor:pointer;
@@ -87,6 +91,8 @@ body{
     align-items:center;
     justify-content:center;
 
+    letter-spacing:.6px;
+
     transition:
         transform .15s ease,
         opacity .15s ease;
@@ -94,37 +100,6 @@ body{
 
 .catalogButton:active{
     transform:scale(.98);
-}
-
-.catalogBtnInner{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    gap:13px;
-}
-
-.catalogBtnIcon{
-    width:32px;
-    height:32px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    flex:0 0 auto;
-}
-
-.catalogBtnIcon svg{
-    width:30px;
-    height:30px;
-
-    fill:none;
-    stroke:currentColor;
-
-    stroke-width:1.9;
-    stroke-linecap:round;
-    stroke-linejoin:round;
 }
 
 .rockman{
@@ -174,13 +149,7 @@ body{
 
     border-radius:8px;
 
-    background:
-        rgba(
-            20,
-            20,
-            20,
-            .82
-        );
+    background:rgba(20,20,20,.82);
 
     color:#fff;
 
@@ -211,16 +180,9 @@ body{
     height:70px;
 
     border:0;
-
     border-radius:10px;
 
-    background:
-        rgba(
-            15,
-            15,
-            15,
-            .60
-        );
+    background:rgba(15,15,15,.60);
 
     color:#fff;
 
@@ -240,13 +202,7 @@ body{
 }
 
 .sideArrow:hover{
-    background:
-        rgba(
-            40,
-            40,
-            40,
-            .92
-        );
+    background:rgba(40,40,40,.92);
 }
 
 .sideArrow:active{
@@ -301,9 +257,7 @@ body{
     align-items:center;
     justify-content:center;
 
-    transform-origin:
-        center
-        center;
+    transform-origin:center center;
 
     will-change:transform;
 
@@ -337,7 +291,7 @@ body{
 
     /*
     خود StPageFlip مستقیماً
-    از کاربر gesture نمی‌گیرد
+    gesture نگیرد.
     */
 
     pointer-events:none;
@@ -402,17 +356,12 @@ body{
 
         linear-gradient(
             110deg,
-
             #e5e5e5 8%,
-
             #f5f5f5 18%,
-
             #e5e5e5 33%
         );
 
-    background-size:
-        200%
-        100%;
+    background-size:200% 100%;
 
     animation:
         shimmer
@@ -424,8 +373,7 @@ body{
 @keyframes shimmer{
 
     to{
-        background-position-x:
-            -200%;
+        background-position-x:-200%;
     }
 
 }
@@ -458,10 +406,7 @@ body{
     width:36px;
     height:36px;
 
-    border:
-        3px
-        solid
-        #444;
+    border:3px solid #444;
 
     border-top-color:#fff;
 
@@ -477,8 +422,7 @@ body{
 @keyframes rotate{
 
     to{
-        transform:
-            rotate(360deg);
+        transform:rotate(360deg);
     }
 
 }
@@ -502,8 +446,7 @@ body{
     left:50%;
     bottom:12px;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
     z-index:950;
 
@@ -517,12 +460,7 @@ body{
         0
         5px
         18px
-        rgba(
-            0,
-            0,
-            0,
-            .35
-        );
+        rgba(0,0,0,.35);
 }
 
 .bottomButton{
@@ -531,10 +469,7 @@ body{
 
     border:0;
 
-    border-right:
-        1px
-        solid
-        #ddd;
+    border-right:1px solid #ddd;
 
     background:#f4f4f4;
 
@@ -581,14 +516,9 @@ body{
     left:50%;
     bottom:72px;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
-    width:
-        min(
-            900px,
-            94vw
-        );
+    width:min(900px,94vw);
 
     max-height:65vh;
 
@@ -596,10 +526,7 @@ body{
 
     background:#1b1b1b;
 
-    border:
-        1px
-        solid
-        #444;
+    border:1px solid #444;
 
     border-radius:12px;
 
@@ -616,12 +543,7 @@ body{
         0
         10px
         35px
-        rgba(
-            0,
-            0,
-            0,
-            .5
-        );
+        rgba(0,0,0,.5);
 }
 
 #pageGrid{
@@ -630,10 +552,7 @@ body{
     grid-template-columns:
         repeat(
             auto-fill,
-            minmax(
-                95px,
-                1fr
-            )
+            minmax(95px,1fr)
         );
 
     gap:12px;
@@ -644,10 +563,7 @@ body{
 
     background:#292929;
 
-    border:
-        2px
-        solid
-        transparent;
+    border:2px solid transparent;
 
     border-radius:7px;
 
@@ -666,7 +582,6 @@ body{
 
 .pageThumb canvas{
     width:100%;
-
     height:auto;
 
     display:block;
@@ -698,25 +613,13 @@ body{
     .catalogButton{
         min-height:68px;
 
-        font-size:19px;
-    }
-
-    .catalogBtnIcon{
-        width:28px;
-        height:28px;
-    }
-
-    .catalogBtnIcon svg{
-        width:26px;
-        height:26px;
+        font-size:20px;
     }
 
     #pageCounter{
         top:7px;
 
-        padding:
-            6px
-            11px;
+        padding:6px 11px;
 
         font-size:12px;
     }
@@ -736,13 +639,7 @@ body{
 
         font-size:28px;
 
-        background:
-            rgba(
-                15,
-                15,
-                15,
-                .52
-            );
+        background:rgba(15,15,15,.52);
     }
 
     #prevSide{
@@ -780,11 +677,7 @@ body{
 
     #pageGrid{
         grid-template-columns:
-
-            repeat(
-                3,
-                1fr
-            );
+            repeat(3,1fr);
 
         gap:9px;
     }
@@ -800,7 +693,7 @@ body{
 
 
 <!-- =========================
-     HOME MENU
+     HOME
 ========================= -->
 
 <div id="catalogMenu">
@@ -819,8 +712,6 @@ body{
 
 
 
-        <!-- ROCKMAN -->
-
         <button
         class="catalogButton rockman"
         onclick="
@@ -830,95 +721,11 @@ body{
             )
         ">
 
-
-            <span class="catalogBtnInner">
-
-
-                <span
-                class="catalogBtnIcon"
-                aria-hidden="true">
-
-
-                    <!-- PLIERS ICON -->
-
-                    <svg
-                    viewBox="0 0 24 24">
-
-
-                        <circle
-                        cx="12"
-                        cy="11.5"
-                        r="1.7">
-                        </circle>
-
-
-                        <path
-                        d="
-                        M10.8 10.2
-                        L6.2 5.6
-
-                        C5.3 4.7
-                        5.3 3.3
-                        6.2 2.4
-                        ">
-                        </path>
-
-
-                        <path
-                        d="
-                        M13.2 10.2
-                        L17.8 5.6
-
-                        C18.7 4.7
-                        18.7 3.3
-                        17.8 2.4
-                        ">
-                        </path>
-
-
-                        <path
-                        d="
-                        M10.8 12.8
-                        L5.4 18.2
-
-                        C4.3 19.3
-                        4.3 21
-                        5.4 22
-                        ">
-                        </path>
-
-
-                        <path
-                        d="
-                        M13.2 12.8
-                        L18.6 18.2
-
-                        C19.7 19.3
-                        19.7 21
-                        18.6 22
-                        ">
-                        </path>
-
-
-                    </svg>
-
-
-                </span>
-
-
-                <span>
-                    ROCKMAN
-                </span>
-
-
-            </span>
-
+            ROCKMAN
 
         </button>
 
 
-
-        <!-- APN -->
 
         <button
         class="catalogButton apn"
@@ -929,84 +736,7 @@ body{
             )
         ">
 
-
-            <span class="catalogBtnInner">
-
-
-                <span
-                class="catalogBtnIcon"
-                aria-hidden="true">
-
-
-                    <!-- DRILL ICON -->
-
-                    <svg
-                    viewBox="0 0 24 24">
-
-
-                        <path
-                        d="
-                        M3 8
-                        H13
-
-                        C15.5 8
-                        17 9
-                        18 10.5
-
-                        L19.5 12
-
-                        L18 13.5
-
-                        C17 15
-                        15.5 16
-                        13 16
-
-                        H3
-
-                        Z
-                        ">
-                        </path>
-
-
-                        <path
-                        d="
-                        M10 16
-                        V21
-                        H14
-                        V16
-                        ">
-                        </path>
-
-
-                        <path
-                        d="
-                        M19.5 11
-                        H22.5
-                        ">
-                        </path>
-
-
-                        <path
-                        d="
-                        M22.5 10
-                        V12
-                        ">
-                        </path>
-
-
-                    </svg>
-
-
-                </span>
-
-
-                <span>
-                    APN
-                </span>
-
-
-            </span>
-
+            APN
 
         </button>
 
@@ -1024,8 +754,6 @@ body{
 <div id="reader">
 
 
-    <!-- LEFT ARROW -->
-
     <button
     id="prevSide"
     class="sideArrow"
@@ -1037,7 +765,6 @@ body{
     </button>
 
 
-    <!-- RIGHT ARROW -->
 
     <button
     id="nextSide"
@@ -1051,8 +778,6 @@ body{
 
 
 
-    <!-- COUNTER -->
-
     <div id="pageCounter">
 
         صفحه 1 از 1
@@ -1061,12 +786,8 @@ body{
 
 
 
-    <!-- BOOK AREA -->
-
     <div id="bookArea">
 
-
-        <!-- LOADER -->
 
         <div id="initialLoader">
 
@@ -1084,8 +805,6 @@ body{
 
 
 
-        <!-- PAN / ZOOM -->
-
         <div id="panStage">
 
 
@@ -1095,9 +814,6 @@ body{
                 <div id="book">
                 </div>
 
-
-
-                <!-- ONLY SWIPE AREAS -->
 
 
                 <div
@@ -1131,10 +847,8 @@ body{
 
 <div id="pagePanel">
 
-
     <div id="pageGrid">
     </div>
-
 
 </div>
 
@@ -1147,8 +861,6 @@ body{
 <div id="bottomBar">
 
 
-    <!-- ZOOM OUT -->
-
     <button
     class="bottomButton"
     onclick="zoomOut()"
@@ -1160,8 +872,6 @@ body{
 
 
 
-    <!-- ALL PAGES -->
-
     <button
     class="bottomButton"
     onclick="togglePagePanel()"
@@ -1172,8 +882,6 @@ body{
     </button>
 
 
-
-    <!-- SWITCH APN / ROCKMAN -->
 
     <button
     id="switchButton"
@@ -1187,8 +895,6 @@ body{
     </button>
 
 
-
-    <!-- ZOOM IN -->
 
     <button
     class="bottomButton"
@@ -1205,7 +911,7 @@ body{
 
 
 <!-- =========================
-     PAGE FLIP SOUND
+     SOUND
 ========================= -->
 
 <audio
@@ -1216,19 +922,10 @@ preload="auto">
 
 
 
-<!-- =========================
-     PDF JS
-========================= -->
-
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js">
 </script>
 
-
-
-<!-- =========================
-     PAGE FLIP
-========================= -->
 
 <script
 src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js">
@@ -1313,6 +1010,18 @@ let soundUnlocked =
     false;
 
 
+/*
+لود ترتیبی صفحات
+*/
+
+let sequentialLoadToken =
+    0;
+
+
+let sequentialLoading =
+    false;
+
+
 
 /* =========================
    PAN VARIABLES
@@ -1381,7 +1090,6 @@ async function unlockSound(){
     }
 
 
-
     const audio =
 
         document.getElementById(
@@ -1389,11 +1097,9 @@ async function unlockSound(){
         );
 
 
-
     if(!audio){
         return;
     }
-
 
 
     try{
@@ -1447,11 +1153,9 @@ function playFlipSound(){
         );
 
 
-
     if(!source){
         return;
     }
-
 
 
     const audio =
@@ -1461,15 +1165,12 @@ function playFlipSound(){
         );
 
 
-
     audio.currentTime =
         0;
 
 
-
     audio.volume =
         .8;
-
 
 
     audio.play()
@@ -1484,6 +1185,19 @@ function playFlipSound(){
 ========================= */
 
 function destroyCurrentBook(){
+
+
+    /*
+    لود ترتیبی قبلی متوقف شود
+    */
+
+
+    sequentialLoadToken++;
+
+
+    sequentialLoading =
+        false;
+
 
 
     if(pageFlip){
@@ -1630,13 +1344,11 @@ async function openCatalog(
         );
 
 
-
     const reader =
 
         document.getElementById(
             "reader"
         );
-
 
 
     const bottomBar =
@@ -1646,13 +1358,11 @@ async function openCatalog(
         );
 
 
-
     const pagePanel =
 
         document.getElementById(
             "pagePanel"
         );
-
 
 
     const loader =
@@ -1706,9 +1416,9 @@ async function openCatalog(
 
     /*
     صدا آماده شود،
-    بدون اینکه باز شدن PDF
-    منتظر آن بماند.
+    ولی لود PDF منتظرش نماند.
     */
+
 
     unlockSound();
 
@@ -1717,17 +1427,16 @@ async function openCatalog(
     try{
 
 
-        const loadedPDF =
+        const loadingTask =
 
-            await pdfjsLib
-            .getDocument({
+            pdfjsLib.getDocument({
 
                 url:
                     pdfFile,
 
 
                 /*
-                Range فعال
+                اجازه Range Request
                 */
 
                 disableRange:
@@ -1735,7 +1444,7 @@ async function openCatalog(
 
 
                 /*
-                Stream فعال
+                اجازه Streaming
                 */
 
                 disableStream:
@@ -1743,23 +1452,21 @@ async function openCatalog(
 
 
                 /*
-                کل PDF از اول
-                Auto Fetch نشود.
+                کل فایل بدون نیاز
+                از اول Fetch نشود
                 */
 
                 disableAutoFetch:
                     true
 
-            })
-            .promise;
+            });
 
 
 
-        /*
-        اگر کاربر کاتالوگ را
-        عوض کرده باشد،
-        این Load قدیمی کنار گذاشته شود.
-        */
+        const loadedPDF =
+
+            await loadingTask.promise;
+
 
 
         if(
@@ -1770,15 +1477,11 @@ async function openCatalog(
 
             try{
 
-
                 loadedPDF.destroy();
-
 
             }
 
-
             catch(e){}
-
 
 
             return;
@@ -1793,7 +1496,7 @@ async function openCatalog(
 
 
         /*
-        فقط صفحه 1.
+        فقط متادیتا و صفحه اول.
         */
 
 
@@ -1834,14 +1537,19 @@ async function openCatalog(
 
 
 
+        /*
+        اسکلت همه صفحات ساخته می‌شود
+        ولی خود صفحات Render نمی‌شوند.
+        */
+
+
         createPages();
 
 
 
         /*
-        صفحه اول واقعی PDF
-        قبل از نمایش کتاب
-        رندر شود.
+        مهم:
+        اول فقط صفحه 1.
         */
 
 
@@ -1869,7 +1577,7 @@ async function openCatalog(
 
 
         /*
-        کتاب آماده است.
+        همینجا جلد نمایش داده می‌شود.
         */
 
 
@@ -1879,8 +1587,8 @@ async function openCatalog(
 
 
         /*
-        فقط چند صفحه نزدیک
-        بعد از باز شدن آماده شوند.
+        ابتدا صفحه 2 و 3
+        برای ورق اول سریع آماده شوند.
         */
 
 
@@ -1893,15 +1601,41 @@ async function openCatalog(
             ){
 
 
-                preloadAround(
-                    1
+                preloadPriorityPages(
+                    2
                 );
 
 
             }
 
 
-        },60);
+        },20);
+
+
+
+        /*
+        سپس کل صفحات
+        به ترتیب 2،3،4،5...
+        یکی یکی در پس‌زمینه.
+        */
+
+
+        setTimeout(()=>{
+
+
+            if(
+                requestId ===
+                openRequestId
+            ){
+
+
+                startSequentialLoading();
+
+
+            }
+
+
+        },350);
 
 
     }
@@ -1967,11 +1701,6 @@ function switchCatalog(){
 
 
 
-    /*
-    ROCKMAN -> APN
-    */
-
-
     if(
         currentCatalog ===
         "rockman"
@@ -1993,11 +1722,6 @@ function switchCatalog(){
 
 
 
-    /*
-    APN -> ROCKMAN
-    */
-
-
     openCatalog(
 
         "rockman",
@@ -2011,7 +1735,7 @@ function switchCatalog(){
 
 
 /* =========================
-   CREATE PAGES
+   CREATE PAGE ELEMENTS
 ========================= */
 
 function createPages(){
@@ -2201,11 +1925,6 @@ function createBook(){
                     ),
 
 
-                /*
-                جلد اول و آخر
-                تک صفحه.
-                */
-
                 showCover:
                     true,
 
@@ -2243,11 +1962,6 @@ function createBook(){
                     true,
 
 
-                /*
-                خود گوشه صفحه
-                ورق نزند.
-                */
-
                 showPageCorners:
                     false
 
@@ -2269,9 +1983,10 @@ function createBook(){
 
 
     /*
-    خود PageFlip هیچ
-    تاچ و کلیک مستقیمی نگیرد.
+    کلیک/تاچ خود PageFlip
+    غیرفعال.
     */
+
 
     document.getElementById(
         "book"
@@ -2316,13 +2031,6 @@ function createBook(){
 
 
 
-            /*
-            با عوض شدن صفحه
-            pan وسط شود.
-            Zoom حفظ شود.
-            */
-
-
             panX =
                 0;
 
@@ -2344,7 +2052,13 @@ function createBook(){
 
 
 
-            preloadAround(
+            /*
+            صفحه‌ای که کاربر به آن رسیده
+            اولویت فوری می‌گیرد.
+            */
+
+
+            preloadPriorityPages(
                 index + 1
             );
 
@@ -2370,6 +2084,25 @@ async function nextPage(){
 
 
 
+    /*
+    قبل از ورق،
+    صفحه بعدی در اولویت.
+    */
+
+
+    const current =
+
+        pageFlip
+        .getCurrentPageIndex();
+
+
+
+    preloadPriorityPages(
+        current + 2
+    );
+
+
+
     await unlockSound();
 
 
@@ -2390,12 +2123,9 @@ async function nextPage(){
 
         try{
 
-
             pageFlip.flipNext();
 
-
         }
-
 
         catch(e){}
 
@@ -2419,6 +2149,19 @@ async function previousPage(){
 
 
 
+    const current =
+
+        pageFlip
+        .getCurrentPageIndex();
+
+
+
+    preloadPriorityPages(
+        current
+    );
+
+
+
     await unlockSound();
 
 
@@ -2439,12 +2182,9 @@ async function previousPage(){
 
         try{
 
-
             pageFlip.flipPrev();
 
-
         }
-
 
         catch(e){}
 
@@ -2499,11 +2239,6 @@ function updatePageCounter(){
 
 
 
-    /*
-    MOBILE
-    */
-
-
     if(mobile){
 
 
@@ -2525,11 +2260,6 @@ function updatePageCounter(){
 
 
 
-    /*
-    FIRST COVER
-    */
-
-
     if(index === 0){
 
 
@@ -2545,11 +2275,6 @@ function updatePageCounter(){
 
     }
 
-
-
-    /*
-    LAST COVER
-    */
 
 
     if(
@@ -2574,11 +2299,6 @@ function updatePageCounter(){
 
     }
 
-
-
-    /*
-    DESKTOP SPREAD
-    */
 
 
     const first =
@@ -2617,6 +2337,238 @@ function updatePageCounter(){
 
 
 /* =========================
+   PRIORITY PAGE LOADING
+========================= */
+
+function preloadPriorityPages(
+    pageNumber
+){
+
+
+    if(!pdfDocument){
+        return;
+    }
+
+
+
+    /*
+    صفحه فعلی و صفحات بلافاصله
+    اطرافش سریع‌تر آماده شوند.
+    */
+
+
+    const pages = [
+
+        pageNumber,
+
+        pageNumber + 1,
+
+        pageNumber - 1,
+
+        pageNumber + 2
+
+    ];
+
+
+
+    pages.forEach(
+
+        function(number){
+
+
+            if(
+
+                number >= 1
+                &&
+                number <=
+                pdfDocument.numPages
+
+            ){
+
+
+                renderPage(
+                    number
+                );
+
+
+            }
+
+
+        }
+
+    );
+
+}
+
+
+
+/* =========================
+   SEQUENTIAL BACKGROUND LOAD
+========================= */
+
+async function startSequentialLoading(){
+
+
+    if(
+        !pdfDocument ||
+        sequentialLoading
+    ){
+        return;
+    }
+
+
+
+    sequentialLoading =
+        true;
+
+
+
+    const myToken =
+        ++sequentialLoadToken;
+
+
+
+    /*
+    صفحه 1 قبلاً Render شده.
+    از 2 به بعد دقیقاً به ترتیب.
+    */
+
+
+    for(
+        let pageNumber = 2;
+        pageNumber <= pdfDocument.numPages;
+        pageNumber++
+    ){
+
+
+        /*
+        اگر کاتالوگ عوض شد
+        این Loop فوراً متوقف شود.
+        */
+
+
+        if(
+            myToken !==
+            sequentialLoadToken
+        ){
+            break;
+        }
+
+
+
+        if(!pdfDocument){
+            break;
+        }
+
+
+
+        /*
+        اگر قبلاً به خاطر حرکت کاربر
+        Render شده، رد شو.
+        */
+
+
+        if(
+            !renderedPages.has(
+                pageNumber
+            )
+        ){
+
+
+            await renderPage(
+                pageNumber
+            );
+
+
+        }
+
+
+
+        /*
+        فاصله کوتاه تا UI
+        و موبایل قفل نشود.
+        */
+
+
+        await waitForIdle();
+
+
+    }
+
+
+
+    if(
+        myToken ===
+        sequentialLoadToken
+    ){
+
+
+        sequentialLoading =
+            false;
+
+
+    }
+
+}
+
+
+
+/* =========================
+   IDLE WAIT
+========================= */
+
+function waitForIdle(){
+
+
+    return new Promise(
+
+        resolve =>{
+
+
+            if(
+                "requestIdleCallback"
+                in window
+            ){
+
+
+                requestIdleCallback(
+
+                    ()=>resolve(),
+
+                    {
+                        timeout:120
+                    }
+
+                );
+
+
+            }
+
+
+            else{
+
+
+                setTimeout(
+
+                    resolve,
+
+                    35
+
+                );
+
+
+            }
+
+
+        }
+
+    );
+
+}
+
+
+
+/* =========================
    EDGE SWIPE
 ========================= */
 
@@ -2640,11 +2592,6 @@ function startEdgeSwipe(
     side,
     event
 ){
-
-
-    /*
-    فقط Pointer اصلی.
-    */
 
 
     if(
@@ -2703,10 +2650,6 @@ function startEdgeSwipe(
 
 
 
-/* =========================
-   EDGE SWIPE END
-========================= */
-
 async function endEdgeSwipe(
     event
 ){
@@ -2755,7 +2698,7 @@ async function endEdgeSwipe(
 
 
     /*
-    TAP ساده = هیچ کاری نکن
+    Tap ساده هیچ کاری نکند.
     */
 
 
@@ -2769,7 +2712,7 @@ async function endEdgeSwipe(
 
 
     /*
-    حرکت باید افقی باشد.
+    حرکت باید بیشتر افقی باشد.
     */
 
 
@@ -2784,10 +2727,8 @@ async function endEdgeSwipe(
 
 
     /*
-    RIGHT EDGE
-    Swipe Left
+    راست + کشیدن به چپ
     */
-
 
     if(
         side === "right"
@@ -2799,7 +2740,6 @@ async function endEdgeSwipe(
         await nextPage();
 
 
-
         return;
 
     }
@@ -2807,10 +2747,8 @@ async function endEdgeSwipe(
 
 
     /*
-    LEFT EDGE
-    Swipe Right
+    چپ + کشیدن به راست
     */
-
 
     if(
         side === "left"
@@ -2884,10 +2822,8 @@ leftEdge.addEventListener(
 
     ()=>{
 
-
         edgeGesture =
             null;
-
 
     }
 
@@ -2901,10 +2837,8 @@ rightEdge.addEventListener(
 
     ()=>{
 
-
         edgeGesture =
             null;
-
 
     }
 
@@ -2937,7 +2871,6 @@ async function togglePagePanel(){
             "none";
 
 
-
         return;
 
     }
@@ -2950,9 +2883,8 @@ async function togglePagePanel(){
 
 
     /*
-    Thumbnail فقط وقتی
-    برای اولین بار کاربر
-    ▦ را می‌زند ساخته شود.
+    Thumbnailها فقط وقتی
+    کاربر ▦ را باز کرد ساخته شوند.
     */
 
 
@@ -2961,7 +2893,6 @@ async function togglePagePanel(){
 
         thumbnailsBuilt =
             true;
-
 
 
         await buildThumbnails();
@@ -2978,7 +2909,7 @@ async function togglePagePanel(){
 
 
 /* =========================
-   BUILD THUMBNAILS
+   THUMBNAILS
 ========================= */
 
 async function buildThumbnails(){
@@ -3041,9 +2972,7 @@ async function buildThumbnails(){
 
         label.innerText =
 
-            "صفحه " +
-
-            i;
+            "صفحه " + i;
 
 
 
@@ -3071,20 +3000,19 @@ async function buildThumbnails(){
 
 
 
-        /*
-        انتخاب مستقیم صفحه.
-        */
-
-
         item.onclick =
 
             function(){
 
 
+                preloadPriorityPages(
+                    i
+                );
+
+
                 goToPage(
                     i - 1
                 );
-
 
 
                 document.getElementById(
@@ -3113,8 +3041,7 @@ async function buildThumbnails(){
 
                 page.getViewport({
 
-                    scale:
-                        .16
+                    scale:.14
 
                 });
 
@@ -3159,14 +3086,7 @@ async function buildThumbnails(){
 
 
 
-        /*
-        UI قفل نشود.
-        */
-
-
-        await sleep(
-            12
-        );
+        await waitForIdle();
 
 
     }
@@ -3211,8 +3131,7 @@ function updateActiveThumbnail(){
 
                 "active",
 
-                i ===
-                index
+                i === index
 
             );
 
@@ -3225,9 +3144,7 @@ function updateActiveThumbnail(){
 
     const active =
 
-        thumbElements[
-            index
-        ];
+        thumbElements[index];
 
 
 
@@ -3236,11 +3153,9 @@ function updateActiveThumbnail(){
 
         active.scrollIntoView({
 
-            block:
-                "nearest",
+            block:"nearest",
 
-            behavior:
-                "smooth"
+            behavior:"smooth"
 
         });
 
@@ -3266,7 +3181,7 @@ function goToPage(
 
 
 
-    preloadAround(
+    preloadPriorityPages(
         index + 1
     );
 
@@ -3348,7 +3263,38 @@ async function renderPage(
             pageNumber
         )
     ){
+
+
+        /*
+        اگر همین صفحه الان در حال
+        Render است، صبر کنیم.
+        */
+
+
+        while(
+            renderingPages.has(
+                pageNumber
+            )
+        ){
+
+
+            await new Promise(
+
+                resolve =>
+
+                    setTimeout(
+                        resolve,
+                        20
+                    )
+
+            );
+
+
+        }
+
+
         return;
+
     }
 
 
@@ -3379,7 +3325,8 @@ async function renderPage(
 
 
         /*
-        تعادل کیفیت و سرعت.
+        کمی سبک‌تر از قبل
+        برای سرعت بهتر.
         */
 
 
@@ -3390,7 +3337,7 @@ async function renderPage(
                 window.devicePixelRatio ||
                 1,
 
-                1.4
+                1.35
 
             );
 
@@ -3399,8 +3346,8 @@ async function renderPage(
         const scale =
 
             mobile
-            ? 1.10
-            : 1.20;
+            ? 1.08
+            : 1.18;
 
 
 
@@ -3485,7 +3432,6 @@ async function renderPage(
                 "";
 
 
-
             target.appendChild(
                 canvas
             );
@@ -3529,97 +3475,7 @@ async function renderPage(
 
 
 /* =========================
-   LAZY LOAD
-========================= */
-
-function preloadAround(
-    pageNumber
-){
-
-
-    /*
-    فقط صفحات نزدیک
-    صفحه فعلی آماده شوند.
-    */
-
-
-    const pages = [
-
-        pageNumber - 2,
-
-        pageNumber - 1,
-
-        pageNumber,
-
-        pageNumber + 1,
-
-        pageNumber + 2,
-
-        pageNumber + 3
-
-    ];
-
-
-
-    pages.forEach(
-
-        function(
-            number
-        ){
-
-
-            if(
-
-                pdfDocument
-                &&
-                number >= 1
-                &&
-                number <=
-                pdfDocument.numPages
-
-            ){
-
-
-                renderPage(
-                    number
-                );
-
-
-            }
-
-
-        }
-
-    );
-
-}
-
-
-
-/* =========================
-   SLEEP
-========================= */
-
-function sleep(ms){
-
-
-    return new Promise(
-
-        resolve =>
-
-            setTimeout(
-                resolve,
-                ms
-            )
-
-    );
-
-}
-
-
-
-/* =========================
-   ZOOM IN
+   ZOOM
 ========================= */
 
 function zoomIn(){
@@ -3643,10 +3499,6 @@ function zoomIn(){
 }
 
 
-
-/* =========================
-   ZOOM OUT
-========================= */
 
 function zoomOut(){
 
@@ -3674,7 +3526,6 @@ function zoomOut(){
             0;
 
 
-
         panY =
             0;
 
@@ -3690,7 +3541,7 @@ function zoomOut(){
 
 
 /* =========================
-   APPLY PAN + ZOOM
+   APPLY TRANSFORM
 ========================= */
 
 function applyTransform(){
@@ -3704,7 +3555,6 @@ function applyTransform(){
 
         panX =
             0;
-
 
 
         panY =
@@ -3738,7 +3588,7 @@ function applyTransform(){
 
 
 /* =========================
-   PAN AREA
+   PAN
 ========================= */
 
 const bookArea =
@@ -3749,21 +3599,11 @@ const bookArea =
 
 
 
-/* =========================
-   PAN START
-========================= */
-
 bookArea.addEventListener(
 
     "pointerdown",
 
     function(event){
-
-
-        /*
-        اگر از نوار لبه شروع شد
-        Pan نکن.
-        */
 
 
         if(
@@ -3776,11 +3616,6 @@ bookArea.addEventListener(
 
 
 
-        /*
-        فقط در حالت زوم.
-        */
-
-
         if(
             zoomValue <=
             1
@@ -3788,11 +3623,6 @@ bookArea.addEventListener(
             return;
         }
 
-
-
-        /*
-        Pointer دوم برای Pinch.
-        */
 
 
         if(
@@ -3860,10 +3690,6 @@ bookArea.addEventListener(
 
 
 
-/* =========================
-   PAN MOVE
-========================= */
-
 bookArea.addEventListener(
 
     "pointermove",
@@ -3898,7 +3724,6 @@ bookArea.addEventListener(
 
             (
                 event.clientX -
-
                 dragStartX
             );
 
@@ -3910,7 +3735,6 @@ bookArea.addEventListener(
 
             (
                 event.clientY -
-
                 dragStartY
             );
 
@@ -3928,10 +3752,6 @@ bookArea.addEventListener(
 
 
 
-/* =========================
-   PAN END
-========================= */
-
 bookArea.addEventListener(
 
     "pointerup",
@@ -3947,7 +3767,6 @@ bookArea.addEventListener(
 
             dragging =
                 false;
-
 
 
             dragPointerId =
@@ -3973,7 +3792,6 @@ bookArea.addEventListener(
             false;
 
 
-
         dragPointerId =
             null;
 
@@ -3985,7 +3803,7 @@ bookArea.addEventListener(
 
 
 /* =========================
-   PINCH DISTANCE
+   PINCH
 ========================= */
 
 function getTouchDistance(
@@ -4021,20 +3839,11 @@ function getTouchDistance(
 
 
 
-/* =========================
-   PINCH START
-========================= */
-
 bookArea.addEventListener(
 
     "touchstart",
 
     function(event){
-
-
-        /*
-        لبه‌ها مخصوص ورق.
-        */
 
 
         if(
@@ -4057,15 +3866,12 @@ bookArea.addEventListener(
                 false;
 
 
-
             dragPointerId =
                 null;
 
 
-
             pinchActive =
                 true;
-
 
 
             pinchStartDistance =
@@ -4075,10 +3881,8 @@ bookArea.addEventListener(
                 );
 
 
-
             pinchStartZoom =
                 zoomValue;
-
 
 
             event.preventDefault();
@@ -4094,10 +3898,6 @@ bookArea.addEventListener(
 );
 
 
-
-/* =========================
-   PINCH MOVE
-========================= */
 
 bookArea.addEventListener(
 
@@ -4169,10 +3969,6 @@ bookArea.addEventListener(
 
 
 
-/* =========================
-   PINCH END
-========================= */
-
 bookArea.addEventListener(
 
     "touchend",
@@ -4219,7 +4015,6 @@ bookArea.addEventListener(
 
 
 </script>
-
 
 </body>
 
