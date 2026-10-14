@@ -11,9 +11,6 @@ content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable
 
 <title>Digital Catalog</title>
 
-<link rel="preload" href="./rockman-cover.webp" as="image">
-<link rel="preload" href="./apn-cover.webp" as="image">
-
 <style>
 
 *{
@@ -48,18 +45,22 @@ body{
 
 .menuBox{
     width:min(430px,92vw);
+
     text-align:center;
     color:#fff;
 }
 
 .menuBox h1{
     margin:0 0 8px;
+
     font-size:30px;
 }
 
 .menuBox p{
     margin:0 0 30px;
+
     color:#999;
+
     font-size:14px;
 }
 
@@ -86,7 +87,9 @@ body{
     align-items:center;
     justify-content:center;
 
-    transition:transform .15s ease;
+    transition:
+        transform .15s ease,
+        opacity .15s ease;
 }
 
 .catalogButton:active{
@@ -97,6 +100,7 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
+
     gap:13px;
 }
 
@@ -107,6 +111,8 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
+
+    flex:0 0 auto;
 }
 
 .catalogBtnIcon svg{
@@ -145,48 +151,8 @@ body{
     height:100vh;
 
     background:#111;
+
     overflow:hidden;
-}
-
-
-/* =========================
-   QUICK COVER
-========================= */
-
-#quickCover{
-    position:absolute;
-    inset:0;
-
-    z-index:650;
-
-    display:none;
-
-    align-items:center;
-    justify-content:center;
-
-    background:#111;
-
-    pointer-events:none;
-
-    opacity:1;
-
-    transition:opacity .18s ease;
-}
-
-#quickCover img{
-    display:block;
-
-    max-width:min(86vw,760px);
-    max-height:calc(100vh - 120px);
-
-    width:auto;
-    height:auto;
-
-    object-fit:contain;
-
-    box-shadow:
-        0 8px 28px
-        rgba(0,0,0,.30);
 }
 
 
@@ -208,7 +174,13 @@ body{
 
     border-radius:8px;
 
-    background:rgba(20,20,20,.82);
+    background:
+        rgba(
+            20,
+            20,
+            20,
+            .82
+        );
 
     color:#fff;
 
@@ -217,6 +189,7 @@ body{
     white-space:nowrap;
 
     pointer-events:none;
+
     user-select:none;
 }
 
@@ -238,13 +211,21 @@ body{
     height:70px;
 
     border:0;
+
     border-radius:10px;
 
-    background:rgba(15,15,15,.60);
+    background:
+        rgba(
+            15,
+            15,
+            15,
+            .60
+        );
 
     color:#fff;
 
     font-size:35px;
+    line-height:1;
 
     cursor:pointer;
 
@@ -259,11 +240,19 @@ body{
 }
 
 .sideArrow:hover{
-    background:rgba(40,40,40,.92);
+    background:
+        rgba(
+            40,
+            40,
+            40,
+            .92
+        );
 }
 
 .sideArrow:active{
-    transform:translateY(-50%) scale(.94);
+    transform:
+        translateY(-50%)
+        scale(.94);
 }
 
 #prevSide{
@@ -285,6 +274,7 @@ body{
     inset:0;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -300,17 +290,20 @@ body{
 
 
 /* =========================
-   PAN STAGE
+   PAN + ZOOM
 ========================= */
 
 #panStage{
     position:relative;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
-    transform-origin:center center;
+    transform-origin:
+        center
+        center;
 
     will-change:transform;
 
@@ -326,6 +319,7 @@ body{
     position:relative;
 
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
 
@@ -340,6 +334,12 @@ body{
 
 #book{
     margin:auto;
+
+    /*
+    خود StPageFlip مستقیماً
+    از کاربر gesture نمی‌گیرد
+    */
+
     pointer-events:none;
 }
 
@@ -350,18 +350,20 @@ body{
 
 .page{
     background:#fff;
+
     overflow:hidden;
 }
 
 .page canvas{
     display:block;
+
     width:100%;
     height:100%;
 }
 
 
 /* =========================
-   EDGE SWIPE
+   EDGE SWIPE ZONES
 ========================= */
 
 .edgeZone{
@@ -389,7 +391,7 @@ body{
 
 
 /* =========================
-   PAGE LOADING
+   PAGE PLACEHOLDER
 ========================= */
 
 .pageLoading{
@@ -397,30 +399,40 @@ body{
     height:100%;
 
     background:
+
         linear-gradient(
             110deg,
+
             #e5e5e5 8%,
+
             #f5f5f5 18%,
+
             #e5e5e5 33%
         );
 
-    background-size:200% 100%;
+    background-size:
+        200%
+        100%;
 
     animation:
-        shimmer 1.3s linear infinite;
+        shimmer
+        1.3s
+        linear
+        infinite;
 }
 
 @keyframes shimmer{
 
     to{
-        background-position-x:-200%;
+        background-position-x:
+            -200%;
     }
 
 }
 
 
 /* =========================
-   LOADER
+   INITIAL LOADER
 ========================= */
 
 #initialLoader{
@@ -428,11 +440,12 @@ body{
 
     inset:0;
 
-    z-index:640;
+    z-index:700;
 
     background:#111;
 
     display:flex;
+
     flex-direction:column;
 
     align-items:center;
@@ -445,25 +458,34 @@ body{
     width:36px;
     height:36px;
 
-    border:3px solid #444;
+    border:
+        3px
+        solid
+        #444;
+
     border-top-color:#fff;
 
     border-radius:50%;
 
     animation:
-        rotate .75s linear infinite;
+        rotate
+        .75s
+        linear
+        infinite;
 }
 
 @keyframes rotate{
 
     to{
-        transform:rotate(360deg);
+        transform:
+            rotate(360deg);
     }
 
 }
 
 .loaderText{
     color:#aaa;
+
     font-size:14px;
 }
 
@@ -480,7 +502,8 @@ body{
     left:50%;
     bottom:12px;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
     z-index:950;
 
@@ -491,8 +514,15 @@ body{
     overflow:hidden;
 
     box-shadow:
-        0 5px 18px
-        rgba(0,0,0,.35);
+        0
+        5px
+        18px
+        rgba(
+            0,
+            0,
+            0,
+            .35
+        );
 }
 
 .bottomButton{
@@ -502,7 +532,9 @@ body{
     border:0;
 
     border-right:
-        1px solid #ddd;
+        1px
+        solid
+        #ddd;
 
     background:#f4f4f4;
 
@@ -513,6 +545,7 @@ body{
     cursor:pointer;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -529,9 +562,6 @@ body{
 .bottomButton:hover{
     background:#e7e7e7;
 }
-
-
-/* SWITCH BUTTON */
 
 #switchButton{
     font-size:25px;
@@ -551,9 +581,14 @@ body{
     left:50%;
     bottom:72px;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    width:min(900px,94vw);
+    width:
+        min(
+            900px,
+            94vw
+        );
 
     max-height:65vh;
 
@@ -561,7 +596,10 @@ body{
 
     background:#1b1b1b;
 
-    border:1px solid #444;
+    border:
+        1px
+        solid
+        #444;
 
     border-radius:12px;
 
@@ -575,8 +613,15 @@ body{
     overscroll-behavior:contain;
 
     box-shadow:
-        0 10px 35px
-        rgba(0,0,0,.5);
+        0
+        10px
+        35px
+        rgba(
+            0,
+            0,
+            0,
+            .5
+        );
 }
 
 #pageGrid{
@@ -585,7 +630,10 @@ body{
     grid-template-columns:
         repeat(
             auto-fill,
-            minmax(95px,1fr)
+            minmax(
+                95px,
+                1fr
+            )
         );
 
     gap:12px;
@@ -596,7 +644,10 @@ body{
 
     background:#292929;
 
-    border:2px solid transparent;
+    border:
+        2px
+        solid
+        transparent;
 
     border-radius:7px;
 
@@ -615,6 +666,7 @@ body{
 
 .pageThumb canvas{
     width:100%;
+
     height:auto;
 
     display:block;
@@ -645,6 +697,7 @@ body{
 
     .catalogButton{
         min-height:68px;
+
         font-size:19px;
     }
 
@@ -658,15 +711,12 @@ body{
         height:26px;
     }
 
-    #quickCover img{
-        max-width:92vw;
-        max-height:calc(100vh - 105px);
-    }
-
     #pageCounter{
         top:7px;
 
-        padding:6px 11px;
+        padding:
+            6px
+            11px;
 
         font-size:12px;
     }
@@ -686,7 +736,13 @@ body{
 
         font-size:28px;
 
-        background:rgba(15,15,15,.52);
+        background:
+            rgba(
+                15,
+                15,
+                15,
+                .52
+            );
     }
 
     #prevSide{
@@ -724,7 +780,11 @@ body{
 
     #pageGrid{
         grid-template-columns:
-            repeat(3,1fr);
+
+            repeat(
+                3,
+                1fr
+            );
 
         gap:9px;
     }
@@ -740,20 +800,23 @@ body{
 
 
 <!-- =========================
-     HOME
+     HOME MENU
 ========================= -->
 
 <div id="catalogMenu">
 
     <div class="menuBox">
 
+
         <h1>
             Digital Catalog
         </h1>
 
+
         <p>
             Select a catalog
         </p>
+
 
 
         <!-- ROCKMAN -->
@@ -763,20 +826,24 @@ body{
         onclick="
             openCatalog(
                 'rockman',
-                'Rockman.catalog.pdf',
-                'rockman-cover.webp'
+                'Rockman.catalog.pdf'
             )
         ">
 
+
             <span class="catalogBtnInner">
+
 
                 <span
                 class="catalogBtnIcon"
                 aria-hidden="true">
 
-                    <!-- PLIERS -->
 
-                    <svg viewBox="0 0 24 24">
+                    <!-- PLIERS ICON -->
+
+                    <svg
+                    viewBox="0 0 24 24">
+
 
                         <circle
                         cx="12"
@@ -784,43 +851,57 @@ body{
                         r="1.7">
                         </circle>
 
+
                         <path
                         d="
                         M10.8 10.2
                         L6.2 5.6
+
                         C5.3 4.7
                         5.3 3.3
-                        6.2 2.4">
+                        6.2 2.4
+                        ">
                         </path>
+
 
                         <path
                         d="
                         M13.2 10.2
                         L17.8 5.6
+
                         C18.7 4.7
                         18.7 3.3
-                        17.8 2.4">
+                        17.8 2.4
+                        ">
                         </path>
+
 
                         <path
                         d="
                         M10.8 12.8
                         L5.4 18.2
+
                         C4.3 19.3
                         4.3 21
-                        5.4 22">
+                        5.4 22
+                        ">
                         </path>
+
 
                         <path
                         d="
                         M13.2 12.8
                         L18.6 18.2
+
                         C19.7 19.3
                         19.7 21
-                        18.6 22">
+                        18.6 22
+                        ">
                         </path>
 
+
                     </svg>
+
 
                 </span>
 
@@ -829,7 +910,9 @@ body{
                     ROCKMAN
                 </span>
 
+
             </span>
+
 
         </button>
 
@@ -842,58 +925,77 @@ body{
         onclick="
             openCatalog(
                 'apn',
-                'Apn.catalog.pdf',
-                'apn-cover.webp'
+                'Apn.catalog.pdf'
             )
         ">
 
+
             <span class="catalogBtnInner">
+
 
                 <span
                 class="catalogBtnIcon"
                 aria-hidden="true">
 
-                    <!-- DRILL -->
 
-                    <svg viewBox="0 0 24 24">
+                    <!-- DRILL ICON -->
+
+                    <svg
+                    viewBox="0 0 24 24">
+
 
                         <path
                         d="
                         M3 8
                         H13
+
                         C15.5 8
                         17 9
                         18 10.5
+
                         L19.5 12
+
                         L18 13.5
+
                         C17 15
                         15.5 16
                         13 16
+
                         H3
-                        Z">
+
+                        Z
+                        ">
                         </path>
+
 
                         <path
                         d="
                         M10 16
                         V21
                         H14
-                        V16">
+                        V16
+                        ">
                         </path>
+
 
                         <path
                         d="
                         M19.5 11
-                        H22.5">
+                        H22.5
+                        ">
                         </path>
+
 
                         <path
                         d="
                         M22.5 10
-                        V12">
+                        V12
+                        ">
                         </path>
 
+
                     </svg>
+
 
                 </span>
 
@@ -902,9 +1004,12 @@ body{
                     APN
                 </span>
 
+
             </span>
 
+
         </button>
+
 
     </div>
 
@@ -919,6 +1024,8 @@ body{
 <div id="reader">
 
 
+    <!-- LEFT ARROW -->
+
     <button
     id="prevSide"
     class="sideArrow"
@@ -929,6 +1036,8 @@ body{
 
     </button>
 
+
+    <!-- RIGHT ARROW -->
 
     <button
     id="nextSide"
@@ -942,6 +1051,8 @@ body{
 
 
 
+    <!-- COUNTER -->
+
     <div id="pageCounter">
 
         صفحه 1 از 1
@@ -950,45 +1061,43 @@ body{
 
 
 
+    <!-- BOOK AREA -->
+
     <div id="bookArea">
-
-
-        <!-- FAST COVER -->
-
-        <div id="quickCover">
-
-            <img
-            id="quickCoverImg"
-            src=""
-            alt="Catalog cover">
-
-        </div>
-
 
 
         <!-- LOADER -->
 
         <div id="initialLoader">
 
-            <div class="spinner"></div>
+
+            <div class="spinner">
+            </div>
+
 
             <div class="loaderText">
                 Opening...
             </div>
 
+
         </div>
 
 
 
-        <!-- BOOK -->
+        <!-- PAN / ZOOM -->
 
         <div id="panStage">
+
 
             <div id="bookStage">
 
 
                 <div id="book">
                 </div>
+
+
+
+                <!-- ONLY SWIPE AREAS -->
 
 
                 <div
@@ -1005,10 +1114,12 @@ body{
 
             </div>
 
+
         </div>
 
 
     </div>
+
 
 </div>
 
@@ -1020,8 +1131,10 @@ body{
 
 <div id="pagePanel">
 
+
     <div id="pageGrid">
     </div>
+
 
 </div>
 
@@ -1034,6 +1147,8 @@ body{
 <div id="bottomBar">
 
 
+    <!-- ZOOM OUT -->
+
     <button
     class="bottomButton"
     onclick="zoomOut()"
@@ -1044,6 +1159,8 @@ body{
     </button>
 
 
+
+    <!-- ALL PAGES -->
 
     <button
     class="bottomButton"
@@ -1056,7 +1173,7 @@ body{
 
 
 
-    <!-- SWITCH CATALOG -->
+    <!-- SWITCH APN / ROCKMAN -->
 
     <button
     id="switchButton"
@@ -1070,6 +1187,8 @@ body{
     </button>
 
 
+
+    <!-- ZOOM IN -->
 
     <button
     class="bottomButton"
@@ -1086,7 +1205,7 @@ body{
 
 
 <!-- =========================
-     SOUND
+     PAGE FLIP SOUND
 ========================= -->
 
 <audio
@@ -1097,14 +1216,19 @@ preload="auto">
 
 
 
-<!-- PDF.JS -->
+<!-- =========================
+     PDF JS
+========================= -->
 
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js">
 </script>
 
 
-<!-- PAGE FLIP -->
+
+<!-- =========================
+     PAGE FLIP
+========================= -->
 
 <script
 src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js">
@@ -1115,7 +1239,12 @@ src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.
 <script>
 
 
+/* =========================
+   PDF WORKER
+========================= */
+
 pdfjsLib.GlobalWorkerOptions.workerSrc =
+
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
 
@@ -1185,40 +1314,55 @@ let soundUnlocked =
 
 
 
-/* PAN */
+/* =========================
+   PAN VARIABLES
+========================= */
 
 let dragging =
     false;
 
+
 let dragPointerId =
     null;
+
 
 let dragStartX =
     0;
 
+
 let dragStartY =
     0;
 
+
 let dragStartPanX =
     0;
+
 
 let dragStartPanY =
     0;
 
 
-/* PINCH */
+
+/* =========================
+   PINCH VARIABLES
+========================= */
 
 let pinchActive =
     false;
 
+
 let pinchStartDistance =
     0;
+
 
 let pinchStartZoom =
     1;
 
 
-/* EDGE */
+
+/* =========================
+   EDGE VARIABLES
+========================= */
 
 let edgeGesture =
     null;
@@ -1237,6 +1381,7 @@ async function unlockSound(){
     }
 
 
+
     const audio =
 
         document.getElementById(
@@ -1244,9 +1389,11 @@ async function unlockSound(){
         );
 
 
+
     if(!audio){
         return;
     }
+
 
 
     try{
@@ -1276,6 +1423,7 @@ async function unlockSound(){
 
     }
 
+
     catch(error){
 
 
@@ -1299,9 +1447,11 @@ function playFlipSound(){
         );
 
 
+
     if(!source){
         return;
     }
+
 
 
     const audio =
@@ -1311,12 +1461,15 @@ function playFlipSound(){
         );
 
 
+
     audio.currentTime =
         0;
 
 
+
     audio.volume =
         .8;
+
 
 
     audio.play()
@@ -1327,16 +1480,10 @@ function playFlipSound(){
 
 
 /* =========================
-   CLEAN OLD CATALOG
+   DESTROY OLD CATALOG
 ========================= */
 
 function destroyCurrentBook(){
-
-
-    /*
-    اگر Flipbook قبلی وجود دارد
-    کامل پاک شود.
-    */
 
 
     if(pageFlip){
@@ -1350,11 +1497,32 @@ function destroyCurrentBook(){
 
         }
 
+
         catch(error){}
+
 
 
         pageFlip =
             null;
+
+    }
+
+
+
+    if(pdfDocument){
+
+
+        try{
+
+
+            pdfDocument.destroy();
+
+
+        }
+
+
+        catch(error){}
+
 
     }
 
@@ -1406,9 +1574,12 @@ function destroyCurrentBook(){
         false;
 
 
+    dragPointerId =
+        null;
+
+
     pinchActive =
         false;
-
 
 }
 
@@ -1420,17 +1591,8 @@ function destroyCurrentBook(){
 
 async function openCatalog(
     catalogName,
-    pdfFile,
-    coverImage
+    pdfFile
 ){
-
-
-    /*
-    هر بار یک ID جدید،
-    تا اگر کاربر خیلی سریع
-    کاتالوگ را عوض کرد،
-    لود قبلی وارد صفحه جدید نشود.
-    */
 
 
     const requestId =
@@ -1468,11 +1630,13 @@ async function openCatalog(
         );
 
 
+
     const reader =
 
         document.getElementById(
             "reader"
         );
+
 
 
     const bottomBar =
@@ -1482,25 +1646,13 @@ async function openCatalog(
         );
 
 
+
     const pagePanel =
 
         document.getElementById(
             "pagePanel"
         );
 
-
-    const quickCover =
-
-        document.getElementById(
-            "quickCover"
-        );
-
-
-    const quickCoverImg =
-
-        document.getElementById(
-            "quickCoverImg"
-        );
 
 
     const loader =
@@ -1528,33 +1680,10 @@ async function openCatalog(
 
 
 
-    /*
-    صفحه شمار فوراً ریست شود.
-    */
-
-
     document.getElementById(
         "pageCounter"
     ).innerText =
         "در حال باز شدن...";
-
-
-
-    /*
-    جلد فوری.
-    */
-
-
-    quickCover.style.opacity =
-        "1";
-
-
-    quickCover.style.display =
-        "flex";
-
-
-    quickCoverImg.src =
-        coverImage;
 
 
 
@@ -1563,6 +1692,7 @@ async function openCatalog(
         '<div class="spinner"></div>' +
 
         '<div class="loaderText">Opening...</div>';
+
 
 
     loader.style.display =
@@ -1575,9 +1705,10 @@ async function openCatalog(
 
 
     /*
-    صدا بدون توقف لود آماده شود.
+    صدا آماده شود،
+    بدون اینکه باز شدن PDF
+    منتظر آن بماند.
     */
-
 
     unlockSound();
 
@@ -1594,11 +1725,27 @@ async function openCatalog(
                 url:
                     pdfFile,
 
+
+                /*
+                Range فعال
+                */
+
                 disableRange:
                     false,
 
+
+                /*
+                Stream فعال
+                */
+
                 disableStream:
                     false,
+
+
+                /*
+                کل PDF از اول
+                Auto Fetch نشود.
+                */
 
                 disableAutoFetch:
                     true
@@ -1609,9 +1756,9 @@ async function openCatalog(
 
 
         /*
-        اگر در این فاصله
-        کاربر کاتالوگ را عوض کرده،
-        این نتیجه دیگر استفاده نشود.
+        اگر کاربر کاتالوگ را
+        عوض کرده باشد،
+        این Load قدیمی کنار گذاشته شود.
         */
 
 
@@ -1620,13 +1767,18 @@ async function openCatalog(
             openRequestId
         ){
 
+
             try{
+
 
                 loadedPDF.destroy();
 
+
             }
 
+
             catch(e){}
+
 
 
             return;
@@ -1638,6 +1790,11 @@ async function openCatalog(
         pdfDocument =
             loadedPDF;
 
+
+
+        /*
+        فقط صفحه 1.
+        */
 
 
         const firstPage =
@@ -1681,6 +1838,13 @@ async function openCatalog(
 
 
 
+        /*
+        صفحه اول واقعی PDF
+        قبل از نمایش کتاب
+        رندر شود.
+        */
+
+
         await renderPage(
             1
         );
@@ -1704,29 +1868,9 @@ async function openCatalog(
 
 
 
-        quickCover.style.opacity =
-            "0";
-
-
-
-        setTimeout(()=>{
-
-
-            if(
-                requestId ===
-                openRequestId
-            ){
-
-
-                quickCover.style.display =
-                    "none";
-
-
-            }
-
-
-        },180);
-
+        /*
+        کتاب آماده است.
+        */
 
 
         loader.style.display =
@@ -1735,7 +1879,8 @@ async function openCatalog(
 
 
         /*
-        فقط صفحات نزدیک آماده شوند.
+        فقط چند صفحه نزدیک
+        بعد از باز شدن آماده شوند.
         */
 
 
@@ -1756,10 +1901,11 @@ async function openCatalog(
             }
 
 
-        },80);
+        },60);
 
 
     }
+
 
     catch(error){
 
@@ -1772,13 +1918,11 @@ async function openCatalog(
         }
 
 
+
         console.error(
             error
         );
 
-
-        quickCover.style.display =
-            "none";
 
 
         loader.innerHTML =
@@ -1798,6 +1942,7 @@ async function openCatalog(
             '</div>';
 
 
+
         loader.style.display =
             "flex";
 
@@ -1813,12 +1958,6 @@ async function openCatalog(
 ========================= */
 
 function switchCatalog(){
-
-
-    /*
-    پنل صفحات اگر باز است
-    بسته شود.
-    */
 
 
     document.getElementById(
@@ -1843,9 +1982,7 @@ function switchCatalog(){
 
             "apn",
 
-            "Apn.catalog.pdf",
-
-            "apn-cover.webp"
+            "Apn.catalog.pdf"
 
         );
 
@@ -1865,9 +2002,7 @@ function switchCatalog(){
 
         "rockman",
 
-        "Rockman.catalog.pdf",
-
-        "rockman-cover.webp"
+        "Rockman.catalog.pdf"
 
     );
 
@@ -1889,12 +2024,15 @@ function createPages(){
         );
 
 
+
     book.innerHTML =
         "";
 
 
+
     pageElements =
         [];
+
 
 
     for(
@@ -1911,8 +2049,10 @@ function createPages(){
             );
 
 
+
         page.className =
             "page";
+
 
 
         page.dataset.pageNumber =
@@ -1927,8 +2067,10 @@ function createPages(){
             );
 
 
+
         loading.className =
             "pageLoading";
+
 
 
         page.appendChild(
@@ -1936,14 +2078,17 @@ function createPages(){
         );
 
 
+
         book.appendChild(
             page
         );
 
 
+
         pageElements.push(
             page
         );
+
 
     }
 
@@ -2056,9 +2201,19 @@ function createBook(){
                     ),
 
 
+                /*
+                جلد اول و آخر
+                تک صفحه.
+                */
+
                 showCover:
                     true,
 
+
+                /*
+                موبایل تک صفحه.
+                دسکتاپ دو صفحه.
+                */
 
                 usePortrait:
                     mobile,
@@ -2088,6 +2243,11 @@ function createBook(){
                     true,
 
 
+                /*
+                خود گوشه صفحه
+                ورق نزند.
+                */
+
                 showPageCorners:
                     false
 
@@ -2107,6 +2267,11 @@ function createBook(){
     );
 
 
+
+    /*
+    خود PageFlip هیچ
+    تاچ و کلیک مستقیمی نگیرد.
+    */
 
     document.getElementById(
         "book"
@@ -2151,6 +2316,13 @@ function createBook(){
 
 
 
+            /*
+            با عوض شدن صفحه
+            pan وسط شود.
+            Zoom حفظ شود.
+            */
+
+
             panX =
                 0;
 
@@ -2163,10 +2335,13 @@ function createBook(){
             applyTransform();
 
 
+
             updatePageCounter();
 
 
+
             updateActiveThumbnail();
+
 
 
             preloadAround(
@@ -2194,6 +2369,7 @@ async function nextPage(){
     }
 
 
+
     await unlockSound();
 
 
@@ -2208,14 +2384,18 @@ async function nextPage(){
 
     }
 
+
     catch(error){
 
 
         try{
 
+
             pageFlip.flipNext();
 
+
         }
+
 
         catch(e){}
 
@@ -2238,6 +2418,7 @@ async function previousPage(){
     }
 
 
+
     await unlockSound();
 
 
@@ -2252,14 +2433,18 @@ async function previousPage(){
 
     }
 
+
     catch(error){
 
 
         try{
 
+
             pageFlip.flipPrev();
 
+
         }
+
 
         catch(e){}
 
@@ -2314,6 +2499,11 @@ function updatePageCounter(){
 
 
 
+    /*
+    MOBILE
+    */
+
+
     if(mobile){
 
 
@@ -2328,10 +2518,16 @@ function updatePageCounter(){
             total;
 
 
+
         return;
 
     }
 
+
+
+    /*
+    FIRST COVER
+    */
 
 
     if(index === 0){
@@ -2344,10 +2540,16 @@ function updatePageCounter(){
             total;
 
 
+
         return;
 
     }
 
+
+
+    /*
+    LAST COVER
+    */
 
 
     if(
@@ -2367,10 +2569,16 @@ function updatePageCounter(){
             total;
 
 
+
         return;
 
     }
 
+
+
+    /*
+    DESKTOP SPREAD
+    */
 
 
     const first =
@@ -2419,6 +2627,7 @@ const leftEdge =
     );
 
 
+
 const rightEdge =
 
     document.getElementById(
@@ -2431,6 +2640,11 @@ function startEdgeSwipe(
     side,
     event
 ){
+
+
+    /*
+    فقط Pointer اصلی.
+    */
 
 
     if(
@@ -2478,6 +2692,7 @@ function startEdgeSwipe(
 
     }
 
+
     catch(e){}
 
 
@@ -2487,6 +2702,10 @@ function startEdgeSwipe(
 }
 
 
+
+/* =========================
+   EDGE SWIPE END
+========================= */
 
 async function endEdgeSwipe(
     event
@@ -2536,7 +2755,7 @@ async function endEdgeSwipe(
 
 
     /*
-    TAP = NOTHING
+    TAP ساده = هیچ کاری نکن
     */
 
 
@@ -2550,7 +2769,7 @@ async function endEdgeSwipe(
 
 
     /*
-    فقط حرکت افقی.
+    حرکت باید افقی باشد.
     */
 
 
@@ -2578,6 +2797,7 @@ async function endEdgeSwipe(
 
 
         await nextPage();
+
 
 
         return;
@@ -2664,8 +2884,10 @@ leftEdge.addEventListener(
 
     ()=>{
 
+
         edgeGesture =
             null;
+
 
     }
 
@@ -2679,8 +2901,10 @@ rightEdge.addEventListener(
 
     ()=>{
 
+
         edgeGesture =
             null;
+
 
     }
 
@@ -2713,6 +2937,7 @@ async function togglePagePanel(){
             "none";
 
 
+
         return;
 
     }
@@ -2724,11 +2949,19 @@ async function togglePagePanel(){
 
 
 
+    /*
+    Thumbnail فقط وقتی
+    برای اولین بار کاربر
+    ▦ را می‌زند ساخته شود.
+    */
+
+
     if(!thumbnailsBuilt){
 
 
         thumbnailsBuilt =
             true;
+
 
 
         await buildThumbnails();
@@ -2745,7 +2978,7 @@ async function togglePagePanel(){
 
 
 /* =========================
-   THUMBNAILS
+   BUILD THUMBNAILS
 ========================= */
 
 async function buildThumbnails(){
@@ -2779,6 +3012,7 @@ async function buildThumbnails(){
             );
 
 
+
         item.className =
             "pageThumb";
 
@@ -2799,13 +3033,17 @@ async function buildThumbnails(){
             );
 
 
+
         label.className =
             "pageThumbLabel";
 
 
+
         label.innerText =
 
-            "صفحه " + i;
+            "صفحه " +
+
+            i;
 
 
 
@@ -2814,9 +3052,11 @@ async function buildThumbnails(){
         );
 
 
+
         item.appendChild(
             label
         );
+
 
 
         grid.appendChild(
@@ -2824,10 +3064,16 @@ async function buildThumbnails(){
         );
 
 
+
         thumbElements.push(
             item
         );
 
+
+
+        /*
+        انتخاب مستقیم صفحه.
+        */
 
 
         item.onclick =
@@ -2838,6 +3084,7 @@ async function buildThumbnails(){
                 goToPage(
                     i - 1
                 );
+
 
 
                 document.getElementById(
@@ -2866,7 +3113,8 @@ async function buildThumbnails(){
 
                 page.getViewport({
 
-                    scale:.16
+                    scale:
+                        .16
 
                 });
 
@@ -2906,13 +3154,20 @@ async function buildThumbnails(){
 
         }
 
+
         catch(error){}
 
+
+
+        /*
+        UI قفل نشود.
+        */
 
 
         await sleep(
             12
         );
+
 
     }
 
@@ -2921,7 +3176,7 @@ async function buildThumbnails(){
 
 
 /* =========================
-   ACTIVE THUMB
+   ACTIVE THUMBNAIL
 ========================= */
 
 function updateActiveThumbnail(){
@@ -2956,7 +3211,8 @@ function updateActiveThumbnail(){
 
                 "active",
 
-                i === index
+                i ===
+                index
 
             );
 
@@ -2969,7 +3225,9 @@ function updateActiveThumbnail(){
 
     const active =
 
-        thumbElements[index];
+        thumbElements[
+            index
+        ];
 
 
 
@@ -2978,9 +3236,11 @@ function updateActiveThumbnail(){
 
         active.scrollIntoView({
 
-            block:"nearest",
+            block:
+                "nearest",
 
-            behavior:"smooth"
+            behavior:
+                "smooth"
 
         });
 
@@ -3023,6 +3283,7 @@ function goToPage(
 
     }
 
+
     catch(error){
 
 
@@ -3035,6 +3296,7 @@ function goToPage(
 
 
         }
+
 
         catch(e){}
 
@@ -3114,6 +3376,11 @@ async function renderPage(
             window.innerWidth <=
             700;
 
+
+
+        /*
+        تعادل کیفیت و سرعت.
+        */
 
 
         const pixelRatio =
@@ -3218,6 +3485,7 @@ async function renderPage(
                 "";
 
 
+
             target.appendChild(
                 canvas
             );
@@ -3234,6 +3502,7 @@ async function renderPage(
 
     }
 
+
     catch(error){
 
 
@@ -3243,6 +3512,7 @@ async function renderPage(
 
 
     }
+
 
     finally{
 
@@ -3259,12 +3529,18 @@ async function renderPage(
 
 
 /* =========================
-   LAZY PRELOAD
+   LAZY LOAD
 ========================= */
 
 function preloadAround(
     pageNumber
 ){
+
+
+    /*
+    فقط صفحات نزدیک
+    صفحه فعلی آماده شوند.
+    */
 
 
     const pages = [
@@ -3287,7 +3563,9 @@ function preloadAround(
 
     pages.forEach(
 
-        function(number){
+        function(
+            number
+        ){
 
 
             if(
@@ -3341,7 +3619,7 @@ function sleep(ms){
 
 
 /* =========================
-   ZOOM
+   ZOOM IN
 ========================= */
 
 function zoomIn(){
@@ -3359,11 +3637,16 @@ function zoomIn(){
         );
 
 
+
     applyTransform();
 
 }
 
 
+
+/* =========================
+   ZOOM OUT
+========================= */
 
 function zoomOut(){
 
@@ -3389,6 +3672,7 @@ function zoomOut(){
 
         panX =
             0;
+
 
 
         panY =
@@ -3422,6 +3706,7 @@ function applyTransform(){
             0;
 
 
+
         panY =
             0;
 
@@ -3453,7 +3738,7 @@ function applyTransform(){
 
 
 /* =========================
-   PAN
+   PAN AREA
 ========================= */
 
 const bookArea =
@@ -3464,11 +3749,21 @@ const bookArea =
 
 
 
+/* =========================
+   PAN START
+========================= */
+
 bookArea.addEventListener(
 
     "pointerdown",
 
     function(event){
+
+
+        /*
+        اگر از نوار لبه شروع شد
+        Pan نکن.
+        */
 
 
         if(
@@ -3481,6 +3776,11 @@ bookArea.addEventListener(
 
 
 
+        /*
+        فقط در حالت زوم.
+        */
+
+
         if(
             zoomValue <=
             1
@@ -3488,6 +3788,11 @@ bookArea.addEventListener(
             return;
         }
 
+
+
+        /*
+        Pointer دوم برای Pinch.
+        */
 
 
         if(
@@ -3542,6 +3847,7 @@ bookArea.addEventListener(
 
         }
 
+
         catch(e){}
 
 
@@ -3553,6 +3859,10 @@ bookArea.addEventListener(
 );
 
 
+
+/* =========================
+   PAN MOVE
+========================= */
 
 bookArea.addEventListener(
 
@@ -3588,6 +3898,7 @@ bookArea.addEventListener(
 
             (
                 event.clientX -
+
                 dragStartX
             );
 
@@ -3599,6 +3910,7 @@ bookArea.addEventListener(
 
             (
                 event.clientY -
+
                 dragStartY
             );
 
@@ -3616,6 +3928,10 @@ bookArea.addEventListener(
 
 
 
+/* =========================
+   PAN END
+========================= */
+
 bookArea.addEventListener(
 
     "pointerup",
@@ -3631,6 +3947,7 @@ bookArea.addEventListener(
 
             dragging =
                 false;
+
 
 
             dragPointerId =
@@ -3656,6 +3973,7 @@ bookArea.addEventListener(
             false;
 
 
+
         dragPointerId =
             null;
 
@@ -3667,7 +3985,7 @@ bookArea.addEventListener(
 
 
 /* =========================
-   PINCH
+   PINCH DISTANCE
 ========================= */
 
 function getTouchDistance(
@@ -3703,11 +4021,20 @@ function getTouchDistance(
 
 
 
+/* =========================
+   PINCH START
+========================= */
+
 bookArea.addEventListener(
 
     "touchstart",
 
     function(event){
+
+
+        /*
+        لبه‌ها مخصوص ورق.
+        */
 
 
         if(
@@ -3767,6 +4094,10 @@ bookArea.addEventListener(
 );
 
 
+
+/* =========================
+   PINCH MOVE
+========================= */
 
 bookArea.addEventListener(
 
@@ -3838,6 +4169,10 @@ bookArea.addEventListener(
 
 
 
+/* =========================
+   PINCH END
+========================= */
+
 bookArea.addEventListener(
 
     "touchend",
@@ -3884,6 +4219,7 @@ bookArea.addEventListener(
 
 
 </script>
+
 
 </body>
 
