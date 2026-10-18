@@ -31,9 +31,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    HOME
-===================================================== */
+========================= */
 
 #catalogMenu{
     width:100%;
@@ -69,23 +69,20 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    CATALOG BUTTONS
-===================================================== */
+========================= */
 
 .catalogButton{
     width:100%;
-
     min-height:78px;
 
     margin-bottom:16px;
 
     border:0;
-
     border-radius:14px;
 
     font-size:22px;
-
     font-weight:bold;
 
     cursor:pointer;
@@ -118,9 +115,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    READER
-===================================================== */
+========================= */
 
 #reader{
     display:none;
@@ -136,9 +133,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    PAGE COUNTER
-===================================================== */
+========================= */
 
 #pageCounter{
     position:fixed;
@@ -168,9 +165,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    SIDE ARROWS
-===================================================== */
+========================= */
 
 .sideArrow{
     position:fixed;
@@ -185,7 +182,6 @@ body{
     height:70px;
 
     border:0;
-
     border-radius:10px;
 
     background:rgba(15,15,15,.60);
@@ -193,20 +189,17 @@ body{
     color:#fff;
 
     font-size:35px;
-
     line-height:1;
 
     cursor:pointer;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     touch-action:manipulation;
 
     user-select:none;
-
     -webkit-user-select:none;
 }
 
@@ -229,9 +222,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    BOOK AREA
-===================================================== */
+========================= */
 
 #bookArea{
     position:absolute;
@@ -254,9 +247,9 @@ body{
 }
 
 
-/* =====================================================
-   PAN + ZOOM STAGE
-===================================================== */
+/* =========================
+   PAN + ZOOM
+========================= */
 
 #panStage{
     position:relative;
@@ -274,9 +267,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    BOOK STAGE
-===================================================== */
+========================= */
 
 #bookStage{
     position:relative;
@@ -291,39 +284,25 @@ body{
 }
 
 
-/* =====================================================
-   RTL MIRROR
-
-   فقط خود مکانیزم کتاب Mirror می‌شود.
-   محتوای هر صفحه دوباره Mirror معکوس می‌شود،
-   بنابراین نوشته و تصویر PDF صحیح باقی می‌ماند.
-===================================================== */
-
-#rtlBookMirror{
-    position:relative;
-
-    display:inline-flex;
-
-    transform:scaleX(-1);
-
-    transform-origin:center center;
-}
-
-
-/* =====================================================
+/* =========================
    BOOK
-===================================================== */
+========================= */
 
 #book{
     margin:auto;
+
+    /*
+    کلیک و Swipe خود کتاب
+    غیرفعال باشد
+    */
 
     pointer-events:none;
 }
 
 
-/* =====================================================
+/* =========================
    PAGE
-===================================================== */
+========================= */
 
 .page{
     background:#fff;
@@ -331,24 +310,7 @@ body{
     overflow:hidden;
 }
 
-
-/*
-محتوا Mirror دوم می‌گیرد تا
-نوشته‌ها آینه‌ای نشوند.
-*/
-
-.pageInner{
-    width:100%;
-    height:100%;
-
-    transform:scaleX(-1);
-
-    transform-origin:center center;
-
-    background:#fff;
-}
-
-.pageInner canvas{
+.page canvas{
     display:block;
 
     width:100%;
@@ -356,9 +318,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    EDGE SWIPE ZONES
-===================================================== */
+========================= */
 
 .edgeZone{
     position:absolute;
@@ -384,9 +346,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    PAGE PLACEHOLDER
-===================================================== */
+========================= */
 
 .pageLoading{
     width:100%;
@@ -419,9 +381,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    INITIAL LOADER
-===================================================== */
+========================= */
 
 #initialLoader{
     position:absolute;
@@ -453,8 +415,7 @@ body{
     border-radius:50%;
 
     animation:
-        rotate
-        .75s
+        rotate .75s
         linear
         infinite;
 }
@@ -474,9 +435,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    BOTTOM BAR
-===================================================== */
+========================= */
 
 #bottomBar{
     display:none;
@@ -520,14 +481,12 @@ body{
     cursor:pointer;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     touch-action:manipulation;
 
     user-select:none;
-
     -webkit-user-select:none;
 }
 
@@ -546,9 +505,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    PAGE PANEL
-===================================================== */
+========================= */
 
 #pagePanel{
     display:none;
@@ -588,11 +547,6 @@ body{
         rgba(0,0,0,.5);
 }
 
-
-/*
-Thumbnailها هم راست به چپ چیده شوند.
-*/
-
 #pageGrid{
     display:grid;
 
@@ -603,8 +557,6 @@ Thumbnailها هم راست به چپ چیده شوند.
         );
 
     gap:12px;
-
-    direction:rtl;
 }
 
 .pageThumb{
@@ -612,7 +564,10 @@ Thumbnailها هم راست به چپ چیده شوند.
 
     background:#292929;
 
-    border:2px solid transparent;
+    border:
+        2px
+        solid
+        transparent;
 
     border-radius:7px;
 
@@ -647,14 +602,12 @@ Thumbnailها هم راست به چپ چیده شوند.
     font-size:10px;
 
     color:#ccc;
-
-    direction:rtl;
 }
 
 
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
 @media(max-width:700px){
 
@@ -744,9 +697,9 @@ Thumbnailها هم راست به چپ چیده شوند.
 <body>
 
 
-<!-- =====================================================
+<!-- =========================
      HOME
-===================================================== -->
+========================= -->
 
 <div id="catalogMenu">
 
@@ -799,14 +752,12 @@ Thumbnailها هم راست به چپ چیده شوند.
 
 
 
-<!-- =====================================================
+<!-- =========================
      READER
-===================================================== -->
+========================= -->
 
 <div id="reader">
 
-
-    <!-- PREVIOUS -->
 
     <button
     id="prevSide"
@@ -820,8 +771,6 @@ Thumbnailها هم راست به چپ چیده شوند.
 
 
 
-    <!-- NEXT -->
-
     <button
     id="nextSide"
     class="sideArrow"
@@ -834,8 +783,6 @@ Thumbnailها هم راست به چپ چیده شوند.
 
 
 
-    <!-- COUNTER -->
-
     <div id="pageCounter">
 
         صفحه 1 از 1
@@ -844,12 +791,8 @@ Thumbnailها هم راست به چپ چیده شوند.
 
 
 
-    <!-- BOOK AREA -->
-
     <div id="bookArea">
 
-
-        <!-- LOADER -->
 
         <div id="initialLoader">
 
@@ -867,33 +810,14 @@ Thumbnailها هم راست به چپ چیده شوند.
 
 
 
-        <!-- PAN + ZOOM -->
-
         <div id="panStage">
 
 
             <div id="bookStage">
 
 
-                <!--
-                RTL MIRROR
-                -->
-
-                <div id="rtlBookMirror">
-
-
-                    <div id="book">
-                    </div>
-
-
+                <div id="book">
                 </div>
-
-
-
-                <!--
-                فقط این دو ناحیه
-                Swipe صفحه را کنترل می‌کنند.
-                -->
 
 
                 <div
@@ -921,29 +845,25 @@ Thumbnailها هم راست به چپ چیده شوند.
 
 
 
-<!-- =====================================================
+<!-- =========================
      PAGE PANEL
-===================================================== -->
+========================= -->
 
 <div id="pagePanel">
 
-
     <div id="pageGrid">
     </div>
-
 
 </div>
 
 
 
-<!-- =====================================================
+<!-- =========================
      BOTTOM BAR
-===================================================== -->
+========================= -->
 
 <div id="bottomBar">
 
-
-    <!-- ZOOM OUT -->
 
     <button
     class="bottomButton"
@@ -956,8 +876,6 @@ Thumbnailها هم راست به چپ چیده شوند.
 
 
 
-    <!-- PAGES -->
-
     <button
     class="bottomButton"
     onclick="togglePagePanel()"
@@ -969,21 +887,18 @@ Thumbnailها هم راست به چپ چیده شوند.
 
 
 
-    <!-- SWITCH CATALOG -->
-
     <button
     id="switchButton"
     class="bottomButton"
     onclick="switchCatalog()"
-    aria-label="Switch catalog">
+    aria-label="Switch catalog"
+    title="Switch catalog">
 
         ⇄
 
     </button>
 
 
-
-    <!-- ZOOM IN -->
 
     <button
     class="bottomButton"
@@ -999,9 +914,9 @@ Thumbnailها هم راست به چپ چیده شوند.
 
 
 
-<!-- =====================================================
+<!-- =========================
      SOUND
-===================================================== -->
+========================= -->
 
 <audio
 id="pageFlipAudio"
@@ -1011,19 +926,10 @@ preload="auto">
 
 
 
-<!-- =====================================================
-     PDF.JS
-===================================================== -->
-
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js">
 </script>
 
-
-
-<!-- =====================================================
-     PAGE FLIP
-===================================================== -->
 
 <script
 src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js">
@@ -1034,9 +940,9 @@ src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.
 <script>
 
 
-/* =====================================================
+/* =========================
    PDF WORKER
-===================================================== */
+========================= */
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 
@@ -1044,9 +950,9 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
 
 
 
-/* =====================================================
-   GLOBALS
-===================================================== */
+/* =========================
+   VARIABLES
+========================= */
 
 let pdfDocument =
     null;
@@ -1073,7 +979,7 @@ let renderedPages =
 
 
 let renderingPages =
-    new Set();
+    new Map();
 
 
 let thumbElements =
@@ -1109,22 +1015,22 @@ let soundUnlocked =
 
 
 
-/* =====================================================
-   SEQUENTIAL LOAD
-===================================================== */
+/* =========================
+   BACKGROUND SEQUENTIAL LOAD
+========================= */
 
-let sequentialLoadToken =
+let sequentialToken =
     0;
 
 
-let sequentialLoading =
+let sequentialRunning =
     false;
 
 
 
-/* =====================================================
+/* =========================
    PAN
-===================================================== */
+========================= */
 
 let dragging =
     false;
@@ -1151,9 +1057,9 @@ let dragStartPanY =
 
 
 
-/* =====================================================
+/* =========================
    PINCH
-===================================================== */
+========================= */
 
 let pinchActive =
     false;
@@ -1168,18 +1074,18 @@ let pinchStartZoom =
 
 
 
-/* =====================================================
-   EDGE
-===================================================== */
+/* =========================
+   EDGE SWIPE
+========================= */
 
 let edgeGesture =
     null;
 
 
 
-/* =====================================================
+/* =========================
    AUDIO
-===================================================== */
+========================= */
 
 async function unlockSound(){
 
@@ -1279,17 +1185,17 @@ function playFlipSound(){
 
 
 
-/* =====================================================
-   DESTROY OLD BOOK
-===================================================== */
+/* =========================
+   DESTROY CURRENT BOOK
+========================= */
 
 function destroyCurrentBook(){
 
 
-    sequentialLoadToken++;
+    sequentialToken++;
 
 
-    sequentialLoading =
+    sequentialRunning =
         false;
 
 
@@ -1299,12 +1205,9 @@ function destroyCurrentBook(){
 
         try{
 
-
             pageFlip.destroy();
 
-
         }
-
 
         catch(error){}
 
@@ -1321,12 +1224,9 @@ function destroyCurrentBook(){
 
         try{
 
-
             pdfDocument.destroy();
 
-
         }
-
 
         catch(error){}
 
@@ -1373,10 +1273,6 @@ function destroyCurrentBook(){
         false;
 
 
-    edgeGesture =
-        null;
-
-
     dragging =
         false;
 
@@ -1388,13 +1284,17 @@ function destroyCurrentBook(){
     pinchActive =
         false;
 
+
+    edgeGesture =
+        null;
+
 }
 
 
 
-/* =====================================================
+/* =========================
    OPEN CATALOG
-===================================================== */
+========================= */
 
 async function openCatalog(
     catalogName,
@@ -1507,6 +1407,11 @@ async function openCatalog(
 
 
 
+    /*
+    صدای ورق آماده شود،
+    ولی Load منتظرش نماند.
+    */
+
     unlockSound();
 
 
@@ -1521,14 +1426,11 @@ async function openCatalog(
                 url:
                     pdfFile,
 
-
                 disableRange:
                     false,
 
-
                 disableStream:
                     false,
-
 
                 disableAutoFetch:
                     true
@@ -1541,6 +1443,12 @@ async function openCatalog(
 
             await loadingTask.promise;
 
+
+
+        /*
+        اگر کاتالوگ عوض شده
+        این Load قدیمی کنار گذاشته شود.
+        */
 
 
         if(
@@ -1570,7 +1478,7 @@ async function openCatalog(
 
 
         /*
-        فقط صفحه اول ابتدا
+        فقط صفحه 1 اولویت دارد.
         */
 
 
@@ -1611,12 +1519,17 @@ async function openCatalog(
 
 
 
+        /*
+        فقط اسکلت صفحات ساخته شود.
+        */
+
+
         createPages();
 
 
 
         /*
-        فقط صفحه اول Render
+        اول فقط صفحه اول PDF.
         */
 
 
@@ -1635,6 +1548,11 @@ async function openCatalog(
 
 
 
+        /*
+        همین حالا کتاب نشان داده شود.
+        */
+
+
         createBook();
 
 
@@ -1649,7 +1567,8 @@ async function openCatalog(
 
 
         /*
-        صفحات 2 و 3 سریع
+        صفحه 2 ابتدا آماده شود
+        تا اولین ورق سریع باشد.
         */
 
 
@@ -1662,7 +1581,7 @@ async function openCatalog(
             ){
 
 
-                preloadPriorityPages(
+                requestPriorityPages(
                     2
                 );
 
@@ -1670,12 +1589,13 @@ async function openCatalog(
             }
 
 
-        },20);
+        },40);
 
 
 
         /*
-        بعد صفحات به ترتیب
+        سپس 2،3،4،5...
+        دقیقاً یکی یکی.
         */
 
 
@@ -1694,7 +1614,7 @@ async function openCatalog(
             }
 
 
-        },350);
+        },300);
 
 
     }
@@ -1742,9 +1662,9 @@ async function openCatalog(
 
 
 
-/* =====================================================
-   SWITCH APN / ROCKMAN
-===================================================== */
+/* =========================
+   SWITCH CATALOG
+========================= */
 
 function switchCatalog(){
 
@@ -1789,9 +1709,9 @@ function switchCatalog(){
 
 
 
-/* =====================================================
-   CREATE PAGES
-===================================================== */
+/* =========================
+   CREATE PAGE ELEMENTS
+========================= */
 
 function createPages(){
 
@@ -1819,11 +1739,6 @@ function createPages(){
     ){
 
 
-        /*
-        صفحه بیرونی را StPageFlip کنترل می‌کند.
-        */
-
-
         const page =
 
             document.createElement(
@@ -1840,24 +1755,6 @@ function createPages(){
 
 
 
-        /*
-        این wrapper محتوای PDF را
-        Mirror معکوس می‌کند.
-        */
-
-
-        const inner =
-
-            document.createElement(
-                "div"
-            );
-
-
-        inner.className =
-            "pageInner";
-
-
-
         const loading =
 
             document.createElement(
@@ -1870,13 +1767,8 @@ function createPages(){
 
 
 
-        inner.appendChild(
-            loading
-        );
-
-
         page.appendChild(
-            inner
+            loading
         );
 
 
@@ -1889,16 +1781,15 @@ function createPages(){
             page
         );
 
-
     }
 
 }
 
 
 
-/* =====================================================
+/* =========================
    CREATE BOOK
-===================================================== */
+========================= */
 
 function createBook(){
 
@@ -2001,18 +1892,12 @@ function createBook(){
                     ),
 
 
-                /*
-                جلد اول و آخر
-                تک صفحه
-                */
-
                 showCover:
                     true,
 
 
                 /*
-                موبایل تک صفحه
-                دسکتاپ دو صفحه
+                موبایل تک صفحه.
                 */
 
                 usePortrait:
@@ -2062,6 +1947,10 @@ function createBook(){
     );
 
 
+
+    /*
+    خود صفحه با Tap ورق نخورد.
+    */
 
     document.getElementById(
         "book"
@@ -2127,7 +2016,12 @@ function createBook(){
 
 
 
-            preloadPriorityPages(
+            /*
+            صفحه فعلی و چند صفحه
+            نزدیک آن اولویت بگیرند.
+            */
+
+            requestPriorityPages(
                 index + 1
             );
 
@@ -2140,13 +2034,10 @@ function createBook(){
 
 
 
-/* =====================================================
+/* =========================
    NEXT PAGE
-
-   به دلیل Mirror شدن خود کتاب،
-   flipNext به صورت بصری
-   از راست به چپ دیده می‌شود.
-===================================================== */
+   جهت ورق مثل نسخه اصلی
+========================= */
 
 async function nextPage(){
 
@@ -2164,7 +2055,13 @@ async function nextPage(){
 
 
 
-    preloadPriorityPages(
+    /*
+    قبل از انیمیشن،
+    صفحه بعد را در اولویت بگذار.
+    */
+
+
+    requestPriorityPages(
         current + 2
     );
 
@@ -2203,9 +2100,9 @@ async function nextPage(){
 
 
 
-/* =====================================================
+/* =========================
    PREVIOUS PAGE
-===================================================== */
+========================= */
 
 async function previousPage(){
 
@@ -2223,7 +2120,7 @@ async function previousPage(){
 
 
 
-    preloadPriorityPages(
+    requestPriorityPages(
         current
     );
 
@@ -2262,9 +2159,9 @@ async function previousPage(){
 
 
 
-/* =====================================================
+/* =========================
    PAGE COUNTER
-===================================================== */
+========================= */
 
 function updatePageCounter(){
 
@@ -2306,11 +2203,6 @@ function updatePageCounter(){
 
 
 
-    /*
-    MOBILE
-    */
-
-
     if(mobile){
 
 
@@ -2331,11 +2223,6 @@ function updatePageCounter(){
 
 
 
-    /*
-    FRONT COVER
-    */
-
-
     if(index === 0){
 
 
@@ -2350,11 +2237,6 @@ function updatePageCounter(){
 
     }
 
-
-
-    /*
-    BACK COVER
-    */
 
 
     if(
@@ -2380,24 +2262,16 @@ function updatePageCounter(){
 
 
 
-    /*
-    DESKTOP SPREAD
-
-    به دلیل RTL:
-    عدد اول همان صفحه سمت راست است.
-    */
-
-
-    const rightPage =
+    const first =
         index + 1;
 
 
 
-    const leftPage =
+    const second =
 
         Math.min(
 
-            rightPage + 1,
+            first + 1,
 
             total
 
@@ -2409,11 +2283,11 @@ function updatePageCounter(){
 
         "صفحه " +
 
-        rightPage +
+        first +
 
         "–" +
 
-        leftPage +
+        second +
 
         " از " +
 
@@ -2423,11 +2297,11 @@ function updatePageCounter(){
 
 
 
-/* =====================================================
-   PRIORITY LOAD
-===================================================== */
+/* =========================
+   PRIORITY LOADING
+========================= */
 
-function preloadPriorityPages(
+function requestPriorityPages(
     pageNumber
 ){
 
@@ -2438,21 +2312,29 @@ function preloadPriorityPages(
 
 
 
-    const pages = [
+    /*
+    صفحه لازم،
+    بعد یکی جلوتر،
+    بعد یکی عقب‌تر.
+
+    اینها برای کاربر مهم‌تر از
+    صف پس‌زمینه هستند.
+    */
+
+
+    const priorityPages = [
 
         pageNumber,
 
         pageNumber + 1,
 
-        pageNumber - 1,
-
-        pageNumber + 2
+        pageNumber - 1
 
     ];
 
 
 
-    pages.forEach(
+    priorityPages.forEach(
 
         function(number){
 
@@ -2483,37 +2365,37 @@ function preloadPriorityPages(
 
 
 
-/* =====================================================
-   SEQUENTIAL LOAD
-===================================================== */
+/* =========================
+   SEQUENTIAL LOADING
+   2 -> 3 -> 4 -> 5...
+========================= */
 
 async function startSequentialLoading(){
 
 
     if(
         !pdfDocument ||
-        sequentialLoading
+        sequentialRunning
     ){
         return;
     }
 
 
 
-    sequentialLoading =
+    sequentialRunning =
         true;
 
 
 
     const myToken =
 
-        ++sequentialLoadToken;
+        ++sequentialToken;
 
 
 
     /*
-    1 قبلاً Render شده.
-    بقیه دقیقاً:
-    2,3,4,5...
+    صفحه اول قبلاً آماده شده.
+    بقیه یکی یکی.
     */
 
 
@@ -2526,7 +2408,7 @@ async function startSequentialLoading(){
 
         if(
             myToken !==
-            sequentialLoadToken
+            sequentialToken
         ){
             break;
         }
@@ -2537,6 +2419,12 @@ async function startSequentialLoading(){
             break;
         }
 
+
+
+        /*
+        اگر کاربر قبلاً این صفحه
+        را آماده کرده، دوباره Render نشود.
+        */
 
 
         if(
@@ -2555,6 +2443,12 @@ async function startSequentialLoading(){
 
 
 
+        /*
+        یک فرصت کوتاه به مرورگر
+        برای Scroll/Zoom/Animation بده.
+        */
+
+
         await waitForIdle();
 
 
@@ -2564,11 +2458,11 @@ async function startSequentialLoading(){
 
     if(
         myToken ===
-        sequentialLoadToken
+        sequentialToken
     ){
 
 
-        sequentialLoading =
+        sequentialRunning =
             false;
 
 
@@ -2578,9 +2472,9 @@ async function startSequentialLoading(){
 
 
 
-/* =====================================================
-   IDLE
-===================================================== */
+/* =========================
+   WAIT FOR IDLE
+========================= */
 
 function waitForIdle(){
 
@@ -2601,7 +2495,7 @@ function waitForIdle(){
                     ()=>resolve(),
 
                     {
-                        timeout:120
+                        timeout:150
                     }
 
                 );
@@ -2630,15 +2524,264 @@ function waitForIdle(){
 
 
 
-/* =====================================================
-   RTL EDGE SWIPE
-===================================================== */
+/* =========================
+   RENDER PAGE
+========================= */
+
+async function renderPage(
+    pageNumber
+){
+
+
+    if(!pdfDocument){
+        return;
+    }
+
+
+
+    if(
+        pageNumber < 1
+        ||
+        pageNumber >
+        pdfDocument.numPages
+    ){
+        return;
+    }
+
+
+
+    if(
+        renderedPages.has(
+            pageNumber
+        )
+    ){
+        return;
+    }
+
+
+
+    /*
+    اگر همین صفحه در حال Render است،
+    همان Promise را برگردان.
+    */
+
+
+    if(
+        renderingPages.has(
+            pageNumber
+        )
+    ){
+
+
+        return renderingPages.get(
+            pageNumber
+        );
+
+
+    }
+
+
+
+    const renderPromise =
+
+        (async()=>{
+
+
+            try{
+
+
+                const page =
+
+                    await pdfDocument
+                    .getPage(
+                        pageNumber
+                    );
+
+
+
+                const mobile =
+
+                    window.innerWidth <=
+                    700;
+
+
+
+                /*
+                کیفیت مناسب + سرعت.
+                */
+
+
+                const pixelRatio =
+
+                    Math.min(
+
+                        window.devicePixelRatio ||
+                        1,
+
+                        1.35
+
+                    );
+
+
+
+                const scale =
+
+                    mobile
+                    ? 1.08
+                    : 1.18;
+
+
+
+                const viewport =
+
+                    page.getViewport({
+
+                        scale:
+
+                            scale *
+
+                            pixelRatio
+
+                    });
+
+
+
+                const canvas =
+
+                    document.createElement(
+                        "canvas"
+                    );
+
+
+
+                const context =
+
+                    canvas.getContext(
+
+                        "2d",
+
+                        {
+                            alpha:false
+                        }
+
+                    );
+
+
+
+                canvas.width =
+
+                    Math.floor(
+                        viewport.width
+                    );
+
+
+
+                canvas.height =
+
+                    Math.floor(
+                        viewport.height
+                    );
+
+
+
+                await page.render({
+
+                    canvasContext:
+                        context,
+
+
+                    viewport:
+                        viewport
+
+
+                }).promise;
+
+
+
+                const target =
+
+                    pageElements[
+                        pageNumber - 1
+                    ];
+
+
+
+                if(target){
+
+
+                    target.innerHTML =
+                        "";
+
+
+                    target.appendChild(
+                        canvas
+                    );
+
+
+                }
+
+
+
+                renderedPages.add(
+                    pageNumber
+                );
+
+
+            }
+
+
+            catch(error){
+
+
+                console.error(
+                    error
+                );
+
+
+            }
+
+
+            finally{
+
+
+                renderingPages.delete(
+                    pageNumber
+                );
+
+
+            }
+
+
+        })();
+
+
+
+    renderingPages.set(
+
+        pageNumber,
+
+        renderPromise
+
+    );
+
+
+
+    return renderPromise;
+
+}
+
+
+
+/* =========================
+   EDGE SWIPE
+========================= */
 
 const leftEdge =
 
     document.getElementById(
         "leftEdge"
     );
+
 
 
 const rightEdge =
@@ -2711,9 +2854,9 @@ function startEdgeSwipe(
 
 
 
-/* =====================================================
-   EDGE END
-===================================================== */
+/* =========================
+   EDGE SWIPE END
+========================= */
 
 async function endEdgeSwipe(
     event
@@ -2763,7 +2906,7 @@ async function endEdgeSwipe(
 
 
     /*
-    TAP هیچ کاری نکند.
+    TAP ساده هیچ کاری نکند.
     */
 
 
@@ -2792,11 +2935,9 @@ async function endEdgeSwipe(
 
 
     /*
-    RIGHT EDGE
-    کشیدن به چپ
-    = صفحه بعد
+    لبه راست + Swipe به چپ
+    صفحه بعد
     */
-
 
     if(
         side === "right"
@@ -2815,11 +2956,9 @@ async function endEdgeSwipe(
 
 
     /*
-    LEFT EDGE
-    کشیدن به راست
-    = صفحه قبل
+    لبه چپ + Swipe به راست
+    صفحه قبل
     */
-
 
     if(
         side === "left"
@@ -2917,9 +3056,9 @@ rightEdge.addEventListener(
 
 
 
-/* =====================================================
+/* =========================
    PAGE PANEL
-===================================================== */
+========================= */
 
 async function togglePagePanel(){
 
@@ -2953,6 +3092,12 @@ async function togglePagePanel(){
 
 
 
+    /*
+    Thumbnail فقط وقتی
+    کاربر ▦ را بزند ساخته شود.
+    */
+
+
     if(!thumbnailsBuilt){
 
 
@@ -2973,9 +3118,9 @@ async function togglePagePanel(){
 
 
 
-/* =====================================================
+/* =========================
    THUMBNAILS
-===================================================== */
+========================= */
 
 async function buildThumbnails(){
 
@@ -3064,7 +3209,7 @@ async function buildThumbnails(){
             function(){
 
 
-                preloadPriorityPages(
+                requestPriorityPages(
                     i
                 );
 
@@ -3154,9 +3299,9 @@ async function buildThumbnails(){
 
 
 
-/* =====================================================
-   ACTIVE THUMB
-===================================================== */
+/* =========================
+   ACTIVE THUMBNAIL
+========================= */
 
 function updateActiveThumbnail(){
 
@@ -3203,7 +3348,9 @@ function updateActiveThumbnail(){
 
     const active =
 
-        thumbElements[index];
+        thumbElements[
+            index
+        ];
 
 
 
@@ -3225,9 +3372,9 @@ function updateActiveThumbnail(){
 
 
 
-/* =====================================================
+/* =========================
    GO TO PAGE
-===================================================== */
+========================= */
 
 function goToPage(
     index
@@ -3240,7 +3387,7 @@ function goToPage(
 
 
 
-    preloadPriorityPages(
+    requestPriorityPages(
         index + 1
     );
 
@@ -3281,268 +3428,9 @@ function goToPage(
 
 
 
-/* =====================================================
-   RENDER PAGE
-===================================================== */
-
-async function renderPage(
-    pageNumber
-){
-
-
-    if(!pdfDocument){
-        return;
-    }
-
-
-
-    if(
-        pageNumber < 1
-        ||
-        pageNumber >
-        pdfDocument.numPages
-    ){
-        return;
-    }
-
-
-
-    if(
-        renderedPages.has(
-            pageNumber
-        )
-    ){
-        return;
-    }
-
-
-
-    if(
-        renderingPages.has(
-            pageNumber
-        )
-    ){
-
-
-        while(
-            renderingPages.has(
-                pageNumber
-            )
-        ){
-
-
-            await new Promise(
-
-                resolve=>
-
-                    setTimeout(
-                        resolve,
-                        20
-                    )
-
-            );
-
-
-        }
-
-
-        return;
-
-    }
-
-
-
-    renderingPages.add(
-        pageNumber
-    );
-
-
-
-    try{
-
-
-        const page =
-
-            await pdfDocument
-            .getPage(
-                pageNumber
-            );
-
-
-
-        const mobile =
-
-            window.innerWidth <=
-            700;
-
-
-
-        const pixelRatio =
-
-            Math.min(
-
-                window.devicePixelRatio ||
-                1,
-
-                1.35
-
-            );
-
-
-
-        const scale =
-
-            mobile
-            ? 1.08
-            : 1.18;
-
-
-
-        const viewport =
-
-            page.getViewport({
-
-                scale:
-
-                    scale *
-
-                    pixelRatio
-
-            });
-
-
-
-        const canvas =
-
-            document.createElement(
-                "canvas"
-            );
-
-
-
-        const context =
-
-            canvas.getContext(
-
-                "2d",
-
-                {
-                    alpha:false
-                }
-
-            );
-
-
-
-        canvas.width =
-
-            Math.floor(
-                viewport.width
-            );
-
-
-
-        canvas.height =
-
-            Math.floor(
-                viewport.height
-            );
-
-
-
-        await page.render({
-
-            canvasContext:
-                context,
-
-
-            viewport:
-                viewport
-
-
-        }).promise;
-
-
-
-        const target =
-
-            pageElements[
-                pageNumber - 1
-            ];
-
-
-
-        if(target){
-
-
-            /*
-            فقط محتوای pageInner عوض شود.
-            */
-
-
-            const inner =
-
-                target.querySelector(
-                    ".pageInner"
-                );
-
-
-
-            if(inner){
-
-
-                inner.innerHTML =
-                    "";
-
-
-                inner.appendChild(
-                    canvas
-                );
-
-
-            }
-
-
-        }
-
-
-
-        renderedPages.add(
-            pageNumber
-        );
-
-
-    }
-
-
-    catch(error){
-
-
-        console.error(
-            error
-        );
-
-
-    }
-
-
-    finally{
-
-
-        renderingPages.delete(
-            pageNumber
-        );
-
-
-    }
-
-}
-
-
-
-/* =====================================================
+/* =========================
    ZOOM
-===================================================== */
+========================= */
 
 function zoomIn(){
 
@@ -3557,6 +3445,7 @@ function zoomIn(){
             .25
 
         );
+
 
 
     applyTransform();
@@ -3605,9 +3494,9 @@ function zoomOut(){
 
 
 
-/* =====================================================
-   APPLY TRANSFORM
-===================================================== */
+/* =========================
+   APPLY PAN + ZOOM
+========================= */
 
 function applyTransform(){
 
@@ -3652,9 +3541,9 @@ function applyTransform(){
 
 
 
-/* =====================================================
+/* =========================
    PAN
-===================================================== */
+========================= */
 
 const bookArea =
 
@@ -3867,9 +3756,9 @@ bookArea.addEventListener(
 
 
 
-/* =====================================================
-   PINCH ZOOM
-===================================================== */
+/* =========================
+   PINCH
+========================= */
 
 function getTouchDistance(
     touches
