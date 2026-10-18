@@ -32,7 +32,7 @@ body{
 
 
 /* =========================================
-   CATALOG SELECT HOME
+   CATALOG SELECTION
 ========================================= */
 
 #catalogMenu{
@@ -53,8 +53,6 @@ body{
     background:#111;
 
     pointer-events:auto;
-
-    touch-action:manipulation;
 }
 
 .menuBox{
@@ -63,13 +61,10 @@ body{
     text-align:center;
 
     color:#fff;
-
-    pointer-events:auto;
 }
 
 .menuBox h1{
     margin:0 0 8px;
-
     font-size:30px;
 }
 
@@ -77,7 +72,6 @@ body{
     margin:0 0 30px;
 
     color:#999;
-
     font-size:14px;
 }
 
@@ -87,10 +81,6 @@ body{
 ========================================= */
 
 .catalogButton{
-    position:relative;
-
-    z-index:10010;
-
     width:100%;
     min-height:78px;
 
@@ -100,7 +90,7 @@ body{
     border-radius:14px;
 
     font-size:22px;
-    font-weight:bold;
+    font-weight:700;
 
     cursor:pointer;
 
@@ -109,13 +99,12 @@ body{
     justify-content:center;
 
     pointer-events:auto;
-
     touch-action:manipulation;
 
     user-select:none;
     -webkit-user-select:none;
 
-    transition:transform .15s ease;
+    transition:transform .12s ease;
 }
 
 .catalogButton:active{
@@ -152,12 +141,12 @@ body{
 
     overflow:hidden;
 
-    pointer-events:auto;
+    pointer-events:none;
 }
 
 
 /* =========================================
-   COUNTER
+   PAGE COUNTER
 ========================================= */
 
 #pageCounter{
@@ -183,8 +172,6 @@ body{
     white-space:nowrap;
 
     pointer-events:none;
-
-    user-select:none;
 }
 
 
@@ -205,7 +192,6 @@ body{
     height:70px;
 
     border:0;
-
     border-radius:10px;
 
     background:rgba(15,15,15,.60);
@@ -251,11 +237,9 @@ body{
 
 #bookArea{
     position:absolute;
-
     inset:0;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
@@ -271,14 +255,13 @@ body{
 
 
 /* =========================================
-   PAN + ZOOM
+   PAN / ZOOM
 ========================================= */
 
 #panStage{
     position:relative;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
@@ -298,7 +281,6 @@ body{
     position:relative;
 
     display:inline-flex;
-
     align-items:center;
     justify-content:center;
 
@@ -315,7 +297,7 @@ body{
     margin:auto;
 
     /*
-    خود صفحه با Tap ورق نخورد.
+    خود کتاب با Tap ورق نخورد.
     */
 
     pointer-events:none;
@@ -328,7 +310,6 @@ body{
 
 .page{
     background:#fff;
-
     overflow:hidden;
 }
 
@@ -369,7 +350,7 @@ body{
 
 
 /* =========================================
-   PAGE PLACEHOLDER
+   PAGE LOADING
 ========================================= */
 
 .pageLoading{
@@ -386,26 +367,22 @@ body{
 
     background-size:200% 100%;
 
-    animation:
-        shimmer 1.2s linear infinite;
+    animation:shimmer 1.2s linear infinite;
 }
 
 @keyframes shimmer{
-
     to{
         background-position-x:-200%;
     }
-
 }
 
 
 /* =========================================
-   INITIAL LOADER
+   MAIN LOADER
 ========================================= */
 
 #initialLoader{
     position:absolute;
-
     inset:0;
 
     z-index:700;
@@ -413,7 +390,6 @@ body{
     background:#111;
 
     display:flex;
-
     flex-direction:column;
 
     align-items:center;
@@ -427,26 +403,21 @@ body{
     height:36px;
 
     border:3px solid #444;
-
     border-top-color:#fff;
 
     border-radius:50%;
 
-    animation:
-        rotate .7s linear infinite;
+    animation:rotate .7s linear infinite;
 }
 
 @keyframes rotate{
-
     to{
         transform:rotate(360deg);
     }
-
 }
 
 .loaderText{
     color:#aaa;
-
     font-size:14px;
 }
 
@@ -474,9 +445,7 @@ body{
     overflow:hidden;
 
     box-shadow:
-        0
-        5px
-        18px
+        0 5px 18px
         rgba(0,0,0,.35);
 
     pointer-events:auto;
@@ -487,7 +456,6 @@ body{
     height:48px;
 
     border:0;
-
     border-right:1px solid #ddd;
 
     background:#f4f4f4;
@@ -499,13 +467,12 @@ body{
     cursor:pointer;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
-    pointer-events:auto;
-
     touch-action:manipulation;
+
+    pointer-events:auto;
 
     user-select:none;
     -webkit-user-select:none;
@@ -530,7 +497,6 @@ body{
     z-index:5100;
 
     pointer-events:auto;
-
     touch-action:manipulation;
 }
 
@@ -587,9 +553,7 @@ body{
     overscroll-behavior:contain;
 
     box-shadow:
-        0
-        10px
-        35px
+        0 10px 35px
         rgba(0,0,0,.5);
 }
 
@@ -610,10 +574,7 @@ body{
 
     background:#292929;
 
-    border:
-        2px
-        solid
-        transparent;
+    border:2px solid transparent;
 
     border-radius:7px;
 
@@ -662,7 +623,6 @@ body{
 
     .catalogButton{
         min-height:68px;
-
         font-size:20px;
     }
 
@@ -689,8 +649,7 @@ body{
 
         font-size:28px;
 
-        background:
-            rgba(15,15,15,.52);
+        background:rgba(15,15,15,.52);
     }
 
     #prevSide{
@@ -745,7 +704,7 @@ body{
 
 
 <!-- =========================================
-     CATALOG SELECTION
+     CATALOG SELECT
 ========================================= -->
 
 <div id="catalogMenu">
@@ -814,9 +773,7 @@ body{
 
 
     <div id="pageCounter">
-
         صفحه 1 از 1
-
     </div>
 
 
@@ -917,16 +874,13 @@ body{
 
         <svg viewBox="0 0 24 24">
 
-            <path
-            d="M3 11L12 3L21 11">
+            <path d="M3 11L12 3L21 11">
             </path>
 
-            <path
-            d="M5 10V21H19V10">
+            <path d="M5 10V21H19V10">
             </path>
 
-            <path
-            d="M9 21V14H15V21">
+            <path d="M9 21V14H15V21">
             </path>
 
         </svg>
@@ -975,7 +929,6 @@ src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.
 ========================================= */
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
 
@@ -985,54 +938,60 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
 ========================================= */
 
 const catalogMenu =
-    document.getElementById(
-        "catalogMenu"
-    );
+    document.getElementById("catalogMenu");
 
 const reader =
-    document.getElementById(
-        "reader"
-    );
+    document.getElementById("reader");
 
 const bottomBar =
-    document.getElementById(
-        "bottomBar"
-    );
+    document.getElementById("bottomBar");
 
 const pagePanel =
-    document.getElementById(
-        "pagePanel"
-    );
+    document.getElementById("pagePanel");
 
 const pageGrid =
-    document.getElementById(
-        "pageGrid"
-    );
+    document.getElementById("pageGrid");
 
 const book =
-    document.getElementById(
-        "book"
-    );
+    document.getElementById("book");
 
 const bookArea =
-    document.getElementById(
-        "bookArea"
-    );
+    document.getElementById("bookArea");
 
 const loader =
-    document.getElementById(
-        "initialLoader"
-    );
+    document.getElementById("initialLoader");
 
 const pageCounter =
-    document.getElementById(
-        "pageCounter"
-    );
+    document.getElementById("pageCounter");
+
+const rockmanButton =
+    document.getElementById("rockmanButton");
+
+const apnButton =
+    document.getElementById("apnButton");
+
+const homeButton =
+    document.getElementById("homeButton");
+
+const nextSide =
+    document.getElementById("nextSide");
+
+const prevSide =
+    document.getElementById("prevSide");
+
+const zoomInButton =
+    document.getElementById("zoomInButton");
+
+const zoomOutButton =
+    document.getElementById("zoomOutButton");
+
+const pagesButton =
+    document.getElementById("pagesButton");
 
 
 
 /* =========================================
-   VARIABLES
+   STATE
 ========================================= */
 
 let pdfDocument = null;
@@ -1041,11 +1000,19 @@ let loadingTask = null;
 
 let pageFlip = null;
 
-let generation = 0;
 
-let onHomeScreen = true;
+/*
+هر بار کاتالوگ جدید یا Home باز شود
+این عدد تغییر می‌کند.
 
-let openingCatalog = false;
+تمام عملیات قدیمی خودکار بی‌اعتبار می‌شوند.
+*/
+
+let sessionId = 0;
+
+
+let isHomeScreen = true;
+
 
 let pageElements = [];
 
@@ -1058,6 +1025,7 @@ let renderingPages =
 let thumbElements = [];
 
 let thumbnailsBuilt = false;
+
 
 let pageRatio = 1.414;
 
@@ -1080,7 +1048,7 @@ let panX = 0;
 let panY = 0;
 
 
-/* AUDIO */
+/* SOUND */
 
 let soundUnlocked = false;
 
@@ -1116,13 +1084,21 @@ let edgeGesture = null;
 
 
 /* =========================================
-   SCREEN CONTROL
+   SHOW HOME
 ========================================= */
 
 function showHome(){
 
 
-    onHomeScreen = true;
+    isHomeScreen = true;
+
+
+    /*
+    تمام عملیات Async قبلی
+    دیگر اجازه تغییر UI ندارند.
+    */
+
+    sessionId++;
 
 
     backgroundToken++;
@@ -1130,8 +1106,18 @@ function showHome(){
     backgroundRunning = false;
 
 
+
+    pagePanel.style.display =
+        "none";
+
+
+    bottomBar.style.display =
+        "none";
+
+
     /*
-    Reader هیچ Eventی نگیرد.
+    Reader هم مخفی است
+    هم هیچ Eventی نمی‌گیرد.
     */
 
     reader.style.pointerEvents =
@@ -1142,16 +1128,9 @@ function showHome(){
         "none";
 
 
-    bottomBar.style.display =
-        "none";
-
-
-    pagePanel.style.display =
-        "none";
-
 
     /*
-    Home مستقل و قابل کلیک.
+    Menu کاملاً فعال.
     */
 
     catalogMenu.style.display =
@@ -1161,18 +1140,31 @@ function showHome(){
     catalogMenu.style.pointerEvents =
         "auto";
 
+
+    rockmanButton.disabled =
+        false;
+
+
+    apnButton.disabled =
+        false;
+
 }
 
 
 
+/* =========================================
+   SHOW READER
+========================================= */
+
 function showReader(){
 
 
-    onHomeScreen = false;
+    isHomeScreen = false;
+
 
 
     /*
-    اول Home کاملاً حذف شود.
+    Menu کاملاً کنار برود.
     */
 
     catalogMenu.style.pointerEvents =
@@ -1181,6 +1173,7 @@ function showReader(){
 
     catalogMenu.style.display =
         "none";
+
 
 
     /*
@@ -1208,12 +1201,16 @@ function showReader(){
 
 /* =========================================
    HOME BUTTON
+
+   مهم:
+   هیچ Destroy اینجا نیست.
 ========================================= */
 
 function goHome(event){
 
 
     if(event){
+
 
         event.preventDefault();
 
@@ -1222,10 +1219,6 @@ function goHome(event){
     }
 
 
-    /*
-    هیچ Destroy اینجا انجام نمی‌شود.
-    */
-
     showHome();
 
 }
@@ -1233,19 +1226,18 @@ function goHome(event){
 
 
 /* =========================================
-   DETACH OLD BOOK
+   RELEASE OLD BOOK
 
-   مهم:
-   Refهای قدیمی فوراً جدا می‌شوند.
-   Destroy بعداً انجام می‌شود.
+   فقط موقع انتخاب کاتالوگ جدید.
 ========================================= */
 
-function detachOldBook(){
+function releaseOldBook(){
 
 
     backgroundToken++;
 
     backgroundRunning = false;
+
 
 
     const oldPageFlip =
@@ -1261,22 +1253,12 @@ function detachOldBook(){
 
 
 
-    /*
-    فوراً ارتباط نسخه قبلی
-    با Globals قطع شود.
-    */
-
     pageFlip = null;
 
     pdfDocument = null;
 
     loadingTask = null;
 
-
-
-    book.innerHTML = "";
-
-    pageGrid.innerHTML = "";
 
 
     pageElements = [];
@@ -1296,43 +1278,77 @@ function detachOldBook(){
 
 
 
+    dragging = false;
+
+    dragPointerId = null;
+
+    pinchActive = false;
+
+    edgeGesture = null;
+
+
+
     /*
-    Cleanup قبلی بعداً.
-    روی کلیک جدید قفل ایجاد نمی‌کند.
+    اول خود PageFlip پاک شود.
+    */
+
+    if(oldPageFlip){
+
+
+        try{
+
+            oldPageFlip.destroy();
+
+        }
+        catch(e){}
+
+    }
+
+
+
+    book.innerHTML = "";
+
+    pageGrid.innerHTML = "";
+
+
+
+    /*
+    PDF قبلی را با کمی تأخیر
+    آزاد می‌کنیم تا UI قفل نشود.
     */
 
     setTimeout(()=>{
 
 
-        if(oldPageFlip){
-
-            try{
-
-                oldPageFlip.destroy();
-
-            }
-            catch(e){}
-
-        }
-
-
-        if(oldPDF){
-
-            try{
-
-                oldPDF.destroy();
-
-            }
-            catch(e){}
-
-        }
-
-
         if(oldLoadingTask){
 
+
             try{
 
-                oldLoadingTask.destroy();
+
+                Promise
+                .resolve(
+                    oldLoadingTask.destroy()
+                )
+                .catch(()=>{});
+
+
+            }
+            catch(e){}
+
+        }
+        else if(oldPDF){
+
+
+            try{
+
+
+                Promise
+                .resolve(
+                    oldPDF.destroy()
+                )
+                .catch(()=>{});
+
 
             }
             catch(e){}
@@ -1340,7 +1356,7 @@ function detachOldBook(){
         }
 
 
-    },100);
+    },200);
 
 }
 
@@ -1362,6 +1378,11 @@ async function unlockSound(){
         document.getElementById(
             "pageFlipAudio"
         );
+
+
+    if(!audio){
+        return;
+    }
 
 
     try{
@@ -1412,9 +1433,7 @@ function playFlipSound(){
 
 
     const audio =
-        source.cloneNode(
-            true
-        );
+        source.cloneNode(true);
 
 
     audio.currentTime = 0;
@@ -1431,6 +1450,10 @@ function playFlipSound(){
 
 /* =========================================
    OPEN CATALOG
+
+   هیچ Lock دائمی ندارد.
+   بنابراین بعد از Home
+   دوباره همیشه قابل اجراست.
 ========================================= */
 
 async function openCatalog(
@@ -1439,25 +1462,16 @@ async function openCatalog(
 
 
     /*
-    جلوگیری از دوبار کلیک
-    در همان لحظه.
+    Session جدید.
     */
 
-    if(openingCatalog){
-        return;
-    }
-
-
-    openingCatalog = true;
-
-
-    const myGeneration =
-        ++generation;
+    const mySession =
+        ++sessionId;
 
 
 
     /*
-    Reader اول نمایش داده شود.
+    فوراً Reader را نمایش بده.
     */
 
     showReader();
@@ -1494,12 +1508,16 @@ async function openCatalog(
 
 
     /*
-    نسخه قدیمی جدا شود.
+    کاتالوگ قبلی حالا پاک شود.
     */
 
-    detachOldBook();
+    releaseOldBook();
 
 
+
+    /*
+    صدا منتظر لود نمی‌ماند.
+    */
 
     unlockSound();
 
@@ -1509,10 +1527,12 @@ async function openCatalog(
 
 
         /*
-        حالت سازگار با GitHub Pages.
+        تنظیم امن برای GitHub Pages.
+
+        Range و Stream هر دو فعال.
         */
 
-        loadingTask =
+        const thisLoadingTask =
 
             pdfjsLib.getDocument({
 
@@ -1528,20 +1548,47 @@ async function openCatalog(
 
 
 
+        loadingTask =
+            thisLoadingTask;
+
+
+
         const loadedPDF =
 
-            await loadingTask.promise;
+            await thisLoadingTask.promise;
 
 
+
+        /*
+        اگر در این فاصله Home
+        یا کاتالوگ دیگری باز شده،
+        نتیجه قدیمی کنار گذاشته شود.
+        */
 
         if(
-            myGeneration !==
-            generation
+            mySession !==
+            sessionId
+            ||
+            isHomeScreen
         ){
 
-            openingCatalog = false;
+
+            try{
+
+
+                Promise
+                .resolve(
+                    thisLoadingTask.destroy()
+                )
+                .catch(()=>{});
+
+
+            }
+            catch(e){}
+
 
             return;
+
         }
 
 
@@ -1552,7 +1599,7 @@ async function openCatalog(
 
 
         /*
-        فقط صفحه 1
+        فقط صفحه اول.
         */
 
         const firstPage =
@@ -1563,12 +1610,11 @@ async function openCatalog(
 
 
         if(
-            myGeneration !==
-            generation
+            mySession !==
+            sessionId
+            ||
+            isHomeScreen
         ){
-
-            openingCatalog = false;
-
             return;
         }
 
@@ -1576,8 +1622,7 @@ async function openCatalog(
 
         const viewport =
 
-            firstPage
-            .getViewport({
+            firstPage.getViewport({
 
                 scale:1
 
@@ -1593,31 +1638,43 @@ async function openCatalog(
 
 
 
+        /*
+        فقط اسکلت صفحات.
+        */
+
         createPages();
 
 
 
         /*
-        فقط صفحه اول قبل از نمایش.
+        برای شروع فقط صفحه 1.
         */
 
-        await renderPage(1);
+        await renderPage(
+            1,
+            mySession
+        );
 
 
 
         if(
-            myGeneration !==
-            generation
+            mySession !==
+            sessionId
+            ||
+            isHomeScreen
         ){
-
-            openingCatalog = false;
-
             return;
         }
 
 
 
-        createBook();
+        /*
+        همین حالا کتاب نمایش داده شود.
+        */
+
+        createBook(
+            mySession
+        );
 
 
 
@@ -1630,61 +1687,11 @@ async function openCatalog(
 
 
 
-        openingCatalog =
-            false;
-
-
-
         /*
-        صفحه 2
-        */
+        بعد از نمایش جلد،
+        Background loader شروع شود.
 
-        setTimeout(()=>{
-
-
-            if(
-                myGeneration ===
-                generation
-                &&
-                !onHomeScreen
-            ){
-
-
-                renderPage(2);
-
-            }
-
-
-        },20);
-
-
-
-        /*
-        صفحه 3
-        */
-
-        setTimeout(()=>{
-
-
-            if(
-                myGeneration ===
-                generation
-                &&
-                !onHomeScreen
-            ){
-
-
-                renderPage(3);
-
-            }
-
-
-        },80);
-
-
-
-        /*
-        بعد بقیه صفحات
+        2 -> 3 -> 4 -> 5...
         یکی یکی.
         */
 
@@ -1692,21 +1699,21 @@ async function openCatalog(
 
 
             if(
-                myGeneration ===
-                generation
+                mySession ===
+                sessionId
                 &&
-                !onHomeScreen
+                !isHomeScreen
             ){
 
 
-                startBackgroundLoading(
-                    myGeneration
+                startSequentialLoading(
+                    mySession
                 );
 
             }
 
 
-        },300);
+        },80);
 
 
     }
@@ -1716,16 +1723,16 @@ async function openCatalog(
         console.error(error);
 
 
-        openingCatalog =
-            false;
-
 
         if(
-            myGeneration !==
-            generation
+            mySession !==
+            sessionId
+            ||
+            isHomeScreen
         ){
             return;
         }
+
 
 
         loader.innerHTML =
@@ -1751,7 +1758,7 @@ async function openCatalog(
 
 
 /* =========================================
-   CREATE PAGES
+   CREATE PAGE ELEMENTS
 ========================================= */
 
 function createPages(){
@@ -1761,6 +1768,7 @@ function createPages(){
 
 
     pageElements = [];
+
 
 
     for(
@@ -1821,7 +1829,9 @@ function createPages(){
    CREATE BOOK
 ========================================= */
 
-function createBook(){
+function createBook(
+    bookSession
+){
 
 
     const mobile =
@@ -1960,6 +1970,22 @@ function createBook(){
         function(event){
 
 
+            /*
+            اگر Book قدیمی است
+            هیچ کاری نکند.
+            */
+
+            if(
+                bookSession !==
+                sessionId
+                ||
+                isHomeScreen
+            ){
+                return;
+            }
+
+
+
             const index =
                 event.data;
 
@@ -1995,8 +2021,15 @@ function createBook(){
             updateActiveThumbnail();
 
 
+
+            /*
+            صفحه فعلی و اطرافش
+            فوراً در اولویت.
+            */
+
             preloadNear(
-                index + 1
+                index + 1,
+                bookSession
             );
 
         }
@@ -2008,29 +2041,43 @@ function createBook(){
 
 
 /* =========================================
-   NEXT / PREVIOUS
+   NEXT
 ========================================= */
 
 async function nextPage(){
 
 
-    if(!pageFlip){
+    if(
+        !pageFlip
+        ||
+        isHomeScreen
+    ){
         return;
     }
 
 
-    const index =
+
+    const current =
 
         pageFlip
         .getCurrentPageIndex();
 
 
+
+    /*
+    قبل از ورق،
+    صفحه مورد نیاز درخواست شود.
+    */
+
     preloadNear(
-        index + 2
+        current + 2,
+        sessionId
     );
 
 
+
     await unlockSound();
+
 
 
     try{
@@ -2058,26 +2105,39 @@ async function nextPage(){
 
 
 
+/* =========================================
+   PREVIOUS
+========================================= */
+
 async function previousPage(){
 
 
-    if(!pageFlip){
+    if(
+        !pageFlip
+        ||
+        isHomeScreen
+    ){
         return;
     }
 
 
-    const index =
+
+    const current =
 
         pageFlip
         .getCurrentPageIndex();
 
 
+
     preloadNear(
-        index
+        current,
+        sessionId
     );
 
 
+
     await unlockSound();
+
 
 
     try{
@@ -2113,7 +2173,8 @@ function updatePageCounter(){
 
 
     if(
-        !pageFlip ||
+        !pageFlip
+        ||
         !pdfDocument
     ){
         return;
@@ -2204,6 +2265,7 @@ function updatePageCounter(){
         index + 1;
 
 
+
     const second =
 
         Math.min(
@@ -2235,17 +2297,21 @@ function updatePageCounter(){
 
 
 /* =========================================
-   PRIORITY PRELOAD
+   PRIORITY LOAD
 ========================================= */
 
 function preloadNear(
-    pageNumber
+    pageNumber,
+    mySession
 ){
 
 
     if(
-        !pdfDocument ||
-        onHomeScreen
+        !pdfDocument
+        ||
+        isHomeScreen
+        ||
+        mySession !== sessionId
     ){
         return;
     }
@@ -2258,9 +2324,9 @@ function preloadNear(
 
         pageNumber + 1,
 
-        pageNumber + 2,
+        pageNumber - 1,
 
-        pageNumber - 1
+        pageNumber + 2
 
     ];
 
@@ -2282,7 +2348,8 @@ function preloadNear(
 
 
                 renderPage(
-                    number
+                    number,
+                    mySession
                 );
 
             }
@@ -2296,18 +2363,28 @@ function preloadNear(
 
 
 /* =========================================
-   BACKGROUND SEQUENTIAL LOAD
+   SEQUENTIAL LOAD
+
+   بعد از صفحه 1:
+   2
+   3
+   4
+   5
+   ...
+   یکی یکی
 ========================================= */
 
-async function startBackgroundLoading(
-    myGeneration
+async function startSequentialLoading(
+    mySession
 ){
 
 
     if(
-        !pdfDocument ||
-        backgroundRunning ||
-        onHomeScreen
+        !pdfDocument
+        ||
+        backgroundRunning
+        ||
+        isHomeScreen
     ){
         return;
     }
@@ -2324,11 +2401,6 @@ async function startBackgroundLoading(
 
 
 
-    /*
-    صفحات دقیقاً:
-    2,3,4,5...
-    */
-
     for(
         let pageNumber=2;
         pageNumber<=pdfDocument.numPages;
@@ -2344,17 +2416,20 @@ async function startBackgroundLoading(
         }
 
 
+
         if(
-            myGeneration !==
-            generation
+            mySession !==
+            sessionId
         ){
             break;
         }
 
 
-        if(onHomeScreen){
+
+        if(isHomeScreen){
             break;
         }
+
 
 
         if(!pdfDocument){
@@ -2371,12 +2446,18 @@ async function startBackgroundLoading(
 
 
             await renderPage(
-                pageNumber
+                pageNumber,
+                mySession
             );
 
         }
 
 
+
+        /*
+        بین هر صفحه مرورگر
+        فرصت Animation و UI دارد.
+        */
 
         await idlePause();
 
@@ -2433,11 +2514,8 @@ function idlePause(){
 
 
                 setTimeout(
-
                     resolve,
-
                     30
-
                 );
 
             }
@@ -2455,11 +2533,21 @@ function idlePause(){
 ========================================= */
 
 async function renderPage(
-    pageNumber
+    pageNumber,
+    mySession
 ){
 
 
     if(!pdfDocument){
+        return;
+    }
+
+
+
+    if(
+        mySession !==
+        sessionId
+    ){
         return;
     }
 
@@ -2506,6 +2594,13 @@ async function renderPage(
 
 
 
+    const target =
+        pageElements[
+            pageNumber - 1
+        ];
+
+
+
     const task =
 
         (async()=>{
@@ -2524,6 +2619,9 @@ async function renderPage(
 
 
                 if(
+                    mySession !==
+                    sessionId
+                    ||
                     currentPDF !==
                     pdfDocument
                 ){
@@ -2538,6 +2636,11 @@ async function renderPage(
                     700;
 
 
+
+                /*
+                کیفیت مناسب،
+                اما کمی سبک برای سرعت.
+                */
 
                 const dpr =
 
@@ -2624,19 +2727,14 @@ async function renderPage(
 
 
                 if(
+                    mySession !==
+                    sessionId
+                    ||
                     currentPDF !==
                     pdfDocument
                 ){
                     return;
                 }
-
-
-
-                const target =
-
-                    pageElements[
-                        pageNumber - 1
-                    ];
 
 
 
@@ -2664,10 +2762,15 @@ async function renderPage(
             catch(error){
 
 
-                console.error(
-                    "Render page",
-                    pageNumber,
-                    error
+                /*
+                Renderهای قدیمی هنگام
+                تعویض کاتالوگ ممکن است
+                Cancel شوند؛ اشکالی ندارد.
+                */
+
+                console.log(
+                    "Render stopped:",
+                    pageNumber
                 );
 
             }
@@ -2705,14 +2808,12 @@ async function renderPage(
 ========================================= */
 
 const leftEdge =
-
     document.getElementById(
         "leftEdge"
     );
 
 
 const rightEdge =
-
     document.getElementById(
         "rightEdge"
     );
@@ -2824,8 +2925,7 @@ async function endEdgeSwipe(
     */
 
     if(
-        Math.abs(dx) <
-        30
+        Math.abs(dx) < 30
     ){
         return;
     }
@@ -2834,8 +2934,7 @@ async function endEdgeSwipe(
 
     if(
         Math.abs(dx) <
-        Math.abs(dy) *
-        1.2
+        Math.abs(dy) * 1.2
     ){
         return;
     }
@@ -2850,7 +2949,6 @@ async function endEdgeSwipe(
 
 
         await nextPage();
-
 
         return;
 
@@ -2904,23 +3002,15 @@ rightEdge.addEventListener(
 
 
 leftEdge.addEventListener(
-
     "pointerup",
-
     endEdgeSwipe
-
 );
-
 
 
 rightEdge.addEventListener(
-
     "pointerup",
-
     endEdgeSwipe
-
 );
-
 
 
 leftEdge.addEventListener(
@@ -2934,7 +3024,6 @@ leftEdge.addEventListener(
     }
 
 );
-
 
 
 rightEdge.addEventListener(
@@ -2956,6 +3045,16 @@ rightEdge.addEventListener(
 ========================================= */
 
 async function togglePagePanel(){
+
+
+    if(
+        !pdfDocument
+        ||
+        isHomeScreen
+    ){
+        return;
+    }
+
 
 
     if(
@@ -2986,7 +3085,9 @@ async function togglePagePanel(){
             true;
 
 
-        await buildThumbnails();
+        await buildThumbnails(
+            sessionId
+        );
 
     }
 
@@ -3002,7 +3103,9 @@ async function togglePagePanel(){
    THUMBNAILS
 ========================================= */
 
-async function buildThumbnails(){
+async function buildThumbnails(
+    mySession
+){
 
 
     if(!pdfDocument){
@@ -3024,10 +3127,13 @@ async function buildThumbnails(){
 
 
         if(
+            mySession !==
+            sessionId
+            ||
             thisPDF !==
             pdfDocument
             ||
-            onHomeScreen
+            isHomeScreen
         ){
             return;
         }
@@ -3183,7 +3289,8 @@ function updateActiveThumbnail(){
 
 
     if(
-        !pageFlip ||
+        !pageFlip
+        ||
         thumbElements.length === 0
     ){
         return;
@@ -3218,6 +3325,26 @@ function updateActiveThumbnail(){
 
     );
 
+
+
+    const active =
+        thumbElements[index];
+
+
+
+    if(active){
+
+
+        active.scrollIntoView({
+
+            block:"nearest",
+
+            behavior:"smooth"
+
+        });
+
+    }
+
 }
 
 
@@ -3231,21 +3358,49 @@ async function goToPage(
 ){
 
 
-    if(!pageFlip){
+    if(
+        !pageFlip
+        ||
+        isHomeScreen
+    ){
         return;
     }
 
 
 
+    const mySession =
+        sessionId;
+
+
+
+    /*
+    اول صفحه مقصد.
+    */
+
     await renderPage(
-        index + 1
+        index + 1,
+        mySession
     );
 
 
+
+    /*
+    بعد صفحه کنارش.
+    */
 
     renderPage(
-        index + 2
+        index + 2,
+        mySession
     );
+
+
+
+    if(
+        mySession !==
+        sessionId
+    ){
+        return;
+    }
 
 
 
@@ -3292,8 +3447,7 @@ function zoomIn(){
 
             2.75,
 
-            zoomValue +
-            .25
+            zoomValue + .25
 
         );
 
@@ -3313,8 +3467,7 @@ function zoomOut(){
 
             .75,
 
-            zoomValue -
-            .25
+            zoomValue - .25
 
         );
 
@@ -3340,7 +3493,7 @@ function zoomOut(){
 
 
 /* =========================================
-   APPLY TRANSFORM
+   APPLY ZOOM / PAN
 ========================================= */
 
 function applyTransform(){
@@ -3421,8 +3574,7 @@ bookArea.addEventListener(
 
 
 
-        dragging =
-            true;
+        dragging = true;
 
 
         dragPointerId =
@@ -3480,9 +3632,11 @@ bookArea.addEventListener(
         }
 
 
+
         if(pinchActive){
             return;
         }
+
 
 
         if(
@@ -3541,12 +3695,9 @@ bookArea.addEventListener(
         ){
 
 
-            dragging =
-                false;
+            dragging = false;
 
-
-            dragPointerId =
-                null;
+            dragPointerId = null;
 
         }
 
@@ -3633,9 +3784,7 @@ bookArea.addEventListener(
 
             dragging = false;
 
-
             dragPointerId = null;
-
 
             pinchActive = true;
 
@@ -3769,8 +3918,7 @@ bookArea.addEventListener(
     function(){
 
 
-        pinchActive =
-            false;
+        pinchActive = false;
 
     }
 
@@ -3784,14 +3932,12 @@ bookArea.addEventListener(
 
 
 /*
-مهم:
-دکمه‌های انتخاب کاتالوگ
-Listener مستقل دارند.
+هیچ قفل openingCatalog
+اینجا وجود ندارد.
 */
 
-document.getElementById(
-    "rockmanButton"
-).addEventListener(
+
+rockmanButton.addEventListener(
 
     "click",
 
@@ -3813,9 +3959,7 @@ document.getElementById(
 
 
 
-document.getElementById(
-    "apnButton"
-).addEventListener(
+apnButton.addEventListener(
 
     "click",
 
@@ -3837,9 +3981,7 @@ document.getElementById(
 
 
 
-document.getElementById(
-    "homeButton"
-).addEventListener(
+homeButton.addEventListener(
 
     "click",
 
@@ -3856,66 +3998,40 @@ document.getElementById(
 
 
 
-document.getElementById(
-    "nextSide"
-).addEventListener(
-
+nextSide.addEventListener(
     "click",
-
     nextPage
-
 );
 
 
-
-document.getElementById(
-    "prevSide"
-).addEventListener(
-
+prevSide.addEventListener(
     "click",
-
     previousPage
-
 );
 
 
-
-document.getElementById(
-    "zoomInButton"
-).addEventListener(
-
+zoomInButton.addEventListener(
     "click",
-
     zoomIn
-
 );
 
 
-
-document.getElementById(
-    "zoomOutButton"
-).addEventListener(
-
+zoomOutButton.addEventListener(
     "click",
-
     zoomOut
-
 );
 
 
-
-document.getElementById(
-    "pagesButton"
-).addEventListener(
-
+pagesButton.addEventListener(
     "click",
-
     togglePagePanel
-
 );
 
 
-/* شروع سایت */
+
+/* =========================================
+   INITIAL STATE
+========================================= */
 
 showHome();
 
