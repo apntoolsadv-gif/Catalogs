@@ -48,18 +48,23 @@ body{
 
 .menuBox{
     width:min(430px,92vw);
+
     text-align:center;
+
     color:#fff;
 }
 
 .menuBox h1{
     margin:0 0 8px;
+
     font-size:30px;
 }
 
 .menuBox p{
     margin:0 0 30px;
+
     color:#999;
+
     font-size:14px;
 }
 
@@ -86,11 +91,7 @@ body{
     align-items:center;
     justify-content:center;
 
-    letter-spacing:.5px;
-
-    transition:
-        transform .15s ease,
-        opacity .15s ease;
+    transition:transform .15s ease;
 }
 
 .catalogButton:active{
@@ -175,6 +176,7 @@ body{
     height:70px;
 
     border:0;
+
     border-radius:10px;
 
     background:rgba(15,15,15,.60);
@@ -265,6 +267,7 @@ body{
     position:relative;
 
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
 
@@ -281,8 +284,8 @@ body{
     margin:auto;
 
     /*
-    Tap مستقیم روی کتاب
-    صفحه را ورق نزند
+    خود صفحه با Tap
+    ورق نخورد
     */
 
     pointer-events:none;
@@ -295,11 +298,13 @@ body{
 
 .page{
     background:#fff;
+
     overflow:hidden;
 }
 
 .page canvas{
     display:block;
+
     width:100%;
     height:100%;
 }
@@ -334,7 +339,7 @@ body{
 
 
 /* =========================
-   PAGE LOADING
+   PAGE PLACEHOLDER
 ========================= */
 
 .pageLoading{
@@ -344,18 +349,15 @@ body{
     background:
         linear-gradient(
             110deg,
-            #e5e5e5 8%,
+            #dedede 8%,
             #f5f5f5 18%,
-            #e5e5e5 33%
+            #dedede 33%
         );
 
     background-size:200% 100%;
 
     animation:
-        shimmer
-        1.3s
-        linear
-        infinite;
+        shimmer 1.2s linear infinite;
 }
 
 @keyframes shimmer{
@@ -368,7 +370,7 @@ body{
 
 
 /* =========================
-   INITIAL LOADER
+   MAIN LOADER
 ========================= */
 
 #initialLoader{
@@ -399,9 +401,7 @@ body{
     border-radius:50%;
 
     animation:
-        rotate .75s
-        linear
-        infinite;
+        rotate .7s linear infinite;
 }
 
 @keyframes rotate{
@@ -414,6 +414,7 @@ body{
 
 .loaderText{
     color:#aaa;
+
     font-size:14px;
 }
 
@@ -432,7 +433,7 @@ body{
 
     transform:translateX(-50%);
 
-    z-index:950;
+    z-index:5000;
 
     background:#f4f4f4;
 
@@ -445,6 +446,8 @@ body{
         5px
         18px
         rgba(0,0,0,.35);
+
+    pointer-events:auto;
 }
 
 .bottomButton{
@@ -469,6 +472,8 @@ body{
 
     touch-action:manipulation;
 
+    pointer-events:auto;
+
     user-select:none;
     -webkit-user-select:none;
 }
@@ -486,9 +491,21 @@ body{
    HOME BUTTON
 ========================= */
 
+#homeButton{
+    position:relative;
+
+    z-index:5100;
+
+    pointer-events:auto;
+
+    touch-action:manipulation;
+}
+
 #homeButton svg{
     width:23px;
     height:23px;
+
+    pointer-events:none;
 
     fill:none;
 
@@ -519,7 +536,7 @@ body{
 
     max-height:65vh;
 
-    z-index:940;
+    z-index:4500;
 
     background:#1b1b1b;
 
@@ -612,6 +629,7 @@ body{
 
     .catalogButton{
         min-height:68px;
+
         font-size:20px;
     }
 
@@ -662,8 +680,8 @@ body{
     }
 
     #homeButton svg{
-        width:21px;
-        height:21px;
+        width:20px;
+        height:20px;
     }
 
     #pagePanel{
@@ -715,21 +733,7 @@ body{
 
         <button
         class="catalogButton rockman"
-
-        onmouseenter="
-            warmCatalog(
-                'rockman',
-                'Rockman.catalog.pdf'
-            )
-        "
-
-        onpointerdown="
-            warmCatalog(
-                'rockman',
-                'Rockman.catalog.pdf'
-            )
-        "
-
+        type="button"
         onclick="
             openCatalog(
                 'rockman',
@@ -745,21 +749,7 @@ body{
 
         <button
         class="catalogButton apn"
-
-        onmouseenter="
-            warmCatalog(
-                'apn',
-                'Apn.catalog.pdf'
-            )
-        "
-
-        onpointerdown="
-            warmCatalog(
-                'apn',
-                'Apn.catalog.pdf'
-            )
-        "
-
+        type="button"
         onclick="
             openCatalog(
                 'apn',
@@ -788,20 +778,19 @@ body{
     <button
     id="prevSide"
     class="sideArrow"
-    onclick="previousPage()"
-    aria-label="Previous page">
+    type="button"
+    onclick="previousPage()">
 
         ‹
 
     </button>
 
 
-
     <button
     id="nextSide"
     class="sideArrow"
-    onclick="nextPage()"
-    aria-label="Next page">
+    type="button"
+    onclick="nextPage()">
 
         ›
 
@@ -893,8 +882,8 @@ body{
 
     <button
     class="bottomButton"
-    onclick="zoomOut()"
-    aria-label="Zoom out">
+    type="button"
+    onclick="zoomOut()">
 
         −
 
@@ -904,8 +893,8 @@ body{
 
     <button
     class="bottomButton"
-    onclick="togglePagePanel()"
-    aria-label="Pages">
+    type="button"
+    onclick="togglePagePanel()">
 
         ▦
 
@@ -918,33 +907,22 @@ body{
     <button
     id="homeButton"
     class="bottomButton"
-    onclick="goHome()"
-    aria-label="Catalog home"
-    title="Catalog home">
+    type="button"
+    aria-label="Home"
+    title="Home">
 
         <svg viewBox="0 0 24 24">
 
             <path
-            d="
-            M3 11
-            L12 3
-            L21 11">
+            d="M3 11L12 3L21 11">
             </path>
 
             <path
-            d="
-            M5 10
-            V21
-            H19
-            V10">
+            d="M5 10V21H19V10">
             </path>
 
             <path
-            d="
-            M9 21
-            V14
-            H15
-            V21">
+            d="M9 21V14H15V21">
             </path>
 
         </svg>
@@ -955,8 +933,8 @@ body{
 
     <button
     class="bottomButton"
-    onclick="zoomIn()"
-    aria-label="Zoom in">
+    type="button"
+    onclick="zoomIn()">
 
         +
 
@@ -1004,253 +982,76 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
 
 
 /* =========================
-   MAIN VARIABLES
+   VARIABLES
 ========================= */
 
-let pdfDocument =
-    null;
+let pdfDocument = null;
 
+let loadingTask = null;
 
-let pageFlip =
-    null;
+let pageFlip = null;
 
+let currentCatalog = null;
 
-let currentCatalog =
-    null;
+let openId = 0;
 
+let pageElements = [];
 
-let currentLoadingTask =
-    null;
+let renderedPages = new Set();
 
+let renderingPages = new Map();
 
-let openRequestId =
-    0;
+let thumbElements = [];
 
+let thumbnailsBuilt = false;
 
-let pageElements =
-    [];
+let zoomValue = 1;
 
+let panX = 0;
 
-let renderedPages =
-    new Set();
+let panY = 0;
 
+let pageRatio = 1.414;
 
-let renderingPages =
-    new Map();
+let lastPageIndex = 0;
 
+let soundUnlocked = false;
 
-let thumbElements =
-    [];
 
+/* BACKGROUND */
 
-let thumbnailsBuilt =
-    false;
+let backgroundToken = 0;
 
+let backgroundRunning = false;
 
-let zoomValue =
-    1;
 
+/* PAN */
 
-let panX =
-    0;
+let dragging = false;
 
+let dragPointerId = null;
 
-let panY =
-    0;
+let dragStartX = 0;
 
+let dragStartY = 0;
 
-let pageRatio =
-    1.414;
+let dragStartPanX = 0;
 
+let dragStartPanY = 0;
 
-let lastPageIndex =
-    0;
 
+/* PINCH */
 
-let soundUnlocked =
-    false;
+let pinchActive = false;
 
+let pinchStartDistance = 0;
 
+let pinchStartZoom = 1;
 
-/* =========================
-   WARM / PRELOAD
-========================= */
 
-const warmTasks = {
-    rockman:null,
-    apn:null
-};
+/* EDGE */
 
-
-
-/* =========================
-   SEQUENTIAL LOAD
-========================= */
-
-let sequentialToken =
-    0;
-
-
-let sequentialRunning =
-    false;
-
-
-
-/* =========================
-   PAN
-========================= */
-
-let dragging =
-    false;
-
-
-let dragPointerId =
-    null;
-
-
-let dragStartX =
-    0;
-
-
-let dragStartY =
-    0;
-
-
-let dragStartPanX =
-    0;
-
-
-let dragStartPanY =
-    0;
-
-
-
-/* =========================
-   PINCH
-========================= */
-
-let pinchActive =
-    false;
-
-
-let pinchStartDistance =
-    0;
-
-
-let pinchStartZoom =
-    1;
-
-
-
-/* =========================
-   EDGE
-========================= */
-
-let edgeGesture =
-    null;
-
-
-
-/* =========================
-   PDF LOADING OPTIONS
-========================= */
-
-function createPDFLoadingTask(
-    pdfFile
-){
-
-
-    /*
-    نکته مهم سرعت:
-
-    Streaming کامل خاموش است.
-
-    Range روشن است.
-
-    AutoFetch خاموش است.
-
-    یعنی PDF.js تا جای ممکن
-    فقط بخش‌هایی که واقعاً لازم دارد
-    درخواست می‌کند.
-    */
-
-
-    return pdfjsLib.getDocument({
-
-        url:
-            pdfFile,
-
-
-        disableRange:
-            false,
-
-
-        disableStream:
-            true,
-
-
-        disableAutoFetch:
-            true,
-
-
-        rangeChunkSize:
-            65536
-
-    });
-
-}
-
-
-
-/* =========================
-   WARM CATALOG
-
-   روی Hover یا Touch شروع به
-   آماده‌سازی PDF می‌کند.
-========================= */
-
-function warmCatalog(
-    catalogName,
-    pdfFile
-){
-
-
-    if(
-        warmTasks[
-            catalogName
-        ]
-    ){
-        return;
-    }
-
-
-
-    try{
-
-
-        warmTasks[
-            catalogName
-        ] =
-            createPDFLoadingTask(
-                pdfFile
-            );
-
-
-    }
-
-
-    catch(error){
-
-
-        warmTasks[
-            catalogName
-        ] =
-            null;
-
-
-    }
-
-}
+let edgeGesture = null;
 
 
 
@@ -1266,7 +1067,6 @@ async function unlockSound(){
     }
 
 
-
     const audio =
 
         document.getElementById(
@@ -1274,18 +1074,15 @@ async function unlockSound(){
         );
 
 
-
     if(!audio){
         return;
     }
 
 
-
     try{
 
 
-        audio.muted =
-            true;
+        audio.muted = true;
 
 
         await audio.play();
@@ -1294,16 +1091,13 @@ async function unlockSound(){
         audio.pause();
 
 
-        audio.currentTime =
-            0;
+        audio.currentTime = 0;
 
 
-        audio.muted =
-            false;
+        audio.muted = false;
 
 
-        soundUnlocked =
-            true;
+        soundUnlocked = true;
 
 
     }
@@ -1312,8 +1106,7 @@ async function unlockSound(){
     catch(error){
 
 
-        audio.muted =
-            false;
+        audio.muted = false;
 
 
     }
@@ -1332,28 +1125,20 @@ function playFlipSound(){
         );
 
 
-
     if(!source){
         return;
     }
 
 
-
     const audio =
 
-        source.cloneNode(
-            true
-        );
+        source.cloneNode(true);
 
 
-
-    audio.currentTime =
-        0;
+    audio.currentTime = 0;
 
 
-    audio.volume =
-        .8;
-
+    audio.volume = .8;
 
 
     audio.play()
@@ -1364,19 +1149,15 @@ function playFlipSound(){
 
 
 /* =========================
-   CLEAN BOOK
+   RESET DATA
 ========================= */
 
-function destroyCurrentBook(
-    destroyLoadingTask = true
-){
+function resetBookData(){
 
 
-    sequentialToken++;
+    backgroundToken++;
 
-
-    sequentialRunning =
-        false;
+    backgroundRunning = false;
 
 
 
@@ -1389,106 +1170,69 @@ function destroyCurrentBook(
 
         }
 
-        catch(error){}
+        catch(e){}
 
 
-        pageFlip =
-            null;
-
-    }
-
-
-
-    if(pdfDocument){
-
-
-        try{
-
-            pdfDocument.destroy();
-
-        }
-
-        catch(error){}
-
+        pageFlip = null;
 
     }
 
 
 
-    pdfDocument =
-        null;
+    pdfDocument = null;
+
+    loadingTask = null;
 
 
 
-    if(
-        destroyLoadingTask &&
-        currentLoadingTask
-    ){
+    const book =
+
+        document.getElementById(
+            "book"
+        );
 
 
-        try{
+    if(book){
 
-            currentLoadingTask.destroy();
-
-        }
-
-        catch(error){}
-
-
-        currentLoadingTask =
-            null;
+        book.innerHTML = "";
 
     }
 
 
 
-    document.getElementById(
-        "book"
-    ).innerHTML =
-        "";
+    const grid =
+
+        document.getElementById(
+            "pageGrid"
+        );
+
+
+    if(grid){
+
+        grid.innerHTML = "";
+
+    }
 
 
 
-    document.getElementById(
-        "pageGrid"
-    ).innerHTML =
-        "";
-
-
+    pageElements = [];
 
     renderedPages.clear();
 
-
     renderingPages.clear();
 
+    thumbElements = [];
+
+    thumbnailsBuilt = false;
 
 
-    pageElements =
-        [];
+    dragging = false;
 
+    dragPointerId = null;
 
-    thumbElements =
-        [];
+    pinchActive = false;
 
-
-    thumbnailsBuilt =
-        false;
-
-
-    dragging =
-        false;
-
-
-    dragPointerId =
-        null;
-
-
-    pinchActive =
-        false;
-
-
-    edgeGesture =
-        null;
+    edgeGesture = null;
 
 }
 
@@ -1504,47 +1248,27 @@ async function openCatalog(
 ){
 
 
-    const requestId =
+    const thisOpen =
 
-        ++openRequestId;
-
-
-
-    /*
-    اگر Warm Load همین PDF
-    از قبل شروع شده، آن را نگه دار.
-    */
-
-
-    const preparedTask =
-
-        warmTasks[
-            catalogName
-        ];
-
-
-
-    destroyCurrentBook(
-        false
-    );
+        ++openId;
 
 
 
     currentCatalog =
+
         catalogName;
 
 
 
-    zoomValue =
-        1;
+    resetBookData();
 
 
-    panX =
-        0;
 
+    zoomValue = 1;
 
-    panY =
-        0;
+    panX = 0;
+
+    panY = 0;
 
 
 
@@ -1569,17 +1293,17 @@ async function openCatalog(
         );
 
 
-    const pagePanel =
-
-        document.getElementById(
-            "pagePanel"
-        );
-
-
     const loader =
 
         document.getElementById(
             "initialLoader"
+        );
+
+
+    const panel =
+
+        document.getElementById(
+            "pagePanel"
         );
 
 
@@ -1596,7 +1320,7 @@ async function openCatalog(
         "flex";
 
 
-    pagePanel.style.display =
+    panel.style.display =
         "none";
 
 
@@ -1633,45 +1357,42 @@ async function openCatalog(
 
 
         /*
-        اگر Hover/Touch قبلاً Load را
-        شروع کرده بود همان Task استفاده شود.
+        Range فعال.
+
+        Streaming هم فعال می‌ماند
+        تا روی GitHub Pages
+        باگ ایجاد نشود.
+
+        اما فقط صفحه 1
+        ابتدا Render می‌شود.
         */
 
 
-        if(preparedTask){
+        loadingTask =
 
+            pdfjsLib.getDocument({
 
-            currentLoadingTask =
-                preparedTask;
+                url:pdfFile,
 
+                disableRange:false,
 
-        }
+                disableStream:false,
 
+                disableAutoFetch:false
 
-        else{
-
-
-            currentLoadingTask =
-
-                createPDFLoadingTask(
-                    pdfFile
-                );
-
-
-        }
+            });
 
 
 
         const loadedPDF =
 
-            await currentLoadingTask
-            .promise;
+            await loadingTask.promise;
 
 
 
         if(
-            requestId !==
-            openRequestId
+            thisOpen !==
+            openId
         ){
             return;
         }
@@ -1679,27 +1400,26 @@ async function openCatalog(
 
 
         pdfDocument =
+
             loadedPDF;
 
 
 
         /*
-        فقط صفحه 1 اول.
+        اول فقط صفحه 1
         */
 
 
         const firstPage =
 
             await pdfDocument
-            .getPage(
-                1
-            );
+            .getPage(1);
 
 
 
         if(
-            requestId !==
-            openRequestId
+            thisOpen !==
+            openId
         ){
             return;
         }
@@ -1725,29 +1445,22 @@ async function openCatalog(
 
 
 
-        /*
-        فقط اسکلت صفحات.
-        */
-
-
         createPages();
 
 
 
         /*
-        اول فقط جلد واقعی PDF.
+        فقط جلد واقعی
         */
 
 
-        await renderPage(
-            1
-        );
+        await renderPage(1);
 
 
 
         if(
-            requestId !==
-            openRequestId
+            thisOpen !==
+            openId
         ){
             return;
         }
@@ -1755,8 +1468,7 @@ async function openCatalog(
 
 
         /*
-        به محض آماده شدن صفحه 1
-        کتاب دیده شود.
+        فوراً نمایش کتاب
         */
 
 
@@ -1774,7 +1486,7 @@ async function openCatalog(
 
 
         /*
-        صفحه بعد خیلی زود آماده شود.
+        صفحه 2
         */
 
 
@@ -1782,45 +1494,69 @@ async function openCatalog(
 
 
             if(
-                requestId ===
-                openRequestId
+                thisOpen ===
+                openId
             ){
 
 
-                renderPage(
-                    2
+                renderPage(2);
+
+
+            }
+
+
+        },20);
+
+
+
+        /*
+        صفحه 3
+        */
+
+
+        setTimeout(()=>{
+
+
+            if(
+                thisOpen ===
+                openId
+            ){
+
+
+                renderPage(3);
+
+
+            }
+
+
+        },80);
+
+
+
+        /*
+        بقیه صفحات
+        یکی یکی
+        */
+
+
+        setTimeout(()=>{
+
+
+            if(
+                thisOpen ===
+                openId
+            ){
+
+
+                startBackgroundLoading(
+                    thisOpen
                 );
 
 
             }
 
 
-        },100);
-
-
-
-        /*
-        بعد باقی صفحات یکی‌یکی،
-        زمانی که مرورگر فرصت دارد.
-        */
-
-
-        setTimeout(()=>{
-
-
-            if(
-                requestId ===
-                openRequestId
-            ){
-
-
-                startSequentialLoading();
-
-
-            }
-
-
-        },700);
+        },300);
 
 
     }
@@ -1830,17 +1566,15 @@ async function openCatalog(
 
 
         if(
-            requestId !==
-            openRequestId
+            thisOpen !==
+            openId
         ){
             return;
         }
 
 
 
-        console.error(
-            error
-        );
+        console.error(error);
 
 
 
@@ -1871,75 +1605,120 @@ async function openCatalog(
 
 
 
-/* =========================
-   GO HOME
-========================= */
+/* =====================================================
+   HOME
 
-function goHome(){
+   این تابع عمداً هیچ وابستگی‌ای
+   به شماره صفحه ندارد.
 
+   مهم نیست صفحه 1، 10، 20 یا 28 باشید.
+===================================================== */
 
-    /*
-    همه Loadهای درحال اجرا
-    متوقف شوند.
-    */
-
-
-    openRequestId++;
+function goHomeNow(
+    event
+){
 
 
-    sequentialToken++;
-
-
-
-    /*
-    Warm Taskهای قبلی هم ریست شوند
-    تا ورود بعدی تمیز باشد.
-    */
-
-
-    if(
-        warmTasks.rockman
-    ){
+    if(event){
 
 
         try{
 
-            warmTasks.rockman.destroy();
+            event.preventDefault();
 
         }
 
         catch(e){}
 
 
-        warmTasks.rockman =
-            null;
-
-    }
-
-
-
-    if(
-        warmTasks.apn
-    ){
-
-
         try{
 
-            warmTasks.apn.destroy();
+            event.stopPropagation();
 
         }
 
         catch(e){}
 
 
-        warmTasks.apn =
-            null;
+        try{
+
+            event.stopImmediatePropagation();
+
+        }
+
+        catch(e){}
 
     }
 
 
 
-    destroyCurrentBook();
+    /*
+    عملیات فعلی را باطل کن.
+    */
+
+
+    openId++;
+
+
+    backgroundToken++;
+
+
+    backgroundRunning =
+        false;
+
+
+
+    /*
+    مهم‌ترین بخش:
+
+    قبل از هر Destroy یا Cleanup،
+    رابط فوراً برگردد به Home.
+    */
+
+
+    const menu =
+
+        document.getElementById(
+            "catalogMenu"
+        );
+
+
+    const reader =
+
+        document.getElementById(
+            "reader"
+        );
+
+
+    const bottomBar =
+
+        document.getElementById(
+            "bottomBar"
+        );
+
+
+    const pagePanel =
+
+        document.getElementById(
+            "pagePanel"
+        );
+
+
+
+    pagePanel.style.display =
+        "none";
+
+
+    bottomBar.style.display =
+        "none";
+
+
+    reader.style.display =
+        "none";
+
+
+    menu.style.display =
+        "flex";
 
 
 
@@ -1948,46 +1727,190 @@ function goHome(){
 
 
 
-    zoomValue =
-        1;
+    /*
+    پاک‌سازی بعد از نمایش Home.
+
+    بنابراین حتی اگر کتاب روی
+    هر صفحه‌ای باشد، برگشت Home
+    گیر نمی‌کند.
+    */
 
 
-    panX =
-        0;
+    setTimeout(()=>{
 
 
-    panY =
-        0;
+        try{
 
 
-
-    document.getElementById(
-        "pagePanel"
-    ).style.display =
-        "none";
+            if(pageFlip){
 
 
-
-    document.getElementById(
-        "bottomBar"
-    ).style.display =
-        "none";
+                pageFlip.destroy();
 
 
+                pageFlip =
+                    null;
 
-    document.getElementById(
-        "reader"
-    ).style.display =
-        "none";
+            }
+
+
+        }
+
+        catch(e){}
 
 
 
-    document.getElementById(
-        "catalogMenu"
-    ).style.display =
-        "flex";
+        pdfDocument =
+            null;
+
+
+        loadingTask =
+            null;
+
+
+
+        const book =
+
+            document.getElementById(
+                "book"
+            );
+
+
+        if(book){
+
+
+            book.innerHTML =
+                "";
+
+        }
+
+
+
+        const grid =
+
+            document.getElementById(
+                "pageGrid"
+            );
+
+
+        if(grid){
+
+
+            grid.innerHTML =
+                "";
+
+        }
+
+
+
+        pageElements =
+            [];
+
+
+        renderedPages.clear();
+
+
+        renderingPages.clear();
+
+
+        thumbElements =
+            [];
+
+
+        thumbnailsBuilt =
+            false;
+
+
+        zoomValue =
+            1;
+
+
+        panX =
+            0;
+
+
+        panY =
+            0;
+
+
+        dragging =
+            false;
+
+
+        dragPointerId =
+            null;
+
+
+        pinchActive =
+            false;
+
+
+        edgeGesture =
+            null;
+
+
+    },50);
 
 }
+
+
+
+/* =====================================================
+   HOME BUTTON EVENTS
+
+   POINTERDOWN با Capture:
+   PageFlip قبل از این به Event دسترسی ندارد.
+===================================================== */
+
+const homeButton =
+
+    document.getElementById(
+        "homeButton"
+    );
+
+
+
+homeButton.addEventListener(
+
+    "pointerdown",
+
+    function(event){
+
+
+        goHomeNow(
+            event
+        );
+
+
+    },
+
+    true
+
+);
+
+
+
+/*
+Fallback برای Keyboard / Click
+*/
+
+homeButton.addEventListener(
+
+    "click",
+
+    function(event){
+
+
+        goHomeNow(
+            event
+        );
+
+
+    },
+
+    true
+
+);
 
 
 
@@ -2005,10 +1928,8 @@ function createPages(){
         );
 
 
-
     book.innerHTML =
         "";
-
 
 
     pageElements =
@@ -2030,10 +1951,8 @@ function createPages(){
             );
 
 
-
         page.className =
             "page";
-
 
 
         page.dataset.pageNumber =
@@ -2048,10 +1967,8 @@ function createPages(){
             );
 
 
-
         loading.className =
             "pageLoading";
-
 
 
         page.appendChild(
@@ -2059,17 +1976,14 @@ function createPages(){
         );
 
 
-
         book.appendChild(
             page
         );
 
 
-
         pageElements.push(
             page
         );
-
 
     }
 
@@ -2122,16 +2036,13 @@ function createBook(){
             {
 
 
-                width:
-                    width,
+                width:width,
 
 
-                height:
-                    height,
+                height:height,
 
 
-                size:
-                    "stretch",
+                size:"stretch",
 
 
                 minWidth:
@@ -2182,41 +2093,31 @@ function createBook(){
                     ),
 
 
-                showCover:
-                    true,
+                showCover:true,
 
 
-                usePortrait:
-                    mobile,
+                usePortrait:mobile,
 
 
-                startPage:
-                    0,
+                startPage:0,
 
 
-                autoSize:
-                    true,
+                autoSize:true,
 
 
-                drawShadow:
-                    true,
+                drawShadow:true,
 
 
-                maxShadowOpacity:
-                    .45,
+                maxShadowOpacity:.45,
 
 
-                flippingTime:
-                    900,
+                flippingTime:900,
 
 
-                mobileScrollSupport:
-                    true,
+                mobileScrollSupport:true,
 
 
-                showPageCorners:
-                    false
-
+                showPageCorners:false
 
             }
 
@@ -2256,6 +2157,7 @@ function createBook(){
 
 
             const index =
+
                 event.data;
 
 
@@ -2277,12 +2179,9 @@ function createBook(){
 
 
 
-            panX =
-                0;
+            panX = 0;
 
-
-            panY =
-                0;
+            panY = 0;
 
 
 
@@ -2299,11 +2198,12 @@ function createBook(){
 
 
             /*
-            صفحه‌ای که کاربر بهش رسیده
-            فوراً اولویت دارد.
+            صفحات اطراف صفحه جدید
+            اولویت بالا
             */
 
-            requestPriorityPages(
+
+            preloadNear(
                 index + 1
             );
 
@@ -2311,6 +2211,485 @@ function createBook(){
         }
 
     );
+
+}
+
+
+
+/* =========================
+   PRELOAD NEAR
+========================= */
+
+function preloadNear(
+    pageNumber
+){
+
+
+    if(!pdfDocument){
+        return;
+    }
+
+
+
+    const pages = [
+
+        pageNumber,
+
+        pageNumber + 1,
+
+        pageNumber + 2,
+
+        pageNumber - 1
+
+    ];
+
+
+
+    pages.forEach(
+
+        function(number){
+
+
+            if(
+
+                number >= 1
+                &&
+                number <=
+                pdfDocument.numPages
+
+            ){
+
+
+                renderPage(
+                    number
+                );
+
+
+            }
+
+
+        }
+
+    );
+
+}
+
+
+
+/* =========================
+   BACKGROUND LOAD
+
+   صفحات:
+   2
+   3
+   4
+   5
+   ...
+   دقیقاً یکی یکی
+========================= */
+
+async function startBackgroundLoading(
+    thisOpen
+){
+
+
+    if(
+        !pdfDocument ||
+        backgroundRunning
+    ){
+        return;
+    }
+
+
+
+    backgroundRunning =
+        true;
+
+
+
+    const token =
+
+        ++backgroundToken;
+
+
+
+    for(
+        let pageNumber=2;
+        pageNumber<=pdfDocument.numPages;
+        pageNumber++
+    ){
+
+
+        if(
+            token !==
+            backgroundToken
+        ){
+            break;
+        }
+
+
+
+        if(
+            thisOpen !==
+            openId
+        ){
+            break;
+        }
+
+
+
+        if(!pdfDocument){
+            break;
+        }
+
+
+
+        if(
+            !renderedPages.has(
+                pageNumber
+            )
+        ){
+
+
+            await renderPage(
+                pageNumber
+            );
+
+
+        }
+
+
+
+        await idlePause();
+
+    }
+
+
+
+    if(
+        token ===
+        backgroundToken
+    ){
+
+
+        backgroundRunning =
+            false;
+
+    }
+
+}
+
+
+
+/* =========================
+   IDLE
+========================= */
+
+function idlePause(){
+
+
+    return new Promise(
+
+        resolve=>{
+
+
+            if(
+                "requestIdleCallback"
+                in window
+            ){
+
+
+                requestIdleCallback(
+
+                    ()=>resolve(),
+
+                    {
+                        timeout:100
+                    }
+
+                );
+
+
+            }
+
+
+            else{
+
+
+                setTimeout(
+                    resolve,
+                    25
+                );
+
+
+            }
+
+
+        }
+
+    );
+
+}
+
+
+
+/* =========================
+   RENDER PAGE
+========================= */
+
+async function renderPage(
+    pageNumber
+){
+
+
+    if(!pdfDocument){
+        return;
+    }
+
+
+
+    if(
+        pageNumber < 1
+        ||
+        pageNumber >
+        pdfDocument.numPages
+    ){
+        return;
+    }
+
+
+
+    if(
+        renderedPages.has(
+            pageNumber
+        )
+    ){
+        return;
+    }
+
+
+
+    if(
+        renderingPages.has(
+            pageNumber
+        )
+    ){
+
+
+        return renderingPages.get(
+            pageNumber
+        );
+
+    }
+
+
+
+    const currentPDF =
+
+        pdfDocument;
+
+
+
+    const renderTask =
+
+        (async()=>{
+
+
+            try{
+
+
+                const page =
+
+                    await currentPDF
+                    .getPage(
+                        pageNumber
+                    );
+
+
+
+                if(
+                    currentPDF !==
+                    pdfDocument
+                ){
+                    return;
+                }
+
+
+
+                const mobile =
+
+                    window.innerWidth <=
+                    700;
+
+
+
+                const dpr =
+
+                    Math.min(
+
+                        window.devicePixelRatio ||
+                        1,
+
+                        1.35
+
+                    );
+
+
+
+                const scale =
+
+                    mobile
+                    ? 1.08
+                    : 1.18;
+
+
+
+                const viewport =
+
+                    page.getViewport({
+
+                        scale:
+
+                            scale *
+
+                            dpr
+
+                    });
+
+
+
+                const canvas =
+
+                    document.createElement(
+                        "canvas"
+                    );
+
+
+
+                const context =
+
+                    canvas.getContext(
+
+                        "2d",
+
+                        {
+                            alpha:false
+                        }
+
+                    );
+
+
+
+                canvas.width =
+
+                    Math.floor(
+                        viewport.width
+                    );
+
+
+
+                canvas.height =
+
+                    Math.floor(
+                        viewport.height
+                    );
+
+
+
+                await page.render({
+
+                    canvasContext:
+                        context,
+
+
+                    viewport:
+                        viewport
+
+
+                }).promise;
+
+
+
+                if(
+                    currentPDF !==
+                    pdfDocument
+                ){
+                    return;
+                }
+
+
+
+                const target =
+
+                    pageElements[
+                        pageNumber - 1
+                    ];
+
+
+
+                if(target){
+
+
+                    target.innerHTML =
+                        "";
+
+
+                    target.appendChild(
+                        canvas
+                    );
+
+
+                }
+
+
+
+                renderedPages.add(
+                    pageNumber
+                );
+
+
+            }
+
+
+            catch(error){
+
+
+                console.error(
+                    "Render page",
+                    pageNumber,
+                    error
+                );
+
+
+            }
+
+
+            finally{
+
+
+                renderingPages.delete(
+                    pageNumber
+                );
+
+
+            }
+
+
+        })();
+
+
+
+    renderingPages.set(
+
+        pageNumber,
+
+        renderTask
+
+    );
+
+
+
+    return renderTask;
 
 }
 
@@ -2336,13 +2715,7 @@ async function nextPage(){
 
 
 
-    /*
-    صفحه بعد قبل از ورق
-    درخواست شود.
-    */
-
-
-    requestPriorityPages(
+    preloadNear(
         current + 2
     );
 
@@ -2401,7 +2774,7 @@ async function previousPage(){
 
 
 
-    requestPriorityPages(
+    preloadNear(
         current
     );
 
@@ -2441,7 +2814,7 @@ async function previousPage(){
 
 
 /* =========================
-   PAGE COUNTER
+   COUNTER
 ========================= */
 
 function updatePageCounter(){
@@ -2498,7 +2871,6 @@ function updatePageCounter(){
             total;
 
 
-
         return;
 
     }
@@ -2513,7 +2885,6 @@ function updatePageCounter(){
             "صفحه 1 از " +
 
             total;
-
 
 
         return;
@@ -2539,7 +2910,6 @@ function updatePageCounter(){
             total;
 
 
-
         return;
 
     }
@@ -2547,6 +2917,7 @@ function updatePageCounter(){
 
 
     const first =
+
         index + 1;
 
 
@@ -2582,473 +2953,6 @@ function updatePageCounter(){
 
 
 /* =========================
-   PRIORITY PAGE LOAD
-========================= */
-
-function requestPriorityPages(
-    pageNumber
-){
-
-
-    if(!pdfDocument){
-        return;
-    }
-
-
-
-    const pages = [
-
-        pageNumber,
-
-        pageNumber + 1,
-
-        pageNumber - 1
-
-    ];
-
-
-
-    pages.forEach(
-
-        function(number){
-
-
-            if(
-
-                number >= 1
-                &&
-                number <=
-                pdfDocument.numPages
-
-            ){
-
-
-                renderPage(
-                    number
-                );
-
-
-            }
-
-
-        }
-
-    );
-
-}
-
-
-
-/* =========================
-   SEQUENTIAL LOAD
-========================= */
-
-async function startSequentialLoading(){
-
-
-    if(
-        !pdfDocument ||
-        sequentialRunning
-    ){
-        return;
-    }
-
-
-
-    sequentialRunning =
-        true;
-
-
-
-    const myToken =
-
-        ++sequentialToken;
-
-
-
-    /*
-    صفحه 1 قبلاً آماده است.
-
-    بقیه:
-    2
-    3
-    4
-    5
-    ...
-
-    یکی یکی.
-    */
-
-
-    for(
-        let pageNumber=2;
-        pageNumber<=pdfDocument.numPages;
-        pageNumber++
-    ){
-
-
-        if(
-            myToken !==
-            sequentialToken
-        ){
-            break;
-        }
-
-
-
-        if(!pdfDocument){
-            break;
-        }
-
-
-
-        if(
-            !renderedPages.has(
-                pageNumber
-            )
-        ){
-
-
-            await renderPage(
-                pageNumber
-            );
-
-
-        }
-
-
-
-        /*
-        اجازه بده مرورگر اول
-        انیمیشن، Zoom و UI را انجام دهد.
-        */
-
-
-        await waitForIdle();
-
-
-    }
-
-
-
-    if(
-        myToken ===
-        sequentialToken
-    ){
-
-
-        sequentialRunning =
-            false;
-
-
-    }
-
-}
-
-
-
-/* =========================
-   IDLE WAIT
-========================= */
-
-function waitForIdle(){
-
-
-    return new Promise(
-
-        resolve=>{
-
-
-            if(
-                "requestIdleCallback"
-                in window
-            ){
-
-
-                requestIdleCallback(
-
-                    ()=>resolve(),
-
-                    {
-                        timeout:180
-                    }
-
-                );
-
-
-            }
-
-
-            else{
-
-
-                setTimeout(
-                    resolve,
-                    45
-                );
-
-
-            }
-
-
-        }
-
-    );
-
-}
-
-
-
-/* =========================
-   RENDER PAGE
-========================= */
-
-async function renderPage(
-    pageNumber
-){
-
-
-    if(!pdfDocument){
-        return;
-    }
-
-
-
-    if(
-        pageNumber < 1
-        ||
-        pageNumber >
-        pdfDocument.numPages
-    ){
-        return;
-    }
-
-
-
-    if(
-        renderedPages.has(
-            pageNumber
-        )
-    ){
-        return;
-    }
-
-
-
-    /*
-    اگر همین صفحه الان دارد
-    Render می‌شود، دوباره شروع نشود.
-    */
-
-
-    if(
-        renderingPages.has(
-            pageNumber
-        )
-    ){
-
-
-        return renderingPages.get(
-            pageNumber
-        );
-
-
-    }
-
-
-
-    const renderPromise =
-
-        (async()=>{
-
-
-            try{
-
-
-                const page =
-
-                    await pdfDocument
-                    .getPage(
-                        pageNumber
-                    );
-
-
-
-                const mobile =
-
-                    window.innerWidth <=
-                    700;
-
-
-
-                /*
-                کمی سبک‌تر برای سرعت،
-                بدون افت شدید کیفیت.
-                */
-
-
-                const pixelRatio =
-
-                    Math.min(
-
-                        window.devicePixelRatio ||
-                        1,
-
-                        1.3
-
-                    );
-
-
-
-                const scale =
-
-                    mobile
-                    ? 1.05
-                    : 1.15;
-
-
-
-                const viewport =
-
-                    page.getViewport({
-
-                        scale:
-
-                            scale *
-
-                            pixelRatio
-
-                    });
-
-
-
-                const canvas =
-
-                    document.createElement(
-                        "canvas"
-                    );
-
-
-
-                const context =
-
-                    canvas.getContext(
-
-                        "2d",
-
-                        {
-                            alpha:false
-                        }
-
-                    );
-
-
-
-                canvas.width =
-
-                    Math.floor(
-                        viewport.width
-                    );
-
-
-
-                canvas.height =
-
-                    Math.floor(
-                        viewport.height
-                    );
-
-
-
-                await page.render({
-
-                    canvasContext:
-                        context,
-
-
-                    viewport:
-                        viewport
-
-
-                }).promise;
-
-
-
-                const target =
-
-                    pageElements[
-                        pageNumber - 1
-                    ];
-
-
-
-                if(target){
-
-
-                    target.innerHTML =
-                        "";
-
-
-                    target.appendChild(
-                        canvas
-                    );
-
-
-                }
-
-
-
-                renderedPages.add(
-                    pageNumber
-                );
-
-
-            }
-
-
-            catch(error){
-
-
-                console.error(
-                    error
-                );
-
-
-            }
-
-
-            finally{
-
-
-                renderingPages.delete(
-                    pageNumber
-                );
-
-
-            }
-
-
-        })();
-
-
-
-    renderingPages.set(
-
-        pageNumber,
-
-        renderPromise
-
-    );
-
-
-
-    return renderPromise;
-
-}
-
-
-
-/* =========================
    EDGE SWIPE
 ========================= */
 
@@ -3057,7 +2961,6 @@ const leftEdge =
     document.getElementById(
         "leftEdge"
     );
-
 
 
 const rightEdge =
@@ -3087,22 +2990,16 @@ function startEdgeSwipe(
 
     edgeGesture = {
 
-
-        side:
-            side,
-
+        side:side,
 
         pointerId:
             event.pointerId,
 
-
         startX:
             event.clientX,
 
-
         startY:
             event.clientY
-
 
     };
 
@@ -3131,7 +3028,7 @@ function startEdgeSwipe(
 
 
 /* =========================
-   END EDGE SWIPE
+   EDGE END
 ========================= */
 
 async function endEdgeSwipe(
@@ -3176,14 +3073,12 @@ async function endEdgeSwipe(
 
 
 
-    edgeGesture =
-        null;
+    edgeGesture = null;
 
 
 
     /*
-    Tap ساده:
-    هیچ کاری نکن
+    Tap = هیچ
     */
 
 
@@ -3230,7 +3125,6 @@ async function endEdgeSwipe(
 
 
         await previousPage();
-
 
     }
 
@@ -3294,8 +3188,7 @@ leftEdge.addEventListener(
 
     ()=>{
 
-        edgeGesture =
-            null;
+        edgeGesture = null;
 
     }
 
@@ -3309,8 +3202,7 @@ rightEdge.addEventListener(
 
     ()=>{
 
-        edgeGesture =
-            null;
+        edgeGesture = null;
 
     }
 
@@ -3363,7 +3255,6 @@ async function togglePagePanel(){
 
         await buildThumbnails();
 
-
     }
 
 
@@ -3395,11 +3286,26 @@ async function buildThumbnails(){
 
 
 
+    const thisPDF =
+
+        pdfDocument;
+
+
+
     for(
         let i=1;
-        i<=pdfDocument.numPages;
+        i<=thisPDF.numPages;
         i++
     ){
+
+
+        if(
+            thisPDF !==
+            pdfDocument
+        ){
+            return;
+        }
+
 
 
         const item =
@@ -3407,7 +3313,6 @@ async function buildThumbnails(){
             document.createElement(
                 "div"
             );
-
 
 
         item.className =
@@ -3430,17 +3335,13 @@ async function buildThumbnails(){
             );
 
 
-
         label.className =
             "pageThumbLabel";
 
 
-
         label.innerText =
 
-            "صفحه " +
-
-            i;
+            "صفحه " + i;
 
 
 
@@ -3449,17 +3350,14 @@ async function buildThumbnails(){
         );
 
 
-
         item.appendChild(
             label
         );
 
 
-
         grid.appendChild(
             item
         );
-
 
 
         thumbElements.push(
@@ -3473,11 +3371,6 @@ async function buildThumbnails(){
             function(){
 
 
-                requestPriorityPages(
-                    i
-                );
-
-
                 goToPage(
                     i - 1
                 );
@@ -3488,7 +3381,6 @@ async function buildThumbnails(){
                 ).style.display =
                     "none";
 
-
             };
 
 
@@ -3498,10 +3390,8 @@ async function buildThumbnails(){
 
             const page =
 
-                await pdfDocument
-                .getPage(
-                    i
-                );
+                await thisPDF
+                .getPage(i);
 
 
 
@@ -3550,12 +3440,11 @@ async function buildThumbnails(){
         }
 
 
-        catch(error){}
+        catch(e){}
 
 
 
-        await waitForIdle();
-
+        await idlePause();
 
     }
 
@@ -3608,30 +3497,6 @@ function updateActiveThumbnail(){
 
     );
 
-
-
-    const active =
-
-        thumbElements[
-            index
-        ];
-
-
-
-    if(active){
-
-
-        active.scrollIntoView({
-
-            block:"nearest",
-
-            behavior:"smooth"
-
-        });
-
-
-    }
-
 }
 
 
@@ -3640,7 +3505,7 @@ function updateActiveThumbnail(){
    GO TO PAGE
 ========================= */
 
-function goToPage(
+async function goToPage(
     index
 ){
 
@@ -3651,8 +3516,24 @@ function goToPage(
 
 
 
-    requestPriorityPages(
+    /*
+    اول صفحه مقصد
+    */
+
+
+    await renderPage(
         index + 1
+    );
+
+
+
+    /*
+    بعد صفحه کنارش
+    */
+
+
+    renderPage(
+        index + 2
     );
 
 
@@ -3740,13 +3621,9 @@ function zoomOut(){
     ){
 
 
-        panX =
-            0;
+        panX = 0;
 
-
-        panY =
-            0;
-
+        panY = 0;
 
     }
 
@@ -3771,13 +3648,9 @@ function applyTransform(){
     ){
 
 
-        panX =
-            0;
+        panX = 0;
 
-
-        panY =
-            0;
-
+        panY = 0;
 
     }
 
@@ -3854,8 +3727,7 @@ bookArea.addEventListener(
 
 
 
-        dragging =
-            true;
+        dragging = true;
 
 
 
@@ -3983,13 +3855,10 @@ bookArea.addEventListener(
         ){
 
 
-            dragging =
-                false;
+            dragging = false;
 
 
-            dragPointerId =
-                null;
-
+            dragPointerId = null;
 
         }
 
@@ -4006,13 +3875,10 @@ bookArea.addEventListener(
     function(){
 
 
-        dragging =
-            false;
+        dragging = false;
 
 
-        dragPointerId =
-            null;
-
+        dragPointerId = null;
 
     }
 
@@ -4080,16 +3946,14 @@ bookArea.addEventListener(
         ){
 
 
-            dragging =
-                false;
+            dragging = false;
 
 
-            dragPointerId =
-                null;
+            dragPointerId = null;
 
 
-            pinchActive =
-                true;
+            pinchActive = true;
+
 
 
             pinchStartDistance =
@@ -4099,8 +3963,10 @@ bookArea.addEventListener(
                 );
 
 
+
             pinchStartZoom =
                 zoomValue;
+
 
 
             event.preventDefault();
@@ -4203,7 +4069,6 @@ bookArea.addEventListener(
             pinchActive =
                 false;
 
-
         }
 
     },
@@ -4225,7 +4090,6 @@ bookArea.addEventListener(
 
         pinchActive =
             false;
-
 
     }
 
